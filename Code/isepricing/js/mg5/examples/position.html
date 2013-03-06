@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+<title>Menu G5 Step-by-step: Position a menu instance</title>
+
+<style type="text/css">
+.holder  { filter:alpha(opacity:50); -moz-opacity:0.5; }
+.pad     { border:2px solid #000000; padding:1px; background-color:#ffffff; }
+
+.itemOff { width:120px; padding:0px 3px 0px 6px; background-color:#ffffff; }
+.itemOn  { cursor:default; width:120px; padding:0px 3px 0px 6px; background-color:#000000; }
+
+.fontOff { font-family:verdana; font-size:11pt; color:#000000; }
+.fontOn  { cursor:default; font-family:verdana; font-size:11pt; color:#ffffff; }
+
+.tagOff  { float:right; width:8px; height:14px; background:url("images/tagRN3.gif") no-repeat bottom; }
+.tagOn   { float:right; width:8px; height:14px; background:url("images/tagRH3.gif") no-repeat bottom; }
+</style>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+<script language="javascript" src="menu/position-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderX.js"></script>
+</head>
+
+<body onload="showMenu('Demo5')">
+<div id="coor" style="position:absolute; top:10px; left:10px; background-color:#669999; color:#ffffff; padding:3px; visibility:hidden;">[10,10]</div>
+
+<p align="center" class="title">Menu G5 Step-by-step: Position a menu instance</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+
+<p class="para">Menu G5 supports three different ways of menu positioning:</p>
+<ol>
+<li>Absolute positioning</li>
+<li>Relative positioning</li>
+<li>Pre-defined slots</li>
+</ol>
+
+<p class="para">Absolute positioning is straightforward, you give the coordinates and the menu will be happy to sit right there. For example, [<a href="#" onclick="document.getElementById('coor').style.visibility='visible'; return false;">click here</a>] to show a little box at [10,10], and [<a href="#" onclick="clickMenu('Demo1'); return false;">click here</a>] to show a menu positioned at [10,10]. The menu is given some transparent effect to show how the menu is overlapping the little box at [10,10].</p>
+<p class="para">As you might remember, we defined a menu instance with the following call:</p>
+<pre>
+addInstance("Demo1", "Demo", "...");
+</pre>
+<p class="para">Well, that's the simplest case and all the configurable parameters, such as positioning, offset, menu layout, menu direction, menu alignment, floating, etc, will all take the default values. It's now time to reveal some.</p>
+<p class="para">To define the position of a menu instance, we use the following parameter phrases in the addInstance() call:</p>
+<pre>
+addInstance("Demo1", "Demo", "position:absolute; offset-top:10; offset-left:10; ...");
+</pre>
+<p class="para">The "position:absolute" phrase tells that the menu instance will be positioned with some coordinates, which are specified by the phrases of "offset-top:10" and "offset-left:10".</p>
+<p class="para">The absolute positioning is the default positioning method, so you only need to specify the "offset-top:" and "offset-left:" phrases, and if they are also missing, [0,0] would be taken.</p>
+<p class="para">The "visibility:hidden" phrase here specifies that the menu instance would remain hidden after it collapses, good for setting up a popup menu.</p>
+
+<br><p class="para">For relative positioning, you'll need to set up a place holder for the menu instance by defining the ID property for some html element, such as a SPAN or a DIV element, the menu instance then takes the coordinates of the top-left corner of the place holder to position itself.</p>
+<p class="para">For example, below we have a centralized table with one cell only:</p>
+<table align="center" cellpadding="0" cellspacing="0" border="0"><tr><td id="holder" bgcolor="#ff0000">&nbsp;</td></tr></table>
+<p class="para">and the TD cell is given an ID "holder". The html codes for the above line would be like this:</p>
+<pre>
+&lt;table align="center" cellpadding="0" cellspacing="0" border="0"&gt;
+&lt;tr&gt;&lt;td id="holder"&gt;&#38;nbsp;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+
+<p class="para">To place the menu instance against such a place holder, we would use something like this:</p>
+<pre>
+addInstance("Demo2", "Demo", "position:relative holder; ...");
+</pre>
+<p class="para">You can [<a href="#" onclick="clickMenu('Demo2'); return false;">click here</a>] to show the menu instance. The "offset-top:" and "offset-left:" phrases will now specify the offset away from the place holder, by default is [0,0] if not specified.</p>
+
+<p class="note"><font color="red">Note:</font> When you put a place holder inside a table cell, you should set the border of the table and of all the parent tables to 0 (zero). Otherwise Menu G5 might mistake the position of the place holder by a few pixels.</p>
+<p class="note"><font color="red">Update for IE/Mac:</font> In pre-5.5.0 menu pages, a centralized holder can be set up as:<br><b>&lt;div align="center"&gt;&lt;span id="holder"&gt;&#38;nbsp;&lt;/span&gt;&lt;/div&gt;</b><br>Somehow the codes used to calculate the position of such a holder doesn't seem to be getting the correct coordinates in IE/Mac. Using of TABLE for relative positioning is recommended.</p>
+
+<br>
+<p class="para"><img src="images/slot.gif" hspace="20" border="1" width="80" height="60" align="right">For pre-defined slots, Menu G5 has set up 9 slots around the edge of the browser window, as what the numbers in the chart to the right are indicating. Like absolute positioning, you don't need to set up anything in the page but just pick one of the slots for the menu instance, for example slot 6:</p>
+<pre>
+addInstance("Demo4", "Demo", "position:slot 6; align:left; valign:bottom; direction:right-up; floating:yes; ...");
+</pre>
+<p class="para">You can [<a href="#" onclick="clickMenu('Demo4'); return false;">click here</a>] to show the menu instance, watch it floats when you are scrolling the page.</p>
+
+<br><p class="para">You might notice that we use some new parameter phrases in the slot example, such as:</p>
+<ul>
+<li>
+<p>align:left<br>
+... this will align the left side of the top-menu pad to the referenced x-coordinate (of the absolute coordinates, the top-left corner of a place holder, or a slot).</p>
+</li>
+<li>
+<p>valign:bottom<br>
+... this will align the bottom of the top-menu pad to the referenced y-coordinates.</p>
+</li>
+<li>
+<p>direction:right-up<br>
+... this will open the sub-menus to the right-up direction.</p>
+</li>
+<li>
+<p>floating:yes<br>
+... this will have the menu stay in the same spot while the page is scrolling.</p>
+</li>
+</ul>
+
+<br><p class="para">With the "align:" and "valign:" phrases, it's easy to have a centralized menu bar:</p>
+<table align="center" cellpadding="0" cellspacing="0" border="0"><tr><td id="holder3" bgcolor="#ff0000">&nbsp;</td></tr></table>
+<p class="para">As you could guess, we set up a centralized one-cell table as a holder (the little rex box in the middle) and use the "align:center" phrase in the addInstance() call:</p>
+<pre>
+addInstance("Demo5", "Demo", "position:relative holder3; align:center; menu-form:bar; ...");
+</pre>
+<p class="para">The "menu-form:bar" phrase here makes the top-menu of the menu instance to layout as a menu bar.</p>
+
+<br><p class="para">Well, I think one of these 3 positioning methods should be able to find a seat for your menu, and so far, you've seen most of the syntax and some frequently used techniques in Menu G5. More details and tricks can be found in the coming Menu G5 examples and documents.</p>
+<p class="para">[<a href="crossframe.html">Cross-Frame menus</a>]&nbsp;[<a href="../index.html#steps">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>
+</html>

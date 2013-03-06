@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><html>
+<html>
+<head>
+<title>Menu G5 Examples: Alternative to form select list [2]</title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+<style type="text/css">
+.itemOff { width:120px; padding:0px 6px; border-width:1px; border-style:solid; border-color:#336699 #000033 #000033 #336699; text-align:left; background-color:#003366; }
+.itemOn { cursor:default; width:120px; padding:0px 6px; border-width:1px; border-style:solid; border-color:#336699 #000033 #000033 #336699; text-align:left; background-color:#6699cc; }
+.itemPicked { cursor:default; width:120px; padding:0px 6px; border-width:1px; border-style:solid; border-color:#666666 #cccccc #cccccc #666666; text-align:left; background-color:#ffffff; }
+
+.font { font-family:sans-serif; font-size:9pt; font-weight:bold; color:#ffffff; }
+.fontPicked { font-family:sans-serif; font-size:9pt; font-weight:bold; color:#ffffff; color:#000000; }
+
+.tagTop { width:11px; height:9px; float:right; background:url("images/tagDH.gif") no-repeat bottom; }
+.tagSub { width:11px; height:10px; float:right; background:url("images/tagRH6.gif") no-repeat bottom; }
+.tagPicked { width:11px; height:9px; float:right; background:url("script/onePixel.gif") no-repeat bottom; }
+</style>
+
+<script language="javascript" src="menu/select-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderX.js"></script>
+</head>
+
+<body onload="showMenu('vehicle'); showMenu('year')">
+<p align="center" class="title">Menu G5 Examples: Alternative to form select list [2]</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+<form>
+<input type="hidden" name="vehicle" value="Celica">
+<input type="hidden" name="year" value="2003">
+
+<table cellpadding="12" cellspacing="2" border="1" align="center" bgcolor="#f0f0f0"><tr><td align="center">
+<table cellpadding="2" cellspacing="2" border="0">
+<tr valign="top">
+<td><span style="font-family:sans-serif; font-size:12px">Please pick a vehicle:</span></td>
+<td width="130" id="vehicleholder">&nbsp;</td>
+</tr>
+<tr>
+<td><span style="font-family:sans-serif; font-size:12px">Please pick a year:</span></td>
+<td id="yearholder">&nbsp;</td>
+</tr>
+</table>
+<input type="button" value="Submit" style="font-size:12px; font-family:sans-serif; width:80px;" onclick='alert("Vehicle: "+this.form.vehicle.value+"\n"+"Year: "+this.form.year.value)'>
+</td></tr></table><clear="all">
+</form>
+
+<p class="para">This is a re-make of the Menu G4 example "Alternative to form select list". With updateItemDisplay(), showPagePath() and resetPagePath(), it's much easier than the Menu G4 version.</p>
+<p class="para">As usual we make the content for all the vehicles and years first, then we define the on-path style for the top item on a select list, thus when an item is picked from the list, we call updateItemDisplay() to change the text of the top item and call showPagePath() to change its style, and when the top item is clicked, we call updateItemDisplay() again to restore its default text and call resetPagePath() to restore its normal style.</p>
+<p class="para">[<a href="../index.html#examples">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>

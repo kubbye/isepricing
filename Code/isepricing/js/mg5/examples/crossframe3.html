@@ -1,0 +1,109 @@
+<html>
+
+<head>
+<title>Menu G5 Step-by-step: Cross-Frame menus</title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+</head>
+
+<body>
+<p align="center" class="title">Menu G5 Step-by-step: Cross-Frame menus (cont.)</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+<p class="para">If you prefer to set up links in one frame and open menus in another frame, you can take use of the following user functions:</p>
+<ul>
+<li>getLeft(id) ... returns the x-coordinate of an element with the given id.</li>
+<li>getTop(id) ... returns the y-coordinate of an element with the given id.</li>
+<li>setHolder("ins-name",id) ... positions the menu against the element with the given id.</li>
+<li>setCoordinates("ins-name",x,y) ... positions the menu with the given coordinates.</li>
+<li>openMenu("ins-name") ... opens a menu, usually to be used with "onmouseover="</li>
+<li>closeMenu() ... close any opened menu, usually to be used with "onmouseout="</li>
+<li>clickMenu("ins-name") ... opens a menu, usually to be used with "onclick="</li>
+<li>switchMenu("ins-name") ... switch on/off a menu, usually to be used with "onclick="</li>
+<li>initMenu("ins-name", "all", target-frame) ... initMenu() can be called with a target-frame parameter</li>
+</ul>
+
+<br><p class="para">Let's say, in a top-bottom frameset layout, we have the following links in the top frame:</p>
+<div style="background-color:#cccccc"><table cellpadding="0" cellspacing="0" align="center"><tr>
+<td align="center"><a href="#">Home</a></td>
+<td id="Tool"><font color="#ffffff">&nbsp;|&nbsp;</font></td>
+<td><a href="#">Tool Scripts</a></td>
+<td id="Game"><font color="#ffffff">&nbsp;|&nbsp;</font></td>
+<td><a href="#">Game Scripts</a></td>
+<td id="Forum"><font color="#ffffff">&nbsp;|&nbsp;</font></td>
+<td><a href="#">User Forum</a></td>
+<td><font color="#ffffff">&nbsp;|&nbsp;</font></td>
+<td><a href="#">Contact</a></td>
+</tr></table></div>
+<p class="para">and we need to fly out some sub-menus under "Tool Scripts", "Game Scripts" and "User Forum".</p>
+
+<br><p class="para">Defining the menu contents is not a problem, just three menu instances acting as "sub-menus" to the links in top frame. What we need to figure out is how to position these three menus in the bottom frame and how to trigger them.</p>
+<p class="para">We can set up some place holders close to the top border in the bottom frame for the "sub-menus", or we can just simply use slot 1 (the top-center spot) with some offsets for the "sub-menus". But actually, to be more precisely, we can set up place holders in the top frame and use them to position the "sub-menus".</p>
+<p class="para">Similar to the menu bar in the example of [<a href="noscript.html">When Javascript is disabled</a>], we will use the separator TD cell to set up the place holders:</p>
+<pre>
+... Home ...
+&lt;td <b>id="Tool"</b>&gt;&lt;font color="#ffffff"&gt;&#38;nbsp;|&#38;nbsp;&lt;/font&gt;&lt;/td&gt;
+... Tool Scripts ...
+&lt;td <b>id="Game"</b>&gt;&lt;font color="#ffffff"&gt;&#38;nbsp;|&#38;nbsp;&lt;/font&gt;&lt;/td&gt;
+... Game Scripts ...
+&lt;td <b>id="Forum"</b>&gt;&lt;font color="#ffffff"&gt;&#38;nbsp;|&#38;nbsp;&lt;/font&gt;&lt;/td&gt;
+... User Forum ...
+... | ...
+... Contact ...
+</pre>
+<p class="para">and we set up the "openMenu()" for the link:</p>
+<pre>
+&lt;a ... onmouseover="openMenu('Tool');"&gt; Tool Scripts &lt;/a&gt;
+</pre>
+<p class="para">and we have the menu instance for the "Tool Scripts" link like this:</p>
+<pre>
+addInstance("Tool", "Tool", "floating:yes; visibility:hidden;");
+</pre>
+<p class="para">You might have noticed that this menu instance is by default positioned at [0,0], what we need to do next is to apply the x-coordinate of the place holder to this menu instance.</p>
+<p class="para">To get the coordinates of a place holder, we have:</p>
+<pre>
+getLeft("place-holder-id");
+getTop("place-holder-id");
+</pre>
+<p class="para">To adjust the position of a menu instance, we have:</p>
+<pre>
+setHolder("ins-name",id)
+setCoordinates("ins-name",x,y)
+</pre>
+<br><p class="para">For this "Tool Scripts" link, we want its "sub-menu" to be close to the top border of the bottom frame (y-coordinate equals to zero) and horizontally aligned with the place holder (x-coordinate equals to the x-coordinate of the place holder). To do so, we adjust the "onmouseover=" handler:</p>
+<pre>
+&lt;a ... onmouseover="setCoordinates('Tool',getLeft('Tool'),0); openMenu('Tool');"&gt; Tool Scripts &lt;/a&gt;
+</pre>
+<p class="para">Thus we've used the place holder in the top frame to position the menu in the bottom frame. Likewise, we can set up the "onmouseover" for other links:</p>
+<pre>
+&lt;a ... onmouseover="setCoordinates('Game',getLeft('Game'),0); openMenu('Game');"&gt; Game Scripts &lt;/a&gt;
+&lt;a ... onmouseover="setCoordinates('Forum',getLeft('Forum'),0); openMenu('Forum');"&gt; User Forum &lt;/a&gt;
+</pre>
+<br><p class="para">As to the links of "Home" and "Contact", they don't have "sub-menus", and should close any opened menu when hovered:</p>
+<pre>
+&lt;a href="home-url" target="main" onmouseover="closeMenu();"&gt; Home &lt;/a&gt;
+...
+&lt;a href="contact-url" target="main" onmouseover="closeMenu();"&gt; Contact &lt;/a&gt;
+</pre>
+<br><p class="para">For the bottom frame page, since the whole menu instance is shown in the frame as a "sub-menu" to the top frame link, we would use initMenu("ins-name", "all") for that purpose and we have two options here:</p>
+<ol>
+<li>to call it from the first or default bottom frame page:</li>
+</ol>
+<pre>
+&lt;body onload="initMenu('Tool','all'); initMenu('Game','all'); initMenu('Forum','all')"&gt;
+</pre>
+<p class="para">The initMenu("ins-name", "all") call tells the script not to split the menu but show it all in the same frame page from where it's called, and it sends the frame reference to the control frameset.</p>
+<ol>
+<li type=1 value=2>to call it from the top frame page:</li>
+</ol>
+<pre>
+&lt;body onload="initMenu('Tool', 'all', parent.main); initMenu('Game', 'all', parent.main); initMenu('Forum', 'all', parent.main)"&gt;
+</pre>
+<p class="para">With the additional parameter, parent.main, which is the bottom frame, it sets the target frame for menu instead of where it's called.</p>
+<p class="para">Click [<a href="frameset-tb.html" target=_blank>here</a>] to see the example. Click [<a href="frameset-lr.html" target=_blank>here</a>] to see a left-right frameset example.</p>
+<p class="para">[<a href="../index.html#steps">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p class="para">&nbsp;</p>
+</body>
+
+</html>

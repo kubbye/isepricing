@@ -1,0 +1,15 @@
+.itemTopOff { width:200px; padding:1px; border:0px solid #000000; text-align:center; background-color:#cccccc; }
+.itemTopOn { cursor:default; width:200px; padding:0px; border:1px solid #000000; text-align:center; background-color:#333333; }
+.itemSubOff { width:200px; padding:3px 6px 1px 11px; border:0px solid #000000; text-align:center; background-color:#cccccc; }
+.itemSubOn { cursor:default; width:200px; padding:1px 6px 1px 11px; border:0px solid #000000; text-align:center; background-color:#333333; }
+.itemTitle { cursor:default; width:200px; padding:1px; border:1px solid #000000; text-align:center; background-color:#cccccc; background-color:#c99666; }
+
+.fontOff { font-family:verdana; font-size:13pt; color:#000000; }
+.fontOn { font-family:verdana; font-size:13pt; color:#ffffff; }
+.fontTitle { font-family:verdana; font-size:10pt; color:#ffffff; }
+
+.tagOff { width:8px; height:13px; float:right; background:url("images/tagRN.gif") no-repeat bottom; }
+.tagOn { width:8px; height:13px; float:right; background:url("images/tagRH.gif") no-repeat bottom; }
+
+.tagDownOff { width:20px; height:10px; float:right; background:url("images/tagDN.gif") no-repeat bottom center; }
+.tagDownOn { width:20px; height:10px; float:right; background:url("images/tagDH.gif") no-repeat bottom center; }

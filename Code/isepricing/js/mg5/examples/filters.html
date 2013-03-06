@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><html>
+<html>
+
+<head>
+<title>Menu G5 Examples: IE Filters</title>
+
+<style type="text/css">
+.holder { filter: progid:DXImageTransform.Microsoft.Shadow(direction=135,color=#333333,strength=3); }
+.subholder1 { filter:
+  progid:DXImageTransform.Microsoft.GradientWipe(GradientSize=0.00,wipestyle=1,motion=forward)
+  progid:DXImageTransform.Microsoft.Shadow(direction=135,color=#333333,strength=3);
+}
+.subholder2 { filter:
+  progid:DXImageTransform.Microsoft.RandomDissolve(duration=0.5)
+  progid:DXImageTransform.Microsoft.Shadow(direction=135,color=#333333,strength=3);
+}
+.subholder3 { filter:
+  progid:DXImageTransform.Microsoft.RadialWipe(wipestyle=RADIAL)
+  progid:DXImageTransform.Microsoft.Shadow(direction=135,color=#333333,strength=3);
+}
+.subholderx { filter:
+  progid:DXImageTransform.Microsoft.GradientWipe(GradientSize=0.00,wipestyle=0,motion=forward)
+  progid:DXImageTransform.Microsoft.Shadow(direction=135,color=#333333,strength=3);
+}
+
+.bar { padding:2px; border-width:1px; border-style:solid; border-color:#000000; background-color:#336699; }
+
+.itemTopL1 {
+  filter: progid:DXImageTransform.Microsoft.Iris(irisstyle=CROSS,motion=out);
+  cursor:default; width:120px; padding:2px 2px 2px 12px; border-width:1px; border-style:solid; text-align:center;
+}
+.itemTopS1 {
+  filter: progid:DXImageTransform.Microsoft.GradientWipe(GradientSize=0.00,wipestyle=1,motion=forward);
+  cursor:default; width:130px; padding:2px; border-width:1px; border-style:solid; text-align:center;
+}
+.itemTopS2 {
+  filter: progid:DXImageTransform.Microsoft.RandomDissolve(duration=0.5);
+  cursor:default; width:130px; padding:2px; border-width:1px; border-style:solid; text-align:center;
+}
+.itemTopS3 {
+  filter: progid:DXImageTransform.Microsoft.RadialWipe(wipestyle=RADIAL);
+  cursor:default; width:130px; padding:2px; border-width:1px; border-style:solid; text-align:center;
+}
+.itemTopL2 {
+  FILTER: progid:DXImageTransform.Microsoft.Strips(motion=rightdown);
+  cursor:default; width:120px; padding:2px 2px 2px 12px; border-width:1px; border-style:solid; text-align:center;
+}
+
+.itemSub {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  cursor:default; width:120px; padding:2px 2px 2px 12px; border-width:1px; border-style:solid; text-align:left;
+}
+.itemNormal { cursor:default; border-color:#6699cc #003366 #003366 #6699cc; background-color:#336699; }
+.itemOn { cursor:default; border-color:#99ccff #003366 #003366 #99ccff; background-color:#6699cc; }
+.itemDown { cursor:default; border-color:#000033 #6699cc #6699cc #000033; background-color:#003366; }
+
+.fontNormal { font-family:verdana; font-size:14px; color:#000000; }
+.fontOn { font-family:verdana; font-size:14px; color:#ffffff; }
+.fontDown { font-family:verdana; font-size:14px; color:#ffffff; font-style:italic; }
+
+.tagNormal { float:right; width:10px; height:10px; background:url("images/tagRN2.gif") no-repeat bottom; }
+.tagOn { float:right; width:10px; height:10px; background:url("images/tagRH2.gif") no-repeat bottom; }
+.tagDown { float:right; width:10px; height:10px; background:url("images/tagRD2.gif") no-repeat bottom; }
+</style>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+<script language="javascript" src="menu/filters-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderX.js"></script>
+</head>
+
+<body onload="showMenu('Demo')">
+
+<p align="center" class="title">Menu G5 Examples: IE Filters</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+<table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td id="holder">&nbsp;</td></tr></table><br clear="all">
+
+<p class="para">This is a demo of different IE filters applied to the menu pads and the menu items at different stages, in which:</p>
+<ul>
+<li>The "Home" item shows the transition filter effect when mouseout.</li>
+<li>The "Contact" item shows the transition filter effect when mousedown.</li>
+<li>The three sub-menu items show the transition filter effect when mouseover and mouseout.</li>
+<li>The "Game Scripts" sub-menu shows the transition filter effect when it opens and closes.</li>
+<li>The "Tool Scripts" and "User Forum" sub-menus show the transition filter effect when they open.</li>
+<li>The menu items on sub-menus show transition filter effect when mouseover.</li>
+</ul>
+<p class="para">[<a href="../index.html#examples">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>
+</html>

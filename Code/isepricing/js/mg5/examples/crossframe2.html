@@ -1,0 +1,103 @@
+<html>
+
+<head>
+<title>Menu G5 Step-by-step: Cross-Frame menus</title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+</head>
+
+<body>
+<p align="center" class="title">Menu G5 Step-by-step: Cross-Frame menus (cont.)</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+
+<p class="para">Now let's take a look at other frameset layouts.</p>
+<p class="para">We have the following frameset page for example:</p>
+<pre>
+&lt;frameset rows="60, *" border="0" frameborder="0"&gt;
+	&lt;frame src="top.html" border="0" frameborder="0" scrolling="no"&gt;&lt;/frame&gt;
+	&lt;frameset cols="<font color='#cc0000'>150</font>, *" border="0" frameborder="0"&gt;
+		&lt;frame src="left.html" border="0" frameborder="0" scrolling="no"&gt;&lt;/frame&gt;
+		&lt;frame src="right.html" name="main"&gt;&lt;/frame&gt;
+	&lt;/frameset&gt;
+&lt;/frameset&gt;
+</pre>
+<p class="para">and two menus: one with top-menu in top frame and the other with top-menu in left frame. Both menus will show sub-menus in the right frame.</p>
+<p class="para">For such a "top & left-right" layout, it's really just to set up the top-frame page as what we will do for a top-bottom frameset, and set up left-frame page as usual for a left-right frameset.</p>
+<p class="para">One thing though, for a normal top-bottom frameset, it's assumed that the top frame and bottom frame are aligned on the left border. Now for the top & right frames, the right frame is actually 150 pixels away from the top frame's left border.</p>
+<p class="para">To workaround it, we will set the pad offset-left to -150 for the first-level sub-menus. In menu styles, it would be like:</p>
+<pre>
+addPadStyle("top-pad", "...");
+addPadStyle("first-subpad", "offset-left:<font color='#cc0000'>-150</font>; ...");
+addPadStyle("other-subpad", "...");
+
+addStyleMenu("topmenu", "top-pad", ...):
+addStyleMenu("first-submenu", "first-subpad", ...);
+addStyleMenu("other-submenu", "other-subpad", ...);
+
+addStyleGroup("top-right", "topmenu", "top-menu-name");
+addStyleGroup("top-right", "first-submenu", "first-level-submenu-name", ...);
+addStyleGroup("top-right", "other-submenu", "lower-level-submenu-name", ...);
+</pre>
+<p class="para">See this [<a href="frameset-3f.html" target="sample">link</a>] for an example.</p>
+<p class="para">Similar workarounds would work for other "2-in-1" frameset layouts, such as setting the offset-left for the bottom frame page in a "left-right & bottom" layout, or offset-top for the left frame page in a "left & top-bottom" layout.</p>
+<p class="para">By introducing the "base:right;" phrase (and "vbase:bottom;") in Version 5.6.0, we no longer need to worry about the offset of the first level sub-menus when we have a bottom-left frame. Just set up the menus like we usually do for a regular top-bottom case and add the "base:right;" phrase in the addInstance() call, the sub-menus will align against the right frame border (the fixed border).</p>
+<p class="para">See this [<a href="frameset-3f2.html" target="sample">link</a>] for an example.</p>
+<p class="para">&nbsp;</p>
+<p class="para">One common thing among the above example and other cross-frame examples is that they all have a consistent frame for sub-menus, which is in the same frameset page for the top-menu frame. For these cases, the "setSubFrame()" in the top-menu page is good enough to tell where the sub-menu frame is. However, sometimes we might have dynamic contents, or the sub-menu frame is not in the same frameset page for the top-menu frame. For such cases, we will have the sub-menu page itself tell where the sub-menu frame is.</p>
+<p class="para">Supposed we have the following frameset page:</p>
+<pre>
+&lt;frameset rows="60, *" border="0" frameborder="0"&gt;
+	&lt;frame src="top.html" border="0" frameborder="0" scrolling="no"&gt;&lt;/frame&gt;
+	&lt;frame src="bottom.html" name="<font color='#cc0000'>main</font>"&gt;&lt;/frame&gt;
+&lt;/frameset&gt;
+</pre>
+<p class="para">and the sub-menus would be shown in the bottom frame ("main").</p>
+<p class="para">But, may be at some point, the bottom frame will load another frameset page:</p>
+<pre>
+&lt;frameset cols="600, *" border="0" frameborder="0"&gt;
+	&lt;frame src="left.html" name="<font color='#cc0000'>content</font>" border="0" frameborder="0"&gt;&lt;/frame&gt;
+	&lt;frame src="right.html"&gt;&lt;/frame&gt;
+&lt;/frameset&gt;
+</pre>
+<p class="para">and we would want the sub-menus shown in the bottom-left frame ("content").</p>
+<p class="para">When we get back to the "original" top-bottom layout, we still want to put the sub-menus in the bottom frame.</p>
+<p class="para">So we are switching between two frames for the sub-menus, and thus the "setSubFrame()" won't work since it's kind of "fixed".</p>
+<p class="para">To tell the correct frame for sub-menus, we will need to set up sub-menu pages that switch the sub-menu frame like this:</p>
+<pre>
+&lt;html&gt;
+
+&lt;head&gt;
+...
+&lt;script language="javascript" src="..script-path../menuG5FX.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body onload="initSub('<font color='#cc0000'>instance-name</font>')"&gt;
+...
+&lt;/body&gt;
+
+&lt;/html&gt;
+</pre>
+<p class="para">when such a frame page is loaded, the script will update the sub-menu frame reference for the specified menu instance, and we only need to set up the "initMenu()" call in the top-menu page:</p>
+<pre>
+&lt;html&gt;
+
+&lt;head&gt;
+...
+&lt;script language="javascript" src="..script-path../menuG5FX.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body onload="initMenu('<font color='#cc0000'>instance-name</font>', 'top')"&gt;
+...
+&lt;/body&gt;
+
+&lt;/html&gt;
+</pre>
+<p class="para">See this [<a href="frameset-x.html" target="sample">link</a>] for an example.</p>
+
+<p class="para">[<a href="crossframe3.html">Cross-Frame menus (cont.)</a>]&nbsp;[<a href="../index.html#steps">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p class="para">&nbsp;</p>
+</body>
+
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+<title>Menu G5 Step-by-step: Apply the style</title>
+
+<style type="text/css">
+.holder { filter:
+  progid:DXImageTransform.Microsoft.Shadow(direction=135,color=#333333,strength=3)
+  progid:DXImageTransform.Microsoft.RandomDissolve(duration=0.5);
+}
+.bar { padding:2px; border-width:1px; border-style:solid; border-color:#000000; background-color:#336699; }
+
+.itemTopNormal {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  width:130px; padding:2px; border-width:1px; border-style:solid; text-align:center;
+  border-color:#6699cc #003366 #003366 #6699cc; background-color:#336699; }
+.itemTopOn {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  cursor:default; width:130px; padding:2px; border-width:1px; border-style:solid; text-align:center;
+  border-color:#99ccff #003366 #003366 #99ccff; background-color:#6699cc; }
+.itemTopDown {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  cursor:default; width:130px; padding:2px; border-width:1px; border-style:solid; text-align:center;
+  border-color:#000033 #6699cc #6699cc #000033; background-color:#003366; }
+
+.itemSubNormal {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  width:120px; padding:2px 2px 2px 12px; border-width:1px; border-style:solid; text-align:left;
+  border-color:#6699cc #003366 #003366 #6699cc; background-color:#336699; }
+.itemSubOn {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  cursor:default; width:120px; padding:2px 2px 2px 12px; border-width:1px; border-style:solid; text-align:left;
+  border-color:#99ccff #003366 #003366 #99ccff; background-color:#6699cc; }
+.itemSubDown {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  cursor:default; width:120px; padding:2px 2px 2px 12px; border-width:1px; border-style:solid; text-align:left;
+  border-color:#000033 #6699cc #6699cc #000033; background-color:#003366; }
+
+.fontNormal { font-family:verdana; font-size:14px; color:#000000; }
+.fontOn { font-family:verdana; font-size:14px; color:#ffffff; }
+.fontDown { font-family:verdana; font-size:14px; color:#ffffff; font-style:italic; }
+
+.tagNormal { float:right; width:10px; height:10px; background:url("images/tagRN2.gif") no-repeat center; }
+.tagOn { float:right; width:10px; height:10px; background:url("images/tagRH2.gif") no-repeat center; }
+.tagDown { float:right; width:10px; height:10px; background:url("images/tagRD2.gif") no-repeat center; }
+</style>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+<script language="javascript" src="menu/style2-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderX.js"></script>
+</head>
+
+<body>
+
+<p align="center" class="title">Menu G5 Step-by-step: Apply the style</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+
+<p class="para">Let's review the menu content and menu styles we have in previous steps:</p>
+<p class="para">the menu content:</p>
+<pre>
+// a menu content named Demo
+addMenu("Demo", "<b>demo-top</b>");
+
+// top menu of Demo
+addLink("demo-top", "Home", "", "/index.html", "");
+addSubMenu("demo-top", "Tool Scripts", "", "/Tools/index.html", "<b>tool-sub</b>", "");
+addSubMenu("demo-top", "Game Scripts", "", "/Games/index.html", "<b>game-sub</b>", "");
+addSubMenu("demo-top", "User Forum", "", "/bbs/index.php", "<b>forum-sub</b>", "");
+addLink("demo-top", "Contact", "", "/contact.html", "");
+
+// sub-menu of tool-sub for [Tool Scripts]
+addSubMenu("tool-sub", "Menu Scripts", "", "", "<b>menu-sub</b>", "");
+addLink("tool-sub", "Xin Calendar", "", "/Tools/calendar.html", "");
+addLink("tool-sub", "Select Menu 2", "", "/Tools/sm.html", "");
+addLink("tool-sub", "Form Guard", "", "/Tools/fg.html", "");
+
+// sub-menu of game-sub for [Game Scripts]
+addLink("game-sub", "Soul Of Fighters", "", "/Games/sof.html", "");
+addLink("game-sub", "Simple Tetris 2", "", "/Games/tetris2.html", "");
+addLink("game-sub", "Bubble Puzzle", "", "/Games/bubble.html", "");
+addLink("game-sub", "Puzzle OnSite", "", "/Games/puzzle.html", "");
+
+// sub-menu of forum-sub for [User Forum]
+addLink("forum-sub", "Menu G5", "", "/bbs/forum.php?id=1", "");
+addLink("forum-sub", "Xin Calendar", "", "/bbs/forum.php?id=2", "");
+addLink("forum-sub", "Form Utilities", "", "/bbs/forum.php?id=3", "");
+
+// sub-menu of menu-sub for [Menu Scripts]
+addLink("menu-sub", "Menu G5", "", "/Tools/MenuG5/index.html", "");
+addLink("menu-sub", "Menu G4", "", "/Tools/MenuG4/index.html", "");
+addLink("menu-sub", "Menu G3", "", "/Tools/MenuG3/index.html", "");
+
+endMenu();
+</pre>
+
+<p class="para">and the menu styles:</p>
+<pre>
+.<b>holder</b> { filter:
+  progid:DXImageTransform.Microsoft.Shadow(direction=135,color=#333333,strength=3)
+  progid:DXImageTransform.Microsoft.RandomDissolve(duration=0.5);
+}
+.<b>bar</b> { padding:2px; border-width:1px; border-style:solid; border-color:#000000; background-color:#336699; }
+
+.<b>itemTopNormal</b> {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  width:130px; padding:2px; border-width:1px; border-style:solid; text-align:center;
+  border-color:#6699cc #003366 #003366 #6699cc; background-color:#336699;
+}
+.<b>itemTopOn</b> {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  width:130px; padding:2px; border-width:1px; border-style:solid; text-align:center;
+  border-color:#99ccff #003366 #003366 #99ccff; background-color:#6699cc;
+}
+.<b>itemTopDown</b> {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  width:130px; padding:2px; border-width:1px; border-style:solid; text-align:center;
+  border-color:#000033 #6699cc #6699cc #000033; background-color:#003366;
+}
+
+.<b>itemSubNormal</b> {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  width:120px; padding:2px 2px 2px 12px; border-width:1px; border-style:solid; text-align:left;
+  border-color:#6699cc #003366 #003366 #6699cc; background-color:#336699;
+}
+.<b>itemSubOn</b> {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  width:120px; padding:2px 2px 2px 12px; border-width:1px; border-style:solid; text-align:left;
+  border-color:#99ccff #003366 #003366 #99ccff; background-color:#6699cc;
+}
+.<b>itemSubDown</b> {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  width:120px; padding:2px 2px 2px 12px; border-width:1px; border-style:solid; text-align:left;
+  border-color:#000033 #6699cc #6699cc #000033; background-color:#003366;
+}
+
+.<b>fontNormal</b> {
+  font-family:verdana; font-size:14px;
+  color:#000000;
+}
+.<b>fontOn</b> {
+  font-family:verdana; font-size:14px;
+  color:#ffffff;
+}
+.<b>fontDown</b> {
+  font-family:verdana; font-size:14px;
+  color:#ffffff;
+  font-style:italic;
+}
+
+.<b>tagNormal</b> {
+  float:right; width:10px; height:10px;
+  background:url("images/tagRN2.gif") no-repeat center;
+}
+.<b>tagOn</b> {
+  float:right; width:10px; height:10px;
+  background:url("images/tagRH2.gif") no-repeat center;
+}
+.<b>tagDown</b> {
+  float:right; width:10px; height:10px;
+  background:url("images/tagRD2.gif") no-repeat center;
+}
+</pre>
+
+<br><p class="para">For the menu content, we have the following top-menu and sub-menus:</p>
+<ul>
+<li>demo-top</li>
+<li>tool-sub</li>
+<li>game-sub</li>
+<li>forum-sub</li>
+<li>menu-sub</li>
+</ul>
+
+<p class="para">and for the menu styles, we have the following CSS class definitions:</p>
+<ul>
+<li>for top-menu and the sub-menus, we would like to use:</li>
+<ul>
+<li>holder</li>
+<li>bar</li>
+</ul>
+<br><li>for menu items in top-menu:</li>
+<ul>
+<li>normal: itemTopNormal</li>
+<li>highlighted: itemTopOn</li>
+<li>mousedowned: itemTopDown</li>
+</ul>
+<br><li>for menu items in sub-menus:</li>
+<ul>
+<li>normal: itemSubNormal</li>
+<li>highlighted: itemSubOn</li>
+<li>mousedowned: itemSubDown</li>
+</ul>
+<br><li>for item text in top-menu and sub-menus:</li>
+<ul>
+<li>normal: fontNormal</li>
+<li>highlighted: fontOn</li>
+<li>mousedowned: fontDown</li>
+</ul>
+<br><li>sub-menu tag for sub-menu items:</li>
+<ul>
+<li>normal: tagNormal</li>
+<li>highlighted: tagOn</li>
+<li>mousedowned: tagDown</li>
+</ul>
+</ul>
+
+<br><p class="para">To tell Menu G5 what CSS classes to be used for the menu, we use:</p>
+<pre>
+addStylePad("pad-style-name", "style-parameter-phrases");
+addStyleItem("item-style-name", "style-parameter-phrases");
+addStyleFont("font-style-name", "style-parameter-phrases");
+addStyleTag("tag-style-name", "style-parameter-phrases");
+addStyleIcon("icon-style-name", "style-parameter-phrases");
+addStyleSeparator("separator-style-name", "style-parameter-phrases");
+
+addStyleMenu("menu-style-name", "pad-style", "item-style", "font-style", "tag-style", "icon-style", "separator-style");
+</pre>
+
+<p class="para">so for the CSS definitions above we would have something like this:</p>
+<pre>
+addStylePad("bar", "holder-css:holder; pad-css:bar;");
+addStyleItem("itemTop", "css:itemTopNormal, itemTopOn, itemTopDown;");
+addStyleItem("itemSub", "css:itemSubNormal, itemSubOn, itemSubDown;");
+addStyleFont("font", "css:fontNormal, fontOn, fontDown;");
+addStyleTag("tag", "css:tagNormal, tagOn, tagDown;");
+
+addStyleMenu("top", "bar", "itemTop", "font", "tag", "", "");
+addStyleMenu("sub", "bar", "itemSub", "font", "tag", "", "");
+</pre>
+
+<p class="para">which means, we define a style for the menu pad (addStylePad), name it as "bar" and we would like to use CSS class "holder" for the pad holder (the "holder-css:holder" phrase) and use CSS class "bar" for the pad box (the "pad-css:bar" phrase).</p>
+<p class="para">We also define a style for the menu items (addStyleItem), name it as "itemTop" in which we would like to use CSS classes of "itemTopNormal" for the items at normal stages, use "itemTopOn" for items at highlighted stage and "itemTopDown" for items at mousedowned stage (the "css:itemTopNormal, itemTopOn, itemTopDown" phrase).<p>
+<p class="para">Likewise, we have another style for menu items named as "itemSub" but use CSS classes of "itemSubNormal", "itemSubOn" and "itemSubDown" for items at normal, highlighted and mousedowned stages.
+<p class="para">We then have a style for item text (addStyleFont) and named as "font", it will use CSS classes of "fontNormal", "fontOn" and "fontDown" for item text when items are at normal, highlighted and mousedowned stages (the "css:fontNormal, fontOn, fontDown" phrase).</p>
+<p class="para">And we have a style for the sub-menu tag for sub-menu items (addStyleTag), named as "tag" and it will use CSS classes of "tagNormal", "tagOn" and "tagDown" for the sub-menu tags when sub-menu items are at normal, highlighted and mousedowned stages (the "css:tagNormal, tagOn, tagDown" phrase).</p>
+
+<p class="para">After that, we define a style for the menu (addStyleMenu), name it as "top" and specify that we would use pad style "bar" for the pad holder and pad box in the menu, use item style "itemTop" for menu items in the menu, use font style "font" for item text of the menu items in the menu, and use tag style "tag" for the sub-menu tag of sub-menu items in the menu.</p>
+<p class="para">Similarly we define another style for the menu and name it as "sub", in which pad style "bar", item style "itemSub", font style "font" and tag style "tag" will be used.</p>
+
+<br><p class="para">Up to this point, we've combined all the CSS class definitions we want to use into two menu styles: "top" and "sub". We then need to tell Menu G5 how to apply these menu styles to a menu. For this purpose, we have:</p>
+<pre>
+addStyleGroup("style-group-name", "menu-style-name", "top-menu or sub-menu name", ...);
+</pre>
+<p class="para">and for our case, it would be:</p>
+<pre>
+addStyleGroup("group", "top", "demo-top");
+addStyleGroup("group", "sub", "tool-sub", "game-sub", "forum-sub", "menu-sub");
+</pre>
+<p class="para">which means, we defines a style group named "group", and in this style group, the menu style "top" would be applied to a top-menu (or sub-menu) named "demo-top" (which is our top-menu in the menu content), and the menu style "sub" would be applied to top-menus (or sub-menus) named as "tool-sub", "game-sub", "forum-sub" and "menu-sub" (which are all sub-menus in our menu content).</p>
+<p class="para">Thus, when we make a menu instance with a menu content, we can tell the script to use a style group to render the top-menu, sub-menus and all their menu items. To do so, we have:</p>
+<pre>
+addInstance("menu-instance-name", "menu-content-name", "style:style-group-name");
+</pre>
+<p class="para">and for our case, it would be:</p>
+<pre>
+addInstance("Demo", "Demo", "style:group;");
+</pre>
+<p class="para" id="demo">and here it goes again: [<a href="#" onclick="clickMenu('Demo'); return false;">show</a>]</p>
+
+<br><p class="para">To put them together, we have:</p>
+<pre>
+addStylePad("bar", "holder-css:holder; pad-css:bar;");
+addStyleItem("itemTop", "css:itemTopNormal, itemTopOn, itemTopDown;");
+addStyleItem("itemSub", "css:itemSubNormal, itemSubOn, itemSubDown;");
+addStyleFont("font", "css:fontNormal, fontOn, fontDown;");
+addStyleTag("tag", "css:tagNormal, tagOn, tagDown;");
+
+addStyleMenu("top", "bar", "itemTop", "font", "tag", "", "");
+addStyleMenu("sub", "bar", "itemSub", "font", "tag", "", "");
+
+addStyleGroup("group", "top", "demo-top");
+addStyleGroup("group", "sub", "tool-sub", "game-sub", "forum-sub", "menu-sub");
+
+addInstance("Demo", "Demo", "style:group;");
+</pre>
+
+<br><p class="para">As you can see, the menu content and the menu style (CSS definitions) are both standing alone, you can't tell one from the other, but you can apply the same menu style to different menu contents or display the same menu content in different styles. It's the style group that collects the CSS definitions and links them to the menu content when a menu instance is built. It might look a bit complicated at the first try, but in a long run, it helps you to manage the menu contents and menu styles better.</p>
+
+<p class="para">Well, well, well. Stand alone menu content and menu style, bind together with a style group for a menu instance. No problem. But how come sometimes the menu is centralized on page top and sometimes it pops up right next to a link? Exactly, that's what we are coming to next.</p>
+<p class="para">[<a href="position.html">Position a menu instance</a>]&nbsp;[<a href="../index.html#steps">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>
+</html>

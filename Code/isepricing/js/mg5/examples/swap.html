@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<title>Menu G5 Examples: Menu swapping</title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+</head>
+
+<body>
+
+<p align="center" class="title">Menu G5 Examples: Menu swapping</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+<p class="para">There could be situations that you don't want a large menu, instead, you want to split the large menu into some small menus and display one of them according to what page is loaded.</p>
+<p class="para">This would not be a problem for non-frame pages since you can rebuild the menu every time when a page is loaded, but for cross-frame pages, you might not want to load a new frameset page every time just to refresh the top-menu frame for a new menu.</p>
+<p class="para">To workaround it, we can take advantage of two user functions: showMenuX() and hideMenuX().</p>
+<p class="para">The showMenuX("instance-name") call is similar to showMenu(), except that it also sets the menu instance to be visible afterwards as if it's built with "visibility:visible" in the addInstance() call.</p>
+<p class="para">Likewise, the hideMenuX("instance-name") call is similar to hideMenu(), but it sets the menu instance to be invisible afterwards as if it's built with "visibility:hidden" in the addInstance() call.</p>
+<p class="para">So, the idea is to build all the small menus on-swapping with "visibility:hidden" first, then when a content frame page loads, it calls showMenuX() to swap on its menu and calls hideMenuX() to swap off the previous menu if there is one.</p>
+<p class="para">See this [<a href="swap-sample.html" target="swap">link</a>] for an example, and you can click on a vehicle maker to swap the menu.</p>
+<p class="note"><font color="#cc0000">Update for IE/Mac:</font> To have this example work with IE/Mac, a small delay (200ms) is set before displaying a menu.</p>
+<p class="para">[<a href="../index.html#examples">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>
+</html>

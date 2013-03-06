@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<head>
+<title>Menu G5 Step-by-step: Build a menu instance</title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+<style type="text/css">
+.pad { padding:2px; border:2px solid #333333; background-color:#cccccc; }
+
+.itemOff { width:120px; padding:1px 6px; border-width:2px; border-style:solid; background-color:#cccccc; border-color:#f0f0f0 #909090 #909090 #f0f0f0;}
+.itemOn { cursor:default; width:120px; padding:1px 6px; border-width:2px; border-style:solid; background-color:#333333; border-color:#000000 #909090 #909090 #000000;}
+
+.fontOff { font-family:verdana; font-size:10pt; color:#000000; }
+.fontOn { font-family:verdana; font-size:10pt; color:#ffffff; }
+
+.tagOff { width:8px; height:13px; float:right; background:url("images/tagRN.gif") no-repeat bottom; }
+.tagOn { width:8px; height:13px; float:right; background:url("images/tagRH.gif") no-repeat bottom; }
+</style>
+
+<script language="javascript" src="menu/instance-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderX.js"></script>
+</head>
+
+<body>
+
+<p align="center" class="title">Menu G5 Step-by-step: Build a menu instance</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+
+<p class="para">We want to show a menu on the page with the menu content we just defined. We call this menu a menu instance of the menu content. But before we can really show some fancy menu on our pages, we will need to install the menu scripts first.</p>
+<p class="para">After you unzip the menuG5.zip, you should be able to find a sub-dir named "script", which you should upload to your web site. The "script" sub-dir holds the following files:</p>
+<ul>
+<li>menuG5IE.js (menuG5IEX.js ... the compact version)</li>
+<li>menuG5Gecko.js (menuG5GeckoX.js)</li>
+<li>menuG5Opera.js (menuG5OperaX.js)</li>
+<li>menuG5Loader.js (menuG5LoaderX.js)</li>
+<li>menuG5IEFS.js (menuG5IEFSX.js)</li>
+<li>menuG5GeckoFS.js (menuG5GeckoFSX.js)</li>
+<li>menuG5OperaFS.js (menuG5OperaFSX.js)</li>
+<li>menuG5LoaderFS.js (menuG5LoaderFSX.js)</li>
+<li>menuG5F.js (menuG5IEFX.js)</li>
+<li>onePixel.gif</li>
+</ul>
+
+<p class="note"><font color="red">Note:</font> The compact version is about 12KB to 15KB smaller in file size than the normal version. It's not reading-friendly.</p>
+<p class="para">As the name tells, the "menuG5Loader.js" (or "menuG5LoaderX.js" if you are using the compact version) script should be included into the menu page and it would load a browser specific script if a supported browser is detected. In order for the loader script to know where to find the browser specific scripts, we need to set up the web path of the "script" directory:</p>
+<pre>
+scriptPath="http://www.mydomain.com/menu/script/";
+</pre>
+<p class="para">And since we have the menu content in a content script (usually named as content.js), we can also let the loader script load it for us by setting another web path:</p>
+<pre>
+contentScript="http://www.mydomain.com/menu/content/content.js";
+</pre>
+
+<br><p class="para">So, a menu page would contain the following codes:</p>
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+
+&lt;script language="javascript"&gt;
+scriptPath="http://www.mydomain.com/menu/script/";
+contentScript="http://www.mydomain.com/menu/content/content.js";
+&lt;/script&gt;
+
+&lt;script language="javascript" src="http://www.mydomain.com/menu/menuG5Loader.js"&gt;&lt;/script&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+...
+</pre>
+
+<p class="para">And usually, we will put the web path info into another JS script file (called a path script and usually named as path.js):</p>
+<pre>
+// the path settings
+scriptPath="http://www.mydomain.com/menu/script/";
+contentScript="http://www.mydomain.com/menu/content/content.js";
+</pre>
+
+<p class="para">and the menu page now looks like this:</p>
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+
+&lt;script language="javascript" src="http://www.mydomain.com/menu/content/path.js"&lt;/script&gt;
+&lt;script language="javascript" src="http://www.mydomain.com/menu/menuG5Loader.js"&gt;&lt;/script&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+...
+</pre>
+
+<p class="para">Of course, if you are just testing it locallly from your hard drive, you might have a path script like this:</p>
+<pre>
+scriptPath="../script/";
+contentScript="menu/content.js";
+</pre>
+<p class="para">and the script lines in your page would be like this:</p>
+<pre>
+&lt;script language="javascript" src="menu/path.js"&lt;/script&gt;
+&lt;script language="javascript" src="../script/menuG5Loader.js"&gt;&lt;/script&gt;
+</pre>
+
+<br><p class="para">Well, we have the script directory uploaded to the site and included the path script line and loader script line into our menu page, we are now ready to show the menu. To do so, we define a menu instance:</p>
+<pre>
+addInstance("Demo Menu", "Demo", "");
+</pre>
+<p class="para">Remember we have a menu content named "Demo"? We now make a menu instance of the "Demo" menu content and name it "Demo Menu". This addInstance() line can be embedded into the menu page:</p>
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+
+&lt;script language="javascript" src="http://www.mydomain.com/menu/content/path.js"&lt;/script&gt;
+&lt;script language="javascript" src="http://www.mydomain.com/menu/menuG5Loader.js"&gt;&lt;/script&gt;
+
+&lt;script language="javascript"&gt;
+addInstance("Demo Menu", "Demo", "");
+&lt;/script&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+...
+</pre>
+<p class="para">or we can just append it to the content script and let the loader script execute it for us:</p>
+<pre>
+addMenu("Demo", "demo-top");
+
+...
+
+endMenu();
+
+// build the menu instance
+addInstance("Demo Menu", "Demo", "");
+</pre>
+
+<br><p class="para">To show the menu, we use:</p>
+<pre>
+showMenu("Demo Menu");
+</pre>
+<p class="para">We can put it as the onload call in BODY tag if we want it to show up when page is loaded:</p>
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+
+&lt;script language="javascript" src="http://www.mydomain.com/menu/content/path.js"&lt;/script&gt;
+&lt;script language="javascript" src="http://www.mydomain.com/menu/menuG5Loader.js"&gt;&lt;/script&gt;
+
+&lt;/head&gt;
+
+&lt;body onload="showMenu('Demo Menu')"&gt;
+</pre>
+<p class="para">or put it this way if you don't want to touch the BODY tag:</p>
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+
+&lt;script language="javascript" src="http://www.mydomain.com/menu/content/path.js"&lt;/script&gt;
+&lt;script language="javascript" src="http://www.mydomain.com/menu/menuG5Loader.js"&gt;&lt;/script&gt;
+&lt;script language="javascript"&gt;
+function buildMenu() { showMenu("Demo Menu"); }
+window.onload=buildMenu;
+&lt;/script&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+</pre>
+<p class="para">or we can set up a link for it:</p>
+<pre>
+&lt;a href="#" onclick="clickMenu('Demo Menu'); return false;"&gt;show&lt;/a&gt;
+</pre>
+<p class="para">Like this: [<a href="#" onclick="setHolder('Demo Menu','holder'); clickMenu('Demo Menu'); return false;">show</a>] <span id="holder">&nbsp;</span></p>
+<p class="para">Usually when you click somewhere, the script will receive the onclick event, and if you are not clicking on the menu, the script will collapse the menu. So if you want to click a link to bring up the menu, you might need to tell the script not to collapse it, and that's exactly what the clickMenu() does. It tells the script to ignore the click then calls the showMenu().</p>
+
+<br><p class="para">You might wonder why the menu showed up as a simple black & white menu bar in the previous example but now as a open-up menu in a different look.</p>
+<p class="para">Well, in Menu G5, the menu content is just about the menu content, it's other settings that control the look and feel, the position and the behavior of a menu instance built on a menu content, thus you can have menu instances in different styles for different pages (or same page) but re-use the same menu content.</p>
+<p class="para">And our next topic would be how to render a menu instance.</p>
+<p class="para">[<a href="style.html">Define the style</a>]&nbsp;[<a href="../index.html#steps">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>
+</html>

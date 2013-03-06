@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<title>Menu G5 Examples: Menu bar on BrainJar.com</title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+<style type="text/css">
+BODY { background-color: #d0a070; }
+
+.menuBar {
+  background-color: #c09070;
+  border: 2px solid;
+  border-color: #e0b090 #906040 #906040 #e0b090;
+  padding: 1px 4px;
+}
+
+.menuPad {
+  background-color: #c09070;
+  border: 2px solid;
+  border-color: #e0b090 #906040 #906040 #e0b090;
+  padding:4px;
+}
+
+.menuItem {
+  background-color: transparent;
+  border: 1px solid #c09070;
+  color: #000000;
+  cursor: default;
+  font-weight: bold;
+  padding: 2px 6px 2px 6px;
+}
+.menuItemOn {
+  background-color: transparent;
+  border: 1px solid #c09070;
+  color: #000000;
+  cursor: default;
+  font-weight: bold;
+  padding: 2px 6px 2px 6px;
+  border-color: #e0b090 #906040 #906040 #e0b090;
+}
+.menuItemDown {
+  background-color: transparent;
+  border: 1px solid #c09070;
+  color: #000000;
+  cursor: default;
+  font-weight: bold;
+  padding: 2px 6px 2px 6px;
+  margin-top:1px; margin-left:1px;
+  background-color: #906040;
+  border-color: #704020 #e0b090 #e0b090 #704020;
+}
+
+.menuItemSub {
+  background-color: transparent;
+  border: 1px solid #c09070;
+  color: #000000;
+  cursor: default;
+  font-weight: bold;
+  padding: 2px 6px 2px 6px;
+  border: 1px solid #906040;
+  background-color: #906040;
+}
+
+.holderSpace {
+  border: 1px solid #c09070;
+  color: #c09070;
+  font-weight: bold;
+  padding: 2px 6px 2px 6px;
+  font-family: "MS Sans Serif", Arial, sans-serif;
+  font-size: 8pt;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.menuFont {
+  font-family: "MS Sans Serif", Arial, sans-serif;
+  font-size: 8pt;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+}
+.menuFontOff {
+  font-family: "MS Sans Serif", Arial, sans-serif;
+  font-size: 8pt;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  color: #000000;
+}
+.menuFontOn {
+  font-family: "MS Sans Serif", Arial, sans-serif;
+  font-size: 8pt;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  color: #fff0d0;
+}
+
+.menuFontOffBold {
+  font-family: "MS Sans Serif", Arial, sans-serif;
+  font-size: 8pt;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+}
+.menuFontOnBold {
+  font-family: "MS Sans Serif", Arial, sans-serif;
+  font-size: 8pt;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  color: #fff0d0;
+  font-weight: bold;
+}
+.menuInfo { padding: 2px 6px 2px 6px; }
+
+.tagOff { width:8px; height:12px; float:right; background:url("images/tagRN.gif") no-repeat bottom; }
+.tagOn { width:8px; height:12px; float:right; background:url("images/tagRH.gif") no-repeat bottom; }
+
+.separatorT { background-color:#906040; height:1px; margin-top:3px; }
+.separatorB { background-color:#e0b090; height:1px; margin-bottom:3px; }
+</style>
+
+<script language="javascript" src="menu/brainjar-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderX.js"></script>
+</head>
+<body onload="showMenu('BrainJar')">
+
+<p align="center" class="title">Menu G5 Examples: Menu bar on BrainJar.com</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+
+<table align="center" cellpadding="0" cellspacing="0" border="0"><tr><td width="560" id="holder"><div class="menuBar"><div class="holderSpace">&nbsp;</div></div></td></tr></table><br clear="all">
+
+<p class="para"><a href="http://www.brainjar.com" target="brainjar">BrainJar.com</a> has a nice tutorial on how to create a menu bar with CSS. Here we are trying to copy the style settings of the BrainJar.com menu bar.</p>
+<p class="para">The menu bar on BrainJar.com has the following behaviors:</p>
+<ul>
+<li>The menu bar is a fixed width DIV tag with menu items aligned to the left.</li>
+<li>Menu items are rendered with actual width.</li>
+<li>Click to open/collapse a sub-menu from the menu bar.</li>
+<li>The first level sub-menus are aligned on the left against their parent items on the menu bar.</li>
+<li>If a first level sub-menu is opened, hovering the menu bar will open other first level sub-menus.</li>
+<li>Hover to open a sub-menu from sub-menus.</li>
+<li>If no sub-menu is opened, hovering the menu bar will give some outset item effect.</li>
+<li>If a sub-menu is opened, hovering the menu bar will give some push-down and inset item effect.</li>
+</ul>
+
+<br><p class="para">In Menu G5, the pad width of a menu bar will be decided by the total width of the menu items, so there is no way in Menu G5 to make a menu bar with some given width while each of the menu items are using actual width.</p>
+<p class="para">To workaroud it, we make the menu holder somewhat like the pad for the menu bar:</p>
+<table align="center" cellpadding="0" cellspacing="0" border="0"><tr><td width="560"><div class="menuBar"><div class="holderSpace">&nbsp;</div></div></td></tr></table><br clear="all">
+<p class="para">and for the "&#38;nbsp;" inside the menu holder we use some CSS to adjust the height of it so that it would be a bit higher than the menu items and thus gives some padding effect.</p>
+<p class="para">For the bold font items in sub-menus, we assign a group id to them in the menu content and apply the bold font effect with item-level styling.</p>
+
+<p class="para">[<a href="../index.html#examples">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>
+</html>

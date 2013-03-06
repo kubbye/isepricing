@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<title>Menu G5 Step-by-step: Define a menu</title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+<style type="text/css">
+.itemTopOff { width:130px; padding:1px; border:1px solid #000000; text-align:center; background-color:#cccccc; }
+.itemTopOn { cursor:default; width:130px; padding:1px; border:1px solid #000000; text-align:center; background-color:#333333; }
+.itemSubOff { width:115px; padding:1px 6px 1px 11px; border:1px solid #000000; text-align:left; background-color:#cccccc; }
+.itemSubOn { cursor:default; width:115px; padding:1px 6px 1px 11px; border:1px solid #000000; text-align:left; background-color:#333333; }
+
+.fontOff { font-family:verdana; font-size:10pt; color:#000000; }
+.fontOn { font-family:verdana; font-size:10pt; color:#ffffff; }
+
+.tagOff { width:8px; height:13px; float:right; background:url("images/tagRN.gif") no-repeat bottom; }
+.tagOn { width:8px; height:13px; float:right; background:url("images/tagRH.gif") no-repeat bottom; }
+</style>
+
+<script language="javascript" src="menu/content-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderX.js"></script>
+</head>
+
+<body onload="showMenu('Demo')">
+
+<p align="center" class="title">Menu G5 Step-by-step: Define a menu</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+<table align="center" cellpadding="0" cellspacing="0" border="0"><tr><td><span id="holder">&nbsp;</td></tr></table>
+<p class="para">Let's say we have a menu bar like the one above (clicking on a menu item won't give you any surprise as no URL is defined in this demo menu content), and if you play with it a bit you will find out it has a menu content like the following:</p>
+<ul>
+<li>Home</li>
+<li>Tool Scripts</li>
+<ul>
+<li>Menu Scripts</li>
+<ul>
+<li>Menu G5</li>
+<li>Menu G4</li>
+<li>Menu G3</li>
+</ul>
+<li>Xin Calendar</li>
+<li>Select Menu 2</li>
+<li>Form Guard</li>
+</ul>
+<li>Game Scripts</li>
+<ul>
+<li>Soul Of Fighters</li>
+<li>Simple Tetris 2</li>
+<li>Bubble Puzzle</li>
+<li>Puzzle OnSite</li>
+</ul>
+<li>User Forum</li>
+<ul>
+<li>Menu G5</li>
+<li>Xin Calendar</li>
+<li>Form Utilities</li>
+</ul>
+<li>Contact</li>
+</ul><br>
+
+<p class="para">So we have a top-menu of "Home", "Tool Scripts", "Game Scripts", "User Forum" and "Contact" here, and a sub-menu of "Menu Scripts", "Xin Calendar", "Select Menu 2" and "Form Guard" for the "Tool Scripts" in top-menu, a sub-menu of "Menu G5", "Menu G4" and "Menu G3" for "Menu Scripts" in the sub-menu of "Tool Scripts", etc.</p>
+
+<br><p class="para">To define this menu content In Menu G5, we name it first:</p>
+<pre>
+addMenu("Demo", "demo-top");
+</pre>
+
+<p class="para">which means we would like to make a new menu content, name it as "Demo" and its top-menu as "demo-top". We are then ready to add menu items to its top-menu, start with the "Home" item:</p>
+<pre>
+addLink("demo-top", "Home", "", "/index.html", "");
+</pre>
+<p class="para">which means we are adding a link item to the menu named "demo-top" (which is our top-menu), it would display "Home" as the item text and load "/index.html" when clicked.</p>
+
+<p class="para">Then we move to the next item "Tool Scripts". This item has a sub-menu, we use a different call for sub-menu item:</p>
+<pre>
+addSubMenu("demo-top", "Tool Scripts", "", "/Tools/index.html", "tool-sub", "");
+</pre>
+<p class="para">which means we are adding a sub-menu item to the menu named "demo-top", it would display "Tool Scripts" as the item text, pop up a sub-menu named "tool-sub" when hovered, and load "/Tools/index.html" when clicked.</p>
+
+<p class="para">Likewise, we define the sub-menu items for "Game Scripts" and "User Forum":</p>
+<pre>
+addSubMenu("demo-top", "Game Scripts", "", "/Games/index.html", "game-sub", "");
+addSubMenu("demo-top", "User Forum", "", "/bbs/index.php", "forum-sub", "");
+</pre>
+
+<p class="para">and the last link item "Contact" in the top-menu:</p>
+<pre>
+addLink("demo-top", "Contact", "", "/contact.html", "");
+</pre>
+
+<br><p class="para">So far our menu content would look like this:</p>
+<pre>
+// a menu content named Demo
+addMenu("Demo", "demo-top");
+
+// top menu of Demo
+addLink("demo-top", "Home", "", "/index.html", "");
+addSubMenu("demo-top", "Tool Scripts", "", "/Tools/index.html", "tool-sub", "");
+addSubMenu("demo-top", "Game Scripts", "", "/Games/index.html", "game-sub", "");
+addSubMenu("demo-top", "User Forum", "", "/bbs/index.php", "forum-sub", "");
+addLink("demo-top", "Contact", "", "/contact.html", "");
+</pre>
+
+<p class="para">and we continue with the sub-menus, the first one would be the "tool-sub" for the "Tool Scripts" item:</p>
+<pre>
+// sub-menu of tool-sub for [Tool Scripts]
+addSubMenu("tool-sub", "Menu Scripts", "", "", "menu-sub", "");
+addLink("tool-sub", "Xin Calendar", "", "/Tools/calendar.html", "");
+addLink("tool-sub", "Select Menu 2", "", "/Tools/sm.html", "");
+addLink("tool-sub", "Form Guard", "", "/Tools/fg.html", "");
+</pre>
+<p class="para">and likewise, the sub-menus for "Game Scripts" and "User Forum":</p>
+<pre>
+// sub-menu of game-sub for [Game Scripts]
+addLink("game-sub", "Soul Of Fighters", "", "/Games/sof.html", "");
+addLink("game-sub", "Simple Tetris 2", "", "/Games/tetris2.html", "");
+addLink("game-sub", "Bubble Puzzle", "", "/Games/bubble.html", "");
+addLink("game-sub", "Puzzle OnSite", "", "/Games/puzzle.html", "");
+
+// sub-menu of forum-sub for [User Forum]
+addLink("forum-sub", "Menu G5", "", "/bbs/forum.php?id=1", "");
+addLink("forum-sub", "Xin Calendar", "", "/bbs/forum.php?id=2", "");
+addLink("forum-sub", "Form Utilities", "", "/bbs/forum.php?id=3", "");
+</pre>
+<p class="para">and finally the sub-menu of "menu-sub" for the "Menu Scripts" item:</p>
+<pre>
+// sub-menu of menu-sub for [Menu Scripts]
+addLink("menu-sub", "Menu G5", "", "/Tools/MenuG5/index.html", "");
+addLink("menu-sub", "Menu G4", "", "/Tools/MenuG4/index.html", "");
+addLink("menu-sub", "Menu G3", "", "/Tools/MenuG3/index.html", "");
+</pre>
+<p class="para">When we are done with the menu content, we put an end to it:</p>
+<pre>
+endMenu();
+</pre>
+
+<br><p class="para">To put them all together, we have:</p>
+<pre>
+// a menu content named Demo
+addMenu("Demo", "demo-top");
+
+// top menu of Demo
+addLink("demo-top", "Home", "", "/index.html", "");
+addSubMenu("demo-top", "Tool Scripts", "", "/Tools/index.html", "tool-sub", "");
+addSubMenu("demo-top", "Game Scripts", "", "/Games/index.html", "game-sub", "");
+addSubMenu("demo-top", "User Forum", "", "/bbs/index.php", "forum-sub", "");
+addLink("demo-top", "Contact", "", "/contact.html", "");
+
+// sub-menu of tool-sub for [Tool Scripts]
+addSubMenu("tool-sub", "Menu Scripts", "", "", "menu-sub", "");
+addLink("tool-sub", "Xin Calendar", "", "/Tools/calendar.html", "");
+addLink("tool-sub", "Select Menu 2", "", "/Tools/sm.html", "");
+addLink("tool-sub", "Form Guard", "", "/Tools/fg.html", "");
+
+// sub-menu of game-sub for [Game Scripts]
+addLink("game-sub", "Soul Of Fighters", "", "/Games/sof.html", "");
+addLink("game-sub", "Simple Tetris 2", "", "/Games/tetris2.html", "");
+addLink("game-sub", "Bubble Puzzle", "", "/Games/bubble.html", "");
+addLink("game-sub", "Puzzle OnSite", "", "/Games/puzzle.html", "");
+
+// sub-menu of forum-sub for [User Forum]
+addLink("forum-sub", "Menu G5", "", "/bbs/forum.php?id=1", "");
+addLink("forum-sub", "Xin Calendar", "", "/bbs/forum.php?id=2", "");
+addLink("forum-sub", "Form Utilities", "", "/bbs/forum.php?id=3", "");
+
+// sub-menu of menu-sub for [Menu Scripts]
+addLink("menu-sub", "Menu G5", "", "/Tools/MenuG5/index.html", "");
+addLink("menu-sub", "Menu G4", "", "/Tools/MenuG4/index.html", "");
+addLink("menu-sub", "Menu G3", "", "/Tools/MenuG3/index.html", "");
+
+endMenu();
+</pre>
+
+<br><p class="para">Actually, you can change the order of some content lines as long as a higher level menu (or item) goes beyond its lower level menu items (or sub-menus). So we can have the menu content in the following order, just like how we layout it earlier:</p>
+<pre>
+addMenu("Demo", "demo-top");
+
+addLink("demo-top", "Home", "", "/index.html", "");
+
+addSubMenu("demo-top", "Tool Scripts", "", "/Tools/index.html", "tool-sub", "");
+	addSubMenu("tool-sub", "Menu Scripts", "", "", "menu-sub", "");
+		addLink("menu-sub", "Menu G5", "", "/Tools/MenuG5/index.html", "");
+		addLink("menu-sub", "Menu G4", "", "/Tools/MenuG4/index.html", "");
+		addLink("menu-sub", "Menu G3", "", "/Tools/MenuG3/index.html", "");
+	addLink("tool-sub", "Xin Calendar", "", "/Tools/calendar.html", "");
+	addLink("tool-sub", "Select Menu 2", "", "/Tools/sm.html", "");
+	addLink("tool-sub", "Form Guard", "", "/Tools/fg.html", "");
+
+addSubMenu("demo-top", "Game Scripts", "", "/Games/index.html", "game-sub", "");
+	addLink("game-sub", "Soul Of Fighters", "", "/Games/sof.html", "");
+	addLink("game-sub", "Simple Tetris 2", "", "/Games/tetris2.html", "");
+	addLink("game-sub", "Bubble Puzzle", "", "/Games/bubble.html", "");
+	addLink("game-sub", "Puzzle OnSite", "", "/Games/puzzle.html", "");
+
+addSubMenu("demo-top", "User Forum", "", "/bbs/index.php", "forum-sub", "");
+	addLink("forum-sub", "Menu G5", "", "/bbs/forum.php?id=1", "");
+	addLink("forum-sub", "Xin Calendar", "", "/bbs/forum.php?id=2", "");
+	addLink("forum-sub", "Form Utilities", "", "/bbs/forum.php?id=3", "");
+
+addLink("demo-top", "Contact", "", "/contact.html", "");
+
+endMenu();
+</pre>
+
+<br><p class="para">If you have more than one menu content, you can start with addMenu() again after you finish one:</p>
+<pre>
+// The products menu
+addMenu("Products Menu", "product-top");
+
+addLink("product-top", ...);
+...
+...
+
+// The services menu
+addMenu("Services Menu", "service-top");
+
+addLink("service-top", ...);
+...
+...
+
+// All done
+endMenu();
+</pre>
+
+<p class="note"><font color="red">Note:</font> For a menu content, the names of the top-menu and the sub-menus should be unique within the menu content, and names of menu contents should also be unique.</p>
+<p class="note"><font color="red">Note:</font> Usually we put our menu contents in a JS script file and call it a content script.</p>
+
+<br><p class="para">Well, we have the menu content now, the next step would be to make a menu instance on it.</p>
+<p class="para">[<a href="instance.html">Build a menu instance</a>]&nbsp;[<a href="../index.html#steps">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>
+</html>

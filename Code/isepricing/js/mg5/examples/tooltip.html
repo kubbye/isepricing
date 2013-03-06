@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><html>
+<html>
+<head>
+<title>Menu G5 Examples: Showing tool tips for menu items</title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+<style type="text/css">
+.itemTopOff { width:130px; padding:1px; border:1px solid #000000; text-align:center; background-color:#cccccc; }
+.itemTopOn { cursor:default; width:130px; padding:1px; border:1px solid #000000; text-align:center; background-color:#333333; }
+.itemSubOff { width:115px; padding:1px 6px 1px 11px; border:1px solid #000000; text-align:left; background-color:#cccccc; }
+.itemSubOn { cursor:default; width:115px; padding:1px 6px 1px 11px; border:1px solid #000000; text-align:left; background-color:#333333; }
+
+.fontOff { font-family:verdana; font-size:10pt; color:#000000; }
+.fontOn { font-family:verdana; font-size:10pt; color:#ffffff; }
+
+.tagOff { width:8px; height:13px; float:right; background:url("images/tagRN.gif") no-repeat bottom; }
+.tagOn { width:8px; height:13px; float:right; background:url("images/tagRH.gif") no-repeat bottom; }
+</style>
+
+<script language="javascript" src="menu/tooltip-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderX.js"></script>
+</head>
+
+<body onload="showMenu('Demo')">
+
+<p align="center" class="title">Menu G5 Examples: Showing tool tips for menu items</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+<table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td id="holder">&nbsp;</td></tr></table><br clear="all">
+<p title="tool tip example" class="para">The tool tip is a convenient way to show more information about an object when it's mouseovered. Just mouseover this paragraph and you will see the tool tip exmaple.</p>
+<p class="para">Though there are many scripts out there for you to implement the tool tip, it's actually as easy as to add the "title" proprety to a html element, which is a HTML 4 standard:</p>
+<pre>
+&lt;p title="tool tip example"&gt;The tool tip is a convenient way ...&lt;p&gt;
+</pre>
+<br><p class="para">Menu G5 now takes advantage of this browser built-in feature and enables it for the menus. If you have put some item descriptions in the menu content, and have a line of "var showToolTip=1;" in the path script, they will be shown as tool tips when the menu items are mouseovered (try "Contract" and "Tool Scripts -> Menu Scripts -> Menu G5").</p>
+<p class="para">[<a href="../index.html#examples">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>
+</html>

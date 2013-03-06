@@ -1,0 +1,8 @@
+.itemOff { width:115px; padding:1px 11px 1px 6px; border:1px solid #000000; text-align:right; background-color:#cccccc; }
+.itemOn { cursor:default; width:115px; padding:1px 11px 1px 6px; border:1px solid #000000; text-align:right; background-color:#333333; }
+
+.fontOff { font-family:verdana; font-size:10pt; color:#000000; }
+.fontOn { font-family:verdana; font-size:10pt; color:#ffffff; }
+
+.tagOff { width:8px; height:13px; float:left; background:url("images/tagLN.gif") no-repeat bottom; }
+.tagOn { width:8px; height:13px; float:left; background:url("images/tagLH.gif") no-repeat bottom; }

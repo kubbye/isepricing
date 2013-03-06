@@ -1,0 +1,349 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+<title>Menu G5 Step-by-step: Define the style</title>
+
+<style type="text/css">
+.holder { filter:
+  progid:DXImageTransform.Microsoft.Shadow(direction=135,color=#333333,strength=3)
+  progid:DXImageTransform.Microsoft.RandomDissolve(duration=0.5);
+}
+.bar { padding:2px; border-width:1px; border-style:solid; border-color:#000000; background-color:#336699; }
+
+.itemTopNormal {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  width:130px; padding:2px; border-width:1px; border-style:solid; text-align:center;
+  border-color:#6699cc #003366 #003366 #6699cc; background-color:#336699; }
+.itemTopOn {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  cursor:default; width:130px; padding:2px; border-width:1px; border-style:solid; text-align:center;
+  border-color:#99ccff #003366 #003366 #99ccff; background-color:#6699cc; }
+.itemTopDown {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  cursor:default; width:130px; padding:2px; border-width:1px; border-style:solid; text-align:center;
+  border-color:#000033 #6699cc #6699cc #000033; background-color:#003366; }
+
+.itemSubNormal {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  width:120px; padding:2px 2px 2px 12px; border-width:1px; border-style:solid; text-align:left;
+  border-color:#6699cc #003366 #003366 #6699cc; background-color:#336699; }
+.itemSubOn {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  cursor:default; width:120px; padding:2px 2px 2px 12px; border-width:1px; border-style:solid; text-align:left;
+  border-color:#99ccff #003366 #003366 #99ccff; background-color:#6699cc; }
+.itemSubDown {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  cursor:default; width:120px; padding:2px 2px 2px 12px; border-width:1px; border-style:solid; text-align:left;
+  border-color:#000033 #6699cc #6699cc #000033; background-color:#003366; }
+
+.fontNormal { font-family:verdana; font-size:14px; color:#000000; }
+.fontOn { font-family:verdana; font-size:14px; color:#ffffff; }
+.fontDown { font-family:verdana; font-size:14px; color:#ffffff; font-style:italic; }
+
+.tagNormal { float:right; width:10px; height:10px; background:url("images/tagRN2.gif") no-repeat center; }
+.tagOn { float:right; width:10px; height:10px; background:url("images/tagRH2.gif") no-repeat center; }
+.tagDown { float:right; width:10px; height:10px; background:url("images/tagRD2.gif") no-repeat center; }
+
+
+.oneitemNormal { width:200px; padding:2px; border-width:2px; border-style:solid; text-align:center; border-color:#6699cc #003366 #003366 #6699cc; background-color:#336699; }
+.oneitemOn { cursor:default; width:200px; padding:2px; border-width:2px; border-style:solid; text-align:center; border-color:#99ccff #336699 #336699 #99ccff; background-color:#6699cc; }
+.oneitemDown { cursor:default; width:200px; padding:2px; border-width:2px; border-style:solid; text-align:center; border-color:#000033 #336699 #336699 #000033; background-color:#003366; }
+
+.onefontNormal { font-family:verdana; font-size:14px; color:#000000; }
+.onefontOn { font-family:verdana; font-size:14px; color:#ffffff; }
+.onefontDown { font-family:verdana; font-size:14px; color:#ffffff; font-style:italic; }
+
+
+.seppad {padding:0px; border:2px solid #003366; background-color:#336699; }
+.seppaditem { width:120px; text-align:center; }
+.separatorT { background-color:#003366; }
+.separatorB { background-color:#6699cc; }
+.separator { background-color:#cc0000; width:3px; }
+.separatorH { background:url("images/hbar.gif"); overflow:hidden; height:6px; }
+.separatorV { background:url("images/vbar.gif"); overflow:hidden; width:6px; }
+</style>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+<script language="javascript" src="menu/style-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderX.js"></script>
+</head>
+
+<body onload="showMenu('oneItem'); showMenu('oneSeparator'); showMenu('oneSeparator2'); showMenu('oneSeparator3'); showMenu('oneSeparator4');">
+
+<p align="center" class="title">Menu G5 Step-by-step: Define the style</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+
+<p class="para">Just like menu content is only about menu content, the menu style in Menu G5 is also only about menu style, and we are using CSS for menu styling.</p>
+
+<p class="para">In Menu G5, we can have different types of menu items in a menu content:</p>
+<ul>
+<li>sub-menu item</li>
+<li>link item</li>
+<li>command item (to execute some JS codes when clicked)</li>
+<li>info item (non-clickable, just to display some content)</li>
+<li>separator item</li>
+</ul>
+
+<p class="para">And for a menu instance shown on a page, it's all dhtml layers. The menu content has top-menu and may be some sub-menus, for the counterparts in the menu instance, each level of its top-menu and sub-menus consists of the following dhtml elements:</p>
+<ul>
+<li>a holder layer, which is not visible but holds</li>
+<ul>
+<li>a pad layer (the box around the menu items)</li>
+<li>menu item layers, which each could hold</li>
+<ul>
+<li>an image icon layer (optional)</li>
+<li>a sub-menu tag layer (optional)</li>
+<li>an item text layer<br>or<br></li>
+<li>a content layer (for info item)<br>or<br></li>
+<li>image layer(s) (for separator item)</li>
+</ul>
+</ul>
+</ul>
+
+<p class="para">It would be like:</p>
+<pre>
+&lt;!-- holder DIV --&gt;
+&lt;DIV class="holder"&gt;
+
+&lt;!-- pad DIV --&gt;
+&lt;DIV class="pad"&gt;&lt;/DIV&gt;
+
+&lt;!-- sub-menu item DIV --&gt;
+&lt;DIV class="item"&gt;
+&lt;SPAN class="icon1"&gt;optional text for icon&lt;/SPAN&gt;
+&lt;SPAN class="icon2"&gt;optional text for icon&lt;/SPAN&gt;
+&lt;SPAN class="tag"&gt;&lt;/SPAN&gt;
+&lt;SPAN class="font"&gt;item display text&lt;/SPAN&gt;
+&lt;/DIV&gt;
+
+&lt;-- link/command item DIV --&gt;
+&lt;DIV class="item"&gt;
+&lt;SPAN class="icon1"&gt;optional text for icon&lt;/SPAN&gt;
+&lt;SPAN class="icon2"&gt;optional text for icon&lt;/SPAN&gt;
+&lt;SPAN class="font"&gt;item display text&lt;/SPAN&gt;
+&lt;/DIV&gt;
+
+&lt;-- info item DIV --&gt;
+&lt;DIV class="item"&gt;
+&lt;SPAN class="font"&gt;info content&lt;/SPAN&gt;
+&lt;/DIV&gt;
+
+&lt;-- separator DIV --&gt;
+&lt;DIV&gt;
+&lt;DIV class="separator1"&gt;&lt;/DIV&gt;
+&lt;DIV class="separator2"&gt;&lt;/DIV&gt;
+&lt;/DIV&gt;
+
+&lt;/DIV&gt;
+</pre>
+
+<br><p class="para">So we can define CSS classes for:</p>
+<ul>
+<li>the holder (IE only, for filter effects)</li>
+<li>the pad</li>
+<li>the item</li>
+<li>the item text</li>
+<li>the sub-menu tag</li>
+<li>the image icons</li>
+<li>the separator</li>
+</ul>
+
+<p class="para">The CSS class for the holder is just to apply some IE filter effects, such as:</p>
+<pre>
+.holder { filter: progid:DXImageTransform.Microsoft.RandomDissolve(duration=0.5); }
+</pre>
+<p class="para">It should contain IE filters and the transparent property from Gecko browsers (-moz-opacity) only, of which the transition effects will be played when the top-menu or a sub-menu shows up. Besides the holder, you can also use IE filters in CSS classes for the menu item, the image icon, the sub-menu tag and the item text, the transition effects will be played when an item gets mouseovered.</p>
+
+<p class="note"><font color="red">Note:</font> When IE filters are used in CSS classes for the item text, a "display:inline-block" property should be specified to set layout for the inline element (SPAN). The "background-color" property might also need to be defined accordingly.</p>
+
+<br><p class="para">In Menu G5, a menu item in the menu instance could have up to 4 stages: normal, highlighted, mousedowned and sub-menu opened. Info items and separator items would only have the normal stage, link items and command items could have the first 3 stages, and sub-menu items could have all of 4.</p>
+<p class="para">We would thus have the options to define different CSS classes for menu items at different stages, for example we could have:</p>
+<pre>
+.itemNormal {
+  width:200px; padding:2px; border-width:2px; border-style:solid; text-align:center;
+  border-color:#6699cc #003366 #003366 #6699cc; background-color:#336699;
+}
+.itemOn {
+  width:200px; padding:2px; border-width:2px; border-style:solid; text-align:center;
+  border-color:#99ccff #336699 #336699 #99ccff; background-color:#6699cc;
+}
+.itemDown {
+  width:200px; padding:2px; border-width:2px; border-style:solid; text-align:center;
+  border-color:#000033 #336699 #336699 #000033; background-color:#003366;
+}
+
+.fontNormal {
+  font-family:verdana; font-size:14px;
+  color:#000000;
+}
+.fontOn {
+  font-family:verdana; font-size:14px;
+  color:#ffffff;
+}
+.fontDown {
+  font-family:verdana; font-size:14px;
+  color:#ffffff;
+  font-style:italic;
+}
+</pre>
+<p class="para">and tell the script to use <font color="red">class="itemNormal"</font> for item at normal stage and <font color="red">class="fontNormal"</font> for item text at normal stage, "itemOn" and "fontOn" for highlighted stage, and "itemDown" and "fontDown" for mousedowned stage, like this:</p>
+<div id="one">&nbsp;</div>
+
+<p class="note"><font color="red">Note:</font> If you want to use background image for menu items, define the "background:url(...)" property in the item classes and remove the "background-color" property.</p>
+
+<br><p class="para">As you can notice, the sub-menu tag layer and the image icon layer are just "empty" SPAN tags, we would set the background image in the CSS classes for them, for example:</p>
+<pre>
+.tagNormal {
+  <font color="red">float:right</font>; width:15px; height:15px;
+  background:url("tag.jpg") no-repeat center;
+}
+.tagOn {
+  <font color="red">float:right</font>; width:15px; height:15px;
+  background:url("tagOn.jpg") no-repeat center;
+}
+.tagDown {
+  <font color="red">float:right</font>; width:15px; height:15px;
+  background:url("tagDown.jpg") no-repeat center;
+}
+.tagSubMenu {
+  <font color="red">float:right</font>; width:15px; height:15px;
+  background:url("tagSub.jpg") no-repeat center;
+}
+
+.iconOn {
+  <font color="red">float:left</font>; width:15px; height:15px;
+  background:url("iconOn.jpg") no-repeat center;
+}
+.iconDown {
+  <font color="red">float:left</font>; width:15px; height:15px;
+  background:url("iconDown.jpg") no-repeat center;
+}
+</pre>
+<p class="para">The "float" property will decide to which side of the item the image should show up.</p>
+
+<br><p class="para">For separator items, you can use one line or two lines, both defined in the following format, for example:</p>
+<pre>
+.separator { background-color:#336699; }
+</pre>
+<p class="para">For two lines such as:</p>
+<div id="sep">&nbsp;</div><br><br><br>
+<p class="para">you can have:</p>
+<pre>
+.separatorTopLine { background-color:#003366; }
+.separatorBottomLine { background-color:#6699cc; }
+</pre>
+
+<p class="para">By default, the line size would be just one pixel, if you have a drop-down menu, you can specify the height of the separator line:</p>
+<pre>
+.separator { background-color:#6699cc; height:2px; }
+</pre>
+<p class="para">or if you have a menu bar:</p>
+<div id="sep2">&nbsp;</div>
+<p class="para">you can specify the width:</p>
+<pre>
+.separator { background-color:#cc0000; width:3px; }
+</pre>
+<p class="para">If you want to use image as separator, you can make it like this:</p>
+<pre>
+.separator { background:url("separator.gif"); }
+</pre>
+<p class="para">and if you want to set the height of it for a drop-down menu:</p>
+<div id="sep3">&nbsp;</div><br><br><br>
+<p class="para">you could have:</p>
+<pre>
+.separator { background:url("separator.gif"); overflow:hidden; height:6px; }
+</pre>
+<p class="para">and for a menu bar:</p>
+<div id="sep4">&nbsp;</div><br><br>
+<p class="para">you could have:</p>
+<pre>
+.separator { background:url("separator.gif"); overflow:hidden; width:6px; }
+</pre>
+
+<br><p class="note"><font color="red">Note:</font> Be careful when you use the <font color="red">margin</font> property in CSS classes since it's not counted into the width and height of an element.<br><br>
+A basic rule in Menu G5 would be, use margin-top and margin-bottom only for items in drop-down menus, and margin-left and margin-right only for items in menu bar.<br><br>
+Setting the item-offset in the addStylePad() call would be a safe way to have the margin effect.<br><br>
+DO NOT use margin for non-image separators in menu bar.
+</p>
+
+<br><p class="para">Now let's look at a menu styling sample. We would have the following CSS definitions:</p>
+<pre>
+.holder { filter:
+  progid:DXImageTransform.Microsoft.Shadow(direction=135,color=#333333,strength=3)
+  progid:DXImageTransform.Microsoft.RandomDissolve(duration=0.5);
+}
+.bar { padding:2px; border-width:1px; border-style:solid; border-color:#000000; background-color:#336699; }
+
+.itemTopNormal {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  width:130px; padding:2px; border-width:1px; border-style:solid; text-align:center;
+  border-color:#6699cc #003366 #003366 #6699cc; background-color:#336699;
+}
+.itemTopOn {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  width:130px; padding:2px; border-width:1px; border-style:solid; text-align:center;
+  border-color:#99ccff #003366 #003366 #99ccff; background-color:#6699cc;
+}
+.itemTopDown {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  width:130px; padding:2px; border-width:1px; border-style:solid; text-align:center;
+  border-color:#000033 #6699cc #6699cc #000033; background-color:#003366;
+}
+
+.itemSubNormal {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  width:120px; padding:2px 2px 2px 12px; border-width:1px; border-style:solid; text-align:left;
+  border-color:#6699cc #003366 #003366 #6699cc; background-color:#336699;
+}
+.itemSubOn {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  width:120px; padding:2px 2px 2px 12px; border-width:1px; border-style:solid; text-align:left;
+  border-color:#99ccff #003366 #003366 #99ccff; background-color:#6699cc;
+}
+.itemSubDown {
+  filter: progid:DXImageTransform.Microsoft.Slide(slidestyle=PUSH,Bands=1,duration=0.5);
+  width:120px; padding:2px 2px 2px 12px; border-width:1px; border-style:solid; text-align:left;
+  border-color:#000033 #6699cc #6699cc #000033; background-color:#003366;
+}
+
+.fontNormal {
+  font-family:verdana; font-size:14px;
+  color:#000000;
+}
+.fontOn {
+  font-family:verdana; font-size:14px;
+  color:#ffffff;
+}
+.fontDown {
+  font-family:verdana; font-size:14px;
+  color:#ffffff;
+  font-style:italic;
+}
+
+.tagNormal {
+  float:right; width:10px; height:10px;
+  background:url("images/tagRN2.gif") no-repeat center;
+}
+.tagOn {
+  float:right; width:10px; height:10px;
+  background:url("images/tagRH2.gif") no-repeat center;
+}
+.tagDown {
+  float:right; width:10px; height:10px;
+  background:url("images/tagRD2.gif") no-repeat center;
+}
+</pre>
+<p class="para">It shows that we would like to apply a shadow filter and a random dissolve filter to the top-menu and the sub-menus when they show up, and to apply a pushing band filter to menu items when they are mouseovered. The text in top-menu items would be centralized but  stay left in sub-menus, and finally to set the font style to italic when items are mousedowned.</p>
+<p class="para" id="demo">And our menu bar would look like this: [<a href="#" onclick="clickMenu('Demo'); return false;">show</a>]</p>
+<a name="menu">
+<p class="note"><font color="red">Note:</font> When you set the "width" property for the item CSS class, be sure to turn on the CSS-compliance mode for IE and Opera (include a DTD line in your page).</p>
+<p class="note"><font color="#cc0000">Update for IE/Mac and Safari:</font> For css style defined in format of "class1 class2" in those addStyleXX() calls, IE/Mac and Safari can't handle them correctly. To workaround this issue, we need to combine the previously separated classes into one class for each item stage.</p>
+
+<br><p class="para">Well, the menu content and the menu styles are all done, but how do we tell the script to apply which styles to which part of the menu content for our menu instances? Good question. That would be our next topic.</p>
+<p class="para">[<a href="style2.html">Apply the style</a>]&nbsp;[<a href="../index.html#steps">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>
+</html>

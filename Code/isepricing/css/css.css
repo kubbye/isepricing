@@ -1,0 +1,72 @@
+.line01 {
+	font-family: "Arial";
+	font-size: 12px;
+	font-weight: bold;
+	color: #003399;
+	text-decoration: none;
+	background-color: #F5F5F5;
+	text-align: center;
+	height: 25px;
+	padding: 3px;
+	border: 1px #FFFFFF;
+}
+
+.line02 {
+	font-family: "Arial";
+	font-size: 12px;
+	color: #333333;
+	text-decoration: none;
+	text-align: center;
+	height: 25px;
+	padding: 3px;
+	border: 1px #FFFFFF;
+}
+
+.line_subtotal {
+	font-family: "Arial";
+	font-size: 12px;
+	font-weight: bold;
+	color: #003399;
+	text-decoration: none;
+	background-color: #E1FFFF;
+	text-align: center;
+	height: 25px;
+	padding: 3px;
+	border: 1px #FFFFFF;
+}
+.titleorange {
+	font-family: "Arial";
+	font-size: 14px;
+	font-weight: bold;
+	color: #FF9900;
+	text-decoration: none;
+}
+
+.dashboard1 {
+	background-color: #00FF00;
+}
+
+.dashboard2 {
+	background-color: #FFFF00;
+}
+
+.dashboard3 {
+	background-color: #FF0000;
+}
+
+.dashboard4 {
+	color: #FFFF00;
+	background-color: #000000;
+}
+
+.linefont {
+	font-family: "Arial";
+	font-size: 12px;
+	font-weight: bold;
+	color: #003399;
+	text-decoration: none;
+	text-align: left;
+	height: 25px;
+	padding: 3px;
+	border: 1px #FFFFFF;
+}

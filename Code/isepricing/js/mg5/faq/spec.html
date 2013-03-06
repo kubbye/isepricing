@@ -1,0 +1,1380 @@
+<html>
+
+<head>
+<title>Menu G5</title>
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+</head>
+
+<body>
+<p align="center" class="title">Menu G5 Specification</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+
+<a name="top">&nbsp;</a>
+<table align="center">
+<tr valign="top">
+<td>
+<ul>
+<li><a href="#zip">Menu G5 package content</a></li>
+<li><a href="#files">Files to upload to your site</a></li>
+<li><a href="#browser">Browser support</a></li>
+<li><a href="#terms">Conventions and terms</a></li>
+</td>
+<td>
+<ul>
+<li><a href="#path">Setting up the path script</a></li>
+<li><a href="#content">Setting up the content script</a></li>
+<li><a href="#style">Setting up the style script</a></li>
+<li><a href="#instance">Setting up the instance script</a></li>
+</ul>
+</td>
+<td>
+<ul>
+<li><a href="#nonframe">Setting up a non-frame menu page</a></li>
+<li><a href="#crossframe">Setting up a cross-frame menu page</a></li>
+<li><a href="#default">Default settings</a></li>
+<li><a href="#userfunction">User functions</a></li>
+</ul>
+</td>
+</tr>
+</table><br clear="all">
+
+<a name="zip">&nbsp;</a>
+<ul><li>Menu G5 package content ... [ <a href="#top">top</a> ]</li>
+<p class="para">Once unzipped, you should find the following directories and files:</p>
+<pre>
+- css ... contains a CSS file used by Menu G5 pages (not used by the menus)
+
+- examples ... contains Menu G5 example pages and CSS files
+    - images ... contains image files used by Menu G5 examples
+    - menu ... contains JS files used by Menu G5 examples
+
+- faq ... contains documents on Menu G5
+
+- script ... contains Menu G5 scripts
+
+- index.html
+</pre>
+</ul>
+
+<a name="files">&nbsp;</a>
+<ul><li>Files to upload to your site ... [ <a href="#top">top</a> ]</li>
+<p class="para">The files under the "script" directory should be uploaded to your site, and be placed under the same directory (the name of the directory doesn't matter). Or you can simply upload the "script" directory.</p>
+</ul>
+
+<a name="browser">&nbsp;</a>
+<ul><li>Browser support ... [ <a href="#top">top</a> ]</li>
+<p class="para">Menu G5 supports the following browsers:</p>
+<pre>
+- IE5+/Win
+
+- Gecko Browsers (Netscape6+, Mozilla, Mozilla Firebird & Firefox, Camino, etc.)
+
+- Opera7x
+</pre>
+</ul>
+
+<a name="terms">&nbsp;</a>
+<ul><li>Conventions and terms ... [ <a href="#top">top</a> ]</li>
+<p>
+<table cellspacing="1" cellpadding="0" bgcolor="#666666"><tr bgcolor="#ffffff"><td>
+<table cellspacing="1" cellpadding="6" bgcolor="#ffffff">
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>Compact version&nbsp;:&nbsp;</td>
+<td>
+<p>Menu G5 provides some compact versions of scripts to reduce file size and save bandwidth. A compact version script is non reading-friendly. In most cases, a menu page should use compact version scripts.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>Loader script&nbsp;:&nbsp;</td>
+<td>
+<p>Refers to one of the following scripts:<br>- menuG5Loader.js ... non-frame loader script<br>- menuG5LoaderX.js ... compact version<br>- menuG5LoaderFS.js ... cross-frame loader script<br>- menuG5LoaderFSX.js ... compact version</p>
+<p>which could be found under the "script" directory of the Menu G5 package.</p>
+<p>A loader script should be included in a menu page, it detects the client browser and loads a function script accordingly.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>Function script&nbsp;:&nbsp;</td>
+<td>
+<p>Refers to one of the following scripts:<br>- menuG5IE.js <br>- menuG5IEX.js <br>- menuG5Gecko.js <br>- menuG5GeckoX.js <br>- menuG5Opera.js <br>- menuG5OperaX.js ... above are the non-frame function scripts</p>
+<p>- menuG5IEFS.js <br>- menuG5IEFSX.js <br>- menuG5GeckoFS.js <br>- menuG5GeckoFSX.js <br>- menuG5OperaFS.js <br>- menuG5OperaFSX.js ... above are the cross-frame function scripts</p>
+<p>which could be found under the "script" directory of the Menu G5 package.</p>
+<p>A menu page does NOT include a function script explicitly, which will be loaded by a loader script to handle browser differences.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>Frame control script&nbsp;:&nbsp;</td>
+<td>
+<p>Refers to one of the following scripts:<br>- menuG5F.js<br>- menuG5FX.js ... the compact version</p>
+<p>which could be found under the "script" directory of the Menu G5 package.</p>
+<p>The frame control script is optional for cross-frame setup, it provides shortcuts to call functions defined in the cross-frame loader script that is included in a frameset page. Usually the frame that shows the top-menu of a cross-frame menu will include the frame control script for convenience and better control.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>Non-frame menu&nbsp;:&nbsp;</td>
+<td>
+<p>A menu built with the non-frame loader script and the non-frame function scripts. It's not necessarily to be in a non-frame page. A framed page can have a non-frame menu.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>Cross-frame menu&nbsp;:&nbsp;</td>
+<td>
+<p>A menu built with the cross-frame loader script and the cross-frame function scripts. The loader script should be included in a frameset page and menus can then be built and split into any nested frame.</p>
+<p>The frameset page that includes the cross-frame loader script is not necessarily to be the top frameset page, and the frame with a cross-frame menu is not necessarily to be the immediate child frame of the frameset.</p>
+<p>A cross-frame menu can only be split into at most two frames. If a cross-frame menu is split into two frames, one frame will show the top-menu and usually include the frame control script, the other frame will show the sub-menus and usually doesn't need to include any Menu G5 scripts.</p>
+<p>A cross-frame menu is not always split into two frames, the whole menu can be built just inside one frame.</p>
+<p>A non-frame menu and a cross-frame menu can be built with the same menu content. Framed or non-framed is just the presentation, it's separated from the menu logic (the content).</p>
+<p>One page can only have either non-frame menus or cross-frame menus.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>Path script&nbsp;:&nbsp;</td>
+<td>
+<p>For a loader script to locate a function script, the web path of the "script" directory (or the directory you created to store the function scripts) should be defined.</p>
+<p>The definition could be embedded directly into the HTML page, or be put in an external JS script and included into the page. This definition should appear in a page source code prior to the loader script.</p>
+<p>We usually want to overwrite some default settings in Menu G5, and for convenience of maintenance, we often use an external JS script to store the web path definition and other settings, and refer to this JS script as the path script.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>Content script&nbsp;:&nbsp;</td>
+<td>
+<p>To build a menu with Menu G5, we will need to define the menu content and the menu styles, then set up menu instances with the menu content and menu styles.</p>
+<p>Similar to the path script, we can embed directly the definition of a menu content into the page, or put it in an external JS script then include it into the page.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>Style script&nbsp;:&nbsp;</td>
+<td>
+<p>Likewise, we can embed directly the definition of menu styles into the page, or put it in an external JS script then include it into the page.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>Instance script&nbsp;:&nbsp;</td>
+<td>
+<p>Again, we can embed directly the definition of the menu instances into the page, or put it in an external JS script then include it into the page.</p>
+<p>It's not necessary to always separate the definitions of menu content, menu styles and menu instances into three different scripts. They can be combined into one JS script, just make sure that the content goes first, followed by the styles then the instances.</p>
+</td>
+</tr>
+</table>
+</td></tr></table>
+</p>
+</ul>
+
+<a name="path">&nbsp;</a>
+<ul><li>Setting up the path script ... [ <a href="#top">top</a> ]</li>
+<p class="para">Following are the settings we can put into a path script:</p>
+<ul>
+<li>Web path of the "script" directory (required):</li>
+<pre>
+var scriptPath="../script/";
+</pre>
+<p>The web path could be an absolute path or a relative path (based on the path of the page that includes the path script). It should end with a "/".</p>
+
+<br><li>Web path of the content script (optional):</li>
+<pre>
+var contentScript="menu/content.js";
+</pre>
+<p>Instead of including it into the page manually, we can set up a "contentScript" line in the path script to have the loader script load it for us.</p>
+<p>If a relative path is used, it would be based on the path of the page that includes the loader script.</p>
+
+<br><li>Web path of the style script (optional):</li>
+<pre>
+var styleScript="menu/style.js";
+</pre>
+<p>Instead of including it into the page manually, we can set up a "styleScript" line in the path script to have the loader script load it for us.</p>
+
+<br><li>Web path of the instance script (optional):</li>
+<pre>
+var instanceScript="menu/instance.js";
+</pre>
+<p>Instead of including it into the page manually, we can set up a "instanceScript" line in the path script to have the loader script load it for us.</p>
+
+<br><li>Menu timer (optional):</li>
+<pre>
+var menuTimer=500;
+</pre>
+<p>The menu timer defines the delay in ms from a sub-menu item being mouseovered to its sub-menu showing up, as well as the delay from a out-of-border long menu being mouseovered to it starting to scroll in.</p>
+<p>It also sets the delay from a sub-menu being mouseout to the sub-menu going off, which would be two times of the value set (that's 1000 in this case).</p>
+
+<br><li>Floating timer (optional):</li>
+<pre>
+var floatTimer=100;
+</pre>
+<p>The floating timer defines the interval in ms for a floating menu to relocate the position, as well as the interval for a out-of-border long menu to scroll in.</p>
+
+<br><li>Floating offset (optional):</li>
+<pre>
+var floatOffset=1;
+</pre>
+<p>The floating offset defines how fast a floating menu should move to its target position. The larger the value is set, the slower (or smoother) the menu moves.</p>
+
+<br><li>Base z-index (optional):</li>
+<pre>
+var zBase=2;
+</pre>
+<p>The base z-index sets the minimum z-index for the menu layers, so that if you have other DHTML layers in a page, you can adjust this setting to have the menus stay on top of them.</p>
+
+<br><li>Menu margin (optional):</li>
+<pre>
+var menuMargin=1;
+</pre>
+<p>A sub-menu will try to stay-in-view inside the browser window. The menu margin sets the margin in pixels from the browser border that a sub-menu tries to stay away.</p>
+
+<br><li>Show message (optional):</li>
+<pre>
+var showMessage=1;
+</pre>
+<p>By default Menu G5 shows messages at the browser status bar when the menu content is parsed, or a menu instance is initialized or a menu item is mouseovered. Setting the value to 0 will disable the display of messages.</p>
+
+<br><li>Show tooltip (optional):</li>
+<pre>
+var showToolTip=1;
+</pre>
+<p>This line would have Menu G5 show the tooltip when a menu item is mouseovered.</p>
+
+<br><li>Inherit styles from parent menu (optional):</li>
+<pre>
+var inheritStyle=1;
+</pre>
+<p>If a sub-menu doesn't have some menu styles defined for it, it will inherit the menu styles from the parent menu.</p>
+<p>In Menu G5 you can define some default menu styles. When this line is set to 0, a sub-menu without menu style would use the default styles.</p>
+
+<br><li>Minimum item width (optional):</li>
+<pre>
+var minimumWidth=0;
+</pre>
+<p>In Menu G5, you can specify the width for menu items or let Menu G5 figure out by itself the minimum width to fit the menu items at each level of menus. When you don't specify a width and this line is set to a non-zero value, Menu G5 will not use a width less than that.</p>
+
+<br><li>One-pixel transparent GIF (optional):</li>
+<pre>
+var onePixelGIF="images/my-one-pixel.gif";
+</pre>
+<p>Menu G5 will use a one-pixel transparent GIF file in menu rendering. The Menu G5 package comes with such a GIF file which can be found under the "script" directory. By setting up this line, you can have Menu G5 use your own one-pixel GIF file.</p>
+
+<br><li>Base frameset (optional, for cross-frame only):</li>
+<pre>
+var baseFrameset=top.another_frameset;
+</pre>
+<p>As mentioned earlier, the frameset that includes the cross-frame loader script is not necessary to be the top frameset, we usually call this frameset the control frameset. By default the control frameset would be the base for Menu G5 to locate a target frame when a menu item is clicked. If the target frame is not nested inside the control frameset, you can set up this line to specify a frameset for Menu G5 to look for the target frame.</p>
+<p>A target frame can be nested at any frameset level. If the target frame is not found, a link will be opened in a new window named with the target frame name.</p>
+
+<br><li>Page to be loaded when browser is not supported (optional):</li>
+<pre>
+var nonMenuPage=URL;
+</pre>
+<p>When a browser not supported by Menu G5 is detected, the defined URL will be loaded.</p>
+
+<br><li>Safari support switch (optional):</li>
+<pre>
+var supportSafari=0;
+</pre>
+<p>Put on this line when you want to turn off support of Safari.</p>
+
+<br><li>IE/Mac support switch (optional):</li>
+<pre>
+var supportIEMac=0;
+</pre>
+<p>Put on this line when you want to turn off support of IE on Mac.</p>
+
+</ul>
+</ul>
+
+<a name="content">&nbsp;</a>
+<ul><li>Setting up the content script ... [ <a href="#top">top</a> ]</li>
+<p class="para">The names used in definitions of menus and sub-menus should be unique. The following function calls can be used to set up a menu content:</p>
+<ul>
+<li>Define a menu:</li>
+<pre>
+addMenu("menu-name", "top-menu-name");
+</pre>
+<p>More than one menu can be defined in a menu content script and each menu would start with the addMenu() call. If the "menu-name" is already defined, the addMenu() call will delete the existing menu content and re-create one from scratch.</p>
+
+<br><li>Define a link item:</li>
+<pre>
+addLink("top/sub-menu-name", "item text", "item msg", "URL", "group-id");
+addLink("top/sub-menu-name", "item text", "item msg", "URL", "group-id", "target-frame-name");
+</pre>
+<p>Usually a generic target frame can be defined with the menu instance, the second addLink() call is for cross-frame menus as a shortcut to define a target frame rather than the generic one for some links. The target frame parameter will be ignored by non-frame menus.</p>
+
+<br><li>Define a command item:</li>
+<pre>
+addCommand("top/sub-menu-name", "item text", "item msg", "JS-codes", "group-id");
+addLink("top/sub-menu-name", "item text", "item msg", "javascript:JS-codes", "group-id");
+</pre>
+<p>To open a link in a new window in non-frame menus, you can use:</p>
+<pre>
+addCommand("sub-menu-name", "item text", "item msg", "window.open('URL', 'window-name')", "group-id");
+addLink("sub-menu-name", "item text", "item msg", "javascript:window.open('URL', 'window-name')", "group-id");
+</pre>
+
+<br><li>Define a sub-menu item:</li>
+<pre>
+addSubMenu("top/sub-menu-name", "item text", "item msg", "URL", "sub-menu-name", "group-id");
+addSubMenu("top/sub-menu-name", "item text", "item msg", "URL", "sub-menu-name", "group-id", "target-frame-name");
+</pre>
+<p>The "URL" parameter is optional. If set, clicking on a sub-menu item can also launch a link.</p>
+
+<br><li>Define an info item:</li>
+<pre>
+addInfo("top/sub-menu-name", "info content", "group-id");
+</pre>
+<p>HTML codes can be used as info content.</p>
+
+<br><li>Define a separator item:</li>
+<pre>
+addSeparator("top/sub-menu-name", "group-id");
+</pre>
+</ul>
+</ul>
+
+<a name="style">&nbsp;</a>
+<ul><li>Setting up the style script ... [ <a href="#top">top</a> ]</li>
+<p class="para">The following function calls can be used to set up the menu styles:</p>
+<ul>
+<li>Define a pad style:</li>
+<pre>
+addStylePad("pad-style-name", "pad-style-phrases");
+</pre>
+
+<p>Style phrases are in "name<b>:</b>value<b>;</b>" format. When a phrase is missing, its default setting will be taken.</p>
+<p>Following are style phrases available:</p>
+<table cellspacing="1" cellpadding="0" bgcolor="#666666"><tr bgcolor="#ffffff"><td>
+<table cellspacing="1" cellpadding="6" bgcolor="#ffffff">
+<tr valign="top" bgcolor="#cccccc"><td nowrap>Name</td><td>Value</td></tr>
+
+<tr valign="top" bgcolor="#f0f0f0"><td nowrap>holder-css</td><td>CSS classes for the menu holder, usually IE effects on the whole menu will apply here.</td></tr>
+
+<tr valign="top" bgcolor="#f0f0ff"><td nowrap>pad-css</td><td>CSS classes for the menu pad, usually for settings of border, background and padding</td></tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>menu-form</td>
+<td>
+<p>string that specifies one of the following values:</p>
+<ul>
+<li>bar ... To be shown as a horizontal menu bar.</li>
+<li><u>pad</u> ... Default. To be shown as a drop-down menu pad.</li>
+</ul>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>direction</td>
+<td>
+<p>string that specifies one of the following values:</p>
+
+<ul>
+<li><u>right-down</u> ... Default. If the parent menu is a menu pad, show the sub-menu on right side and align the sub-menu and its parent item on top. If the parent menu is a menu bar, show the sub-menu below and align the sub-menu and its parent item on left side.</li>
+<li>right-up ... For menu pad, show the sub-menu on right side and align the sub-menu and its parent item on bottom. For menu bar, show the sub-menu above and align the sub-menu and its parent item on left side.</li>
+<li>left-down ... For menu pad, show the sub-menu on left side and align the sub-menu and its parent item on top. For menu bar, show the sub-menu below and align the sub-menu and its parent item on right side.</li>
+<li>left-up ... For menu pad, show the sub-menu on left side and align the sub-menu and its parent item on bottom. For menu bar, show the sub-menu above and align the sub-menu and its parent item on right side.</li>
+<li>center-down ... For menu bar only. Show the sub-menu below and align the sub-menu and its parent item on center.</li>
+<li>center-up ... For menu bar only. Show the sub-menu above and align the sub-menu and its parent item on center.</li>
+<li>abs-right-down ... For menu bar only. Show the sub-menu below and align the sub-menu and parent menu on right side.</li>
+<li>abs-right-up ... For menu bar only. Show the sub-menu above and align the sub-menu and parent menu on right side.</li>
+<li>abs-left-down ... For menu bar only. Show the sub-menu below and align the sub-menu and parent menu on left side.</li>
+<li>abs-left-up ... For menu bar only. Show the sub-menu above and align the sub-menu and parent menu on left side.</li>
+<li>abs-center-down ... For menu bar only. Show the sub-menu below and align the sub-menu and parent menu on center.</li>
+<li>abs-center-up ... For menu bar only. Show the sub-menu above and align the sub-menu and parent menu on center.</li>
+<li>right-top ... For menu pad only. Show the sub-menu on right side and align the sub-menu and parent menu on top.</li>
+<li>left-top ... For menu pad only. Show the sub-menu on left side and align the sub-menu and parent menu on top.</li>
+<li>right-middle ... For menu pad only. Show the sub-menu on right side and align the sub-menu and parent menu in middle.</li>
+<li>left-middle ... For menu pad only. Show the sub-menu on left side and align the sub-menu and parent menu in middle.</li>
+<li>right-bottom ... For menu pad only. Show the sub-menu on right side and align the sub-menu and parent menu on bottom.</li>
+<li>left-bottom ... For menu pad only. Show the sub-menu on left side and align the sub-menu and parent menu on bottom.</li>
+</ul>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>scroll</td>
+<td>
+<p>string that specifies one of the following values:</p>
+<ul>
+<li>both ... For a out-of-border long menu, when the menu item that is next to the border is mouseovered, scroll it into view.</li>
+<li>x-only ... Only scroll in x-direction.</li>
+<li>y-only ... Only scroll in y-direction.</li>
+<li><u>none</u> ... Default. Don't scroll the menu.</li>
+</ul>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>step</td>
+<td>
+<p>number that specifies one of the following values:</p>
+<ul>
+<li><u>0</u> ... Default. For the out-of-border long menu, scroll in one menu item each time.</li>
+<li>any non-zero integer ... Number of pixels to scroll in each time.</li>
+</ul>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>flip</td>
+<td>
+<p>string that specifies one of the following values:</p>
+<ul>
+<li><u>yes</u> ... Default. If a sub-menu goes beyond the browser border, flip it to the other side of its parent menu.</li>
+<li>no ... Don't flip the sub-menu.</li>
+</ul>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>offset-top</td>
+<td>
+<p>number that specifies the top offset in pixel (after the direction placement), defaults to 0.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>offset-left</td>
+<td>
+<p>number that specifies the left offset in pixel (after the direction placement), defaults to 0.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>item-offset</td>
+<td>
+<p>up to two numbers (can be negative) separated by space, specifying the offsets in pixel between menu items, defaults to 0.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>col</td>
+<td>
+<p>number of menu item column in a pad.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>row</td>
+<td>
+<p>number of menu item row in a pad.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>filters<br>(IE only)</td>
+<td>
+<p>up to two strings separated by space or comma, each specifying one of the following values:</p>
+<ul>
+<li>yes ... Show IE transition filters.</li>
+<li>no ... Do not show IE transition filters.</li>
+</ul>
+<p>the first string sets value for when a menu pad shows up, defaults to yes; the second string if present sets value for when a menu pad hides, defaults to no.</p>
+<p>For example:</p>
+<p class="note">filters<b>:</b> yes<b>,</b> no<b>;</b></p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>tiles</td>
+<td>
+<p>specify the background tile images for the menu pad in the following format:</p>
+<p class="note">
+tiles<b>:</b> width<b>,</b> height <b>:</b> css1<b>,</b> css2<b>,</b> css3<b>,</b> css4<b>,</b> css5<b>,</b> css6<b>,</b> css7<b>,</b> css8<b>,</b> css9<b>;</b>
+</p>
+<p>in which the width and the height specify the size of the corners, and css1 to css9 specify the background images for the tiles.</p>
+<p>depending on the width and the height, the tiles can be:</p>
+<table border="1" cellpadding="6">
+<tr>
+<td>width>0, height>0</td>
+<td>width=0, height>0</td>
+<td>width>0, height=0</td>
+</tr>
+<tr>
+<td>
+<table cellspacing="1" cellpadding="0" border="0">
+<tr align="center" bgcolor="#cccccc"><td width="40" height="40">css1</td><td width="40">css2</td><td width="40">css3</td></tr>
+<tr align="center" bgcolor="#cccccc"><td width="40" height="40">css4</td><td width="40">css5</td><td width="40">css6</td></tr>
+<tr align="center" bgcolor="#cccccc"><td width="40" height="40">css7</td><td width="40">css8</td><td width="40">css9</td></tr>
+</table>
+</td>
+<td>
+<table cellspacing="1" cellpadding="0" border="0">
+<tr align="center" bgcolor="#cccccc"><td width="120" height="40">css2</td></tr>
+<tr align="center" bgcolor="#cccccc"><td width="120" height="40">css5</td></tr>
+<tr align="center" bgcolor="#cccccc"><td width="120" height="40">css8</td></tr>
+</table>
+</td>
+<td>
+<table cellspacing="1" cellpadding="0" border="0">
+<tr align="center" bgcolor="#cccccc"><td width="40" height="120">css4</td><td width="40">css5</td><td width="40">css6</td></tr>
+</table>
+</td>
+</tr>
+</table><br clear="all">
+<p>usually the background images defined for css1, css3, css7 and css9 would fill the corners, and images for css2, css4, css5, css6 and css8 would be repeatable to connect the corners.</p>
+</td>
+</tr>
+</table>
+</td></tr></table><br clear="all">
+
+<br><li>Define an item style:</li>
+<pre>
+addStyleItem("item-style-name", "item-style-phrases");
+</pre>
+
+<p>Style phrases are in "name<b>:</b>value<b>;</b>" format. Following are style phrases available:</p>
+<table cellspacing="1" cellpadding="0" bgcolor="#666666"><tr bgcolor="#ffffff"><td>
+<table cellspacing="1" cellpadding="6" bgcolor="#ffffff">
+<tr valign="top" bgcolor="#cccccc"><td nowrap>Name</td><td>Value</td></tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>css</td>
+<td>
+<p>up to five groups of CSS classes separated by comma, specifying the styles for menu item on following stages:</p>
+<ul>
+<li>normal ... Without mouse focus.</li>
+<li>highlighted ... With mouse focus.</li>
+<li>mousedowned ... With mouse focus and mouse left-button pressed.</li>
+<li>sub-menu opened ... For a sub-menu item with sub-menu opened.</li>
+<li>on-path ... When page path is called to display.</li>
+</ul>
+<p>If the style for a stage is not needed, it can be left blank (keep the comma to indicate it's blank). If some groups are not present, say only three groups are defined, then "sub-menu opened" and "on-path" will not have special style effects.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>cursor</td>
+<td>
+<p>CSS classes that specify the cursor style when a menu item gets mouse focus.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>align</td>
+<td>
+<p>string that specifies one of the following values (when a menu item has different sizes at different stages):</p>
+<ul>
+<li>left ... Align a menu item on the left side for different stages.</li>
+<li><u>center</u> ... Default. Align a menu item on center.</li>
+<li>right ... Align a menu item on the right side.</li>
+</ul>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>valign</td>
+<td>
+<p>string that specifies one of the following values (when a menu item has different sizes at different stages):</p>
+<ul>
+<li>top ... Align a menu item on the top for different stages.</li>
+<li><u>middle</u> ... Default. Align a menu item in middle.</li>
+<li>bottom ... Align a menu item on bottom.</li>
+</ul>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>width</td>
+<td>
+<p>actual ... Indicates that the CSS classes have not specified a width for the menu items.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>sub-menu</td>
+<td>
+<p>string that specifies one of the following values:</p>
+<ul>
+<li><u>mouse-over</u> ... Default. Hover a sub-menu item to open its sub-menu.</li>
+<li>mouse-click ... Click a sub-menu item to open its sub-menu.</li>
+</ul>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>filters<br>(IE only)</td>
+<td>
+<p>up to three strings separated by space or comma, each specifying one of the following values:</p>
+<ul>
+<li>yes ... Show IE transition filters.</li>
+<li>no ... Do not show IE transition filters.</li>
+</ul>
+<p>the first string sets value for when a menu item changes back to normal stage (mouseout), defaults to no; the second string if present sets value for when a menu item becomes highlighted (mouseover), defaults to yes; the third string if present sets value for when a menu item gets mousedown, defaults to no.</p>
+<p>For example:</p>
+<p class="note">filters<b>:</b> yes<b>,</b> yes<b>,</b> yes<b>;</b></p>
+</td>
+</tr>
+</table>
+</td></tr></table><br clear="all">
+
+<br><li>Define a font style:</li>
+<pre>
+addStyleFont("font-style-name", "font-style-phrase");
+</pre>
+<p>Only one phrase is available:</p>
+<table cellspacing="1" cellpadding="0" bgcolor="#666666"><tr bgcolor="#ffffff"><td>
+<table cellspacing="1" cellpadding="6" bgcolor="#ffffff">
+<tr valign="top" bgcolor="#cccccc"><td nowrap>Name</td><td>Value</td></tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>css</td>
+<td>
+<p>up to five groups of CSS classes separated by comma, specifying the font styles for menu item on following stages:</p>
+<ul>
+<li>normal ... Without mouse focus.</li>
+<li>highlighted ... With mouse focus.</li>
+<li>mousedowned ... With mouse focus and mouse left-button pressed.</li>
+<li>sub-menu opened ... For a sub-menu item with sub-menu opened.</li>
+<li>on-path ... When page path is called to display.</li>
+</ul>
+<p>If the style for a stage is not needed, it can be left blank (keep the comma to indicate it's blank). If some groups are not present, say only three groups are defined, then "sub-menu opened" and "on-path" will not have special style effects.</p>
+</td>
+</tr>
+</table>
+</td></tr></table><br clear="all">
+
+<br><li>Define a sub-menu tag style:</li>
+<pre>
+addStyleTag("tag-style-name", "tag-style-phrase");
+</pre>
+<p>Only one phrase is available:</p>
+<table cellspacing="1" cellpadding="0" bgcolor="#666666"><tr bgcolor="#ffffff"><td>
+<table cellspacing="1" cellpadding="6" bgcolor="#ffffff">
+<tr valign="top" bgcolor="#cccccc"><td nowrap>Name</td><td>Value</td></tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>css</td>
+<td>
+<p>up to five groups of CSS classes separated by comma, specifying the sub-menu tag styles for sub-menu item on following stages:</p>
+<ul>
+<li>normal ... Without mouse focus.</li>
+<li>highlighted ... With mouse focus.</li>
+<li>mousedowned ... With mouse focus and mouse left-button pressed.</li>
+<li>sub-menu opened ... For a sub-menu item with sub-menu opened.</li>
+<li>on-path ... When page path is called to display.</li>
+</ul>
+<p>If the style for a stage is not needed, it can be left blank (keep the comma to indicate it's blank). If some groups are not present, say only three groups are defined, then "sub-menu opened" and "on-path" will not have special style effects.</p>
+</td>
+</tr>
+</table>
+</td></tr></table><br clear="all">
+
+<br><li>Define an icon style:</li>
+<pre>
+addStyleIcon("icon-style-name", "icon-style-phrase");
+</pre>
+<p>The following phrases are available:</p>
+<table cellspacing="1" cellpadding="0" bgcolor="#666666"><tr bgcolor="#ffffff"><td>
+<table cellspacing="1" cellpadding="6" bgcolor="#ffffff">
+<tr valign="top" bgcolor="#cccccc"><td nowrap>Name</td><td>Value</td></tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>css</td>
+<td>
+<p>up to five groups of CSS classes separated by comma, specifying the icon styles for menu item on following stages:</p>
+<ul>
+<li>normal ... Without mouse focus.</li>
+<li>highlighted ... With mouse focus.</li>
+<li>mousedowned ... With mouse focus and mouse left-button pressed.</li>
+<li>sub-menu opened ... For a sub-menu item with sub-menu opened.</li>
+<li>on-path ... When page path is called to display.</li>
+</ul>
+<p>If the style for a stage is not needed, it can be left blank (keep the comma to indicate it's blank). If some groups are not present, say only three groups are defined, then "sub-menu opened" and "on-path" will not have special style effects.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>text</td>
+<td><p>if present, defines in following format the text characters used as the icon, for example:</p>
+<p class="note">
+text <b>:</b> &amp;#187<b>; </b><b>:</b> <b>;</b>
+</p>
+<p>the text characters between the two colons will be used, use &amp;#58; if a colon is to be used.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>css2</td>
+<td>
+<p>if present, up to five groups of CSS classes separated by comma, specifying the second icon styles for menu item on following stages:</p>
+<ul>
+<li>normal ... Without mouse focus.</li>
+<li>highlighted ... With mouse focus.</li>
+<li>mousedowned ... With mouse focus and mouse left-button pressed.</li>
+<li>sub-menu opened ... For a sub-menu item with sub-menu opened.</li>
+<li>on-path ... When page path is called to display.</li>
+</ul>
+<p>If the style for a stage is not needed, it can be left blank (keep the comma to indicate it's blank). If some groups are not present, say only three groups are defined, then "sub-menu opened" and "on-path" will not have special style effects.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>text2</td>
+<td><p>if present, defines the text characters used as the second icon.</p>
+</td>
+</tr>
+</table>
+</td></tr></table><br clear="all">
+
+<br><li>Define a separator style:</li>
+<pre>
+addStyleSeparator("separator-style-name", "separator-style-phrase");
+</pre>
+<p>Only one phrase is available:</p>
+<table cellspacing="1" cellpadding="0" bgcolor="#666666"><tr bgcolor="#ffffff"><td>
+<table cellspacing="1" cellpadding="6" bgcolor="#ffffff">
+<tr valign="top" bgcolor="#cccccc"><td nowrap>Name</td><td>Value</td></tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>css</td>
+<td>
+<p>up to two groups of CSS classes separated by comma, specifying the styles for two separator lines.</p>
+<p>If the second group is blank or missing, the separator will have one line only.</p>
+</td>
+</tr>
+</table>
+</td></tr></table><br clear="all">
+
+<br><li>Define a menu style:</li>
+<pre>
+addStyleMenu("menu-style-name", "pad-style", "item-style", "font-style", "tag-style", "icon-style", "separator-style");
+</pre>
+
+<br><li>Define a style group:</li>
+<pre>
+addStyleGroup("group-style-name", "menu-style-name", "top-menu name", "sub-menu name", ...);
+addStyleGroup("group-style-name", "another-menu-style-name", "sub-menu name", "sub-menu name", ...);
+</pre>
+<p>The addStyleGroup() call can be repeated with same group-style-name but different menu-style-names for different menus.</p>
+
+<br><li>Define the default style:</li>
+<pre>
+setDefaultStyle("pad-style", "item-style", "font-style", "tag-style", "icon-style", "separator-style");
+</pre>
+
+</ul>
+</ul>
+
+<a name="instance">&nbsp;</a>
+<ul><li>Setting up the instance script ... [ <a href="#top">top</a> ]</li>
+<pre>
+addInstance("instance-name", "menu-name", "instance-parameter-phrases");
+</pre>
+<p class="para">The addInstance() call links everything together:</p>
+<ul>
+<li>the menu content to be used</li>
+<li>the position of the menu</li>
+<li>the alignment of the menu</li>
+<li>the layout of the menu</li>
+<li>the visibility of the menu</li>
+<li>the behavior for sub-menus</li>
+<li>the direction for sub-menus</li>
+<li>the target frame for menu links</li>
+<li>the menu styles</li>
+</ul>
+<p class="para">You can repeat the addInstance() call to build more menu instances on a page. If the "instance-name" is defined already, the addInstance() call will delete the existing menu instance and re-build it with the specified menu content.</p>
+
+<p class="para">Following are the parameter phrases available:</p>
+
+<table cellspacing="1" cellpadding="0" bgcolor="#666666"><tr bgcolor="#ffffff"><td>
+<table cellspacing="1" cellpadding="6" bgcolor="#ffffff">
+<tr valign="top" bgcolor="#cccccc"><td nowrap>Name</td><td>Value</td></tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>position</td>
+<td>
+<p>strings that specify one of the following values::</p>
+<ul>
+<li><u>absolute</u> ... Default. The menu instance will be positioned against the top-left browser corner ([0,0]).</li>
+<li>relative holder-id ... The menu instance will be positioned against a HTML element (the holder) with the given id.
+<p>To define a holder is simple, just create a HTML element with an id attribute, or assign an id to an existing HTML element.</p>
+</li>
+
+<li>slot slot-number ... The menu instance will be positioned against a pre-defined slot along the browser border.</li>
+</ul>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>align</td>
+<td>
+<p>string that specifies one of the following values:</p>
+<ul>
+<li><u>left</u> ... Default. Align the menu instance on the left side against its position reference point.</li>
+<li>center ... Align the menu instance on center against its position reference point.</li>
+<li>right ... Align the menu instance on the right side against its position reference point.</li>
+</ul>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>valign</td>
+<td>
+<p>string that specifies one of the following values:</p>
+<ul>
+<li><u>top</u> ... Default. Align the menu instance on top against its position reference point.</li>
+<li>middle ... Align the menu instance in middle against its position reference point.</li>
+<li>bottom ... Align the menu instance on bottom against its position reference point.</li>
+</ul>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>base</td>
+<td>
+<p>string that specifies one of the following values:</p>
+<ul>
+<li><u>left</u> ... Default. Takes the left side border of the frame as the reference to align the first level sub-menu to its parent menu item.</li>
+<li>right ... Takes the right side border of the frame as the reference to align the first level sub-menu to its parent menu item.</li>
+</ul>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>vbase</td>
+<td>
+<p>string that specifies one of the following values:</p>
+<ul>
+<li><u>top</u> ... Default. Takes the top side border of the frame as the reference to align the first level sub-menu to its parent menu item.</li>
+<li>bottom ... Takes the bottom side border of the frame as the reference to align the first level sub-menu to its parent menu item.</li>
+</ul>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>offset-top</td>
+<td>
+<p>number that specifies the top offset in pixel (after the alignment), defaults to 0.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>offset-left</td>
+<td>
+<p>number that specifies the left offset in pixel (after the alignment), defaults to 0.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>menu-form</td>
+<td>
+<p>string that specifies one of the following values:</p>
+<ul>
+<li>bar ... Top menu to be shown as a horizontal menu bar.</li>
+<li><u>pad</u> ... Default. Top menu to be shown as a drop-down menu pad.</li>
+</ul>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>direction</td>
+<td>
+<p>generic direction setting for all sub-menus, see the "direction" phrase in pad style for details.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>visibility</td>
+<td>
+<p>string that specifies one of the following values:</p>
+<ul>
+<li><u>visible</u> ... Default. The top menu is always visible once shown.</li>
+<li>hidden ... The top menu is invisible after closed.</li>
+</ul>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>target</td>
+<td>
+<p>string that specifies the name of the generic target window/frame for menu links.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>floating</td>
+<td>
+<p>string that specifies one of the following values:</p>
+<ul>
+<li>yes ... The menu instance will be floating against page scrolling.</li>
+<li><u>no</u> ... Default. The menu instance is fixed.</li>
+</ul>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>sticky</td>
+<td>
+<p>string that specifies one of the following values:</p>
+<ul>
+<li>yes ... Click somewhere outside the menu to collapse it.</li>
+<li><u>no</u> ... Default. Mouseout a menu for a while to collapse it.</li>
+</ul>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>highlight</td>
+<td>
+<p>string that specifies one of the following values:</p>
+<ul>
+<li><u>yes</u> ... Default. When mouse stays on a sub-menu item, keep all its already opened sub-menus opened.</li>
+<li>no ... Only keep the immediate sub-menu opened.</li>
+</ul>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>style</td>
+<td>
+<p>string that specifies the name of the style group to be used.</p>
+</td>
+</tr>
+</table>
+</td></tr></table><br clear="all">
+</ul>
+</ul>
+
+<a name="nonframe">&nbsp;</a>
+<ul><li>Setting up a non-frame menu page ... [ <a href="#top">top</a> ]</li>
+<p>
+<ol>
+<li><p>set up the menu content, menu styles and menu instances.</p></li>
+<li><p>set up the web paths and other settings in a path script.</p></li>
+<li><p>include the path script in the page:</p></li>
+<table cellspacing="1" cellpadding="0" bgcolor="#666666"><tr bgcolor="#ffffff"><td>
+<table cellspacing="1" cellpadding="12" bgcolor="#ffffff" width="800">
+<tr valign="top" bgcolor="#f0f0f0"><td>
+<p>&lt;html&gt;</p>
+<p>&lt;head&gt;</p>
+<p><b>&lt;script language="javascript" src="your-web-path/path.js"&gt;&lt;/script&gt;</b></p>
+<p>&lt;/head&gt;</p>
+<p>...</p>
+<p>&lt;/html&gt;</p>
+</td>
+</tr>
+</table>
+</td></tr></table><br clear="all">
+
+<li><p>include the non-frame loader script in the page:</p></li>
+<table cellspacing="1" cellpadding="0" bgcolor="#666666"><tr bgcolor="#ffffff"><td>
+<table cellspacing="1" cellpadding="12" bgcolor="#ffffff" width="800">
+<tr valign="top" bgcolor="#f0f0f0"><td>
+<p>&lt;html&gt;</p>
+<p>&lt;head&gt;</p>
+<p>&lt;script language="javascript" src="your-web-path/path.js"&gt;&lt;/script&gt;</p>
+<p><b>&lt;script language="javascript" src="your-web-path/script/menuG5LoaderX.js"&gt;&lt;/script&gt;</b></p>
+<p>&lt;/head&gt;</p>
+<p>...</p>
+<p>&lt;/html&gt;</p>
+</td>
+</tr>
+</table>
+</td></tr></table><br clear="all">
+
+<li><p>set up the onload call in the BODY tag:</p></li>
+<table cellspacing="1" cellpadding="0" bgcolor="#666666"><tr bgcolor="#ffffff"><td>
+<table cellspacing="1" cellpadding="12" bgcolor="#ffffff" width="800">
+<tr valign="top" bgcolor="#f0f0f0"><td>
+<p>&lt;html&gt;</p>
+<p>&lt;head&gt;</p>
+<p>&lt;script language="javascript" src="your-web-path/path.js"&gt;&lt;/script&gt;</p>
+<p>&lt;script language="javascript" src="your-web-path/script/menuG5LoaderX.js"&gt;&lt;/script&gt;</p>
+<p>&lt;/head&gt;</p>
+<p><b>&lt;body onload="showMenu('menu-instance-name')"&gt;</b></p>
+<p>...</p>
+<p>&lt;/body&gt;</p>
+<p>&lt;/html&gt;</p>
+</td>
+</tr>
+</table>
+</td></tr></table><br clear="all">
+<p>If you have more than one menu instance, just call the showMenu() for them respectively:</p>
+<table cellspacing="1" cellpadding="0" bgcolor="#666666"><tr bgcolor="#ffffff"><td>
+<table cellspacing="1" cellpadding="12" bgcolor="#ffffff" width="800">
+<tr valign="top" bgcolor="#f0f0f0"><td>
+<p>...</p>
+<p><b>&lt;body onload="showMenu('menu-instance-name'); showMenu('another-menu-instance')"&gt;</b></p>
+<p>...</p>
+</td>
+</tr>
+</table>
+</td></tr></table><br clear="all">
+</ol>
+</p>
+</ul>
+
+<a name="crossframe">&nbsp;</a>
+<ul><li>Setting up a cross-frame menu page ... [ <a href="#top">top</a> ]</li>
+<p>
+<ol>
+<li><p>set up the menu content, menu styles and menu instances.</p></li>
+<li><p>set up the web paths and other settings in a path script.</p></li>
+<li><p>include the path script in the frameset page:</p></li>
+<table cellspacing="1" cellpadding="0" bgcolor="#666666"><tr bgcolor="#ffffff"><td>
+<table cellspacing="1" cellpadding="12" bgcolor="#ffffff" width="800">
+<tr valign="top" bgcolor="#f0f0f0"><td>
+<p>&lt;html&gt;</p>
+<p>&lt;head&gt;</p>
+<p><b>&lt;script language="javascript" src="your-web-path/path.js"&gt;&lt;/script&gt;</b></p>
+<p>&lt;/head&gt;</p>
+<p>...</p>
+<p>&lt;/html&gt;</p>
+</td>
+</tr>
+</table>
+</td></tr></table><br clear="all">
+
+<li><p>include the cross-frame loader script in the frameset page:</p></li>
+<table cellspacing="1" cellpadding="0" bgcolor="#666666"><tr bgcolor="#ffffff"><td>
+<table cellspacing="1" cellpadding="12" bgcolor="#ffffff" width="800">
+<tr valign="top" bgcolor="#f0f0f0"><td>
+<p>&lt;html&gt;</p>
+<p>&lt;head&gt;</p>
+<p>&lt;script language="javascript" src="your-web-path/path.js"&gt;&lt;/script&gt;</p>
+<p><b>&lt;script language="javascript" src="your-web-path/script/menuG5LoaderFSX.js"&gt;&lt;/script&gt;</b></p>
+<p>&lt;/head&gt;</p>
+<p>...</p>
+<p>&lt;/html&gt;</p>
+</td>
+</tr>
+</table>
+</td></tr></table><br clear="all">
+
+<li><p>name the target frame according to the "target<b>:</b>" phrase in the addInstance() call:</p></li>
+<table cellspacing="1" cellpadding="0" bgcolor="#666666"><tr bgcolor="#ffffff"><td>
+<table cellspacing="1" cellpadding="12" bgcolor="#ffffff" width="800">
+<tr valign="top" bgcolor="#f0f0f0"><td>
+<p>&lt;html&gt;</p>
+<p>&lt;head&gt;</p>
+<p>&lt;script language="javascript" src="your-web-path/path.js"&gt;&lt;/script&gt;</p>
+<p>&lt;script language="javascript" src="your-web-path/script/menuG5LoaderFSX.js"&gt;&lt;/script&gt;</p>
+<p>&lt;/head&gt;</p>
+<p>&lt;frameset&gt;</p>
+<p class="para">&lt;frame src="..."&gt;&lt;/frame&gt;
+<p class="para">&lt;frame src="..." <b>name="content"</b>&gt;&lt;/frame&gt;
+<p>&lt;/frameset&gt;</p>
+<p>&lt;/html&gt;</p>
+</td>
+</tr>
+</table>
+</td></tr></table><br clear="all">
+
+<li><p>include the frame control script in the top-menu frame page:</p></li>
+<table cellspacing="1" cellpadding="0" bgcolor="#666666"><tr bgcolor="#ffffff"><td>
+<table cellspacing="1" cellpadding="12" bgcolor="#ffffff" width="800">
+<tr valign="top" bgcolor="#f0f0f0"><td>
+<p>&lt;html&gt;</p>
+<p>&lt;head&gt;</p>
+<p><b>&lt;script language="javascript" src="your-web-path/script/menuG5FX.js"&gt;&lt;/script&gt;</b></p>
+<p>&lt;/head&gt;</p>
+<p>...</p>
+<p>&lt;/html&gt;</p>
+</td>
+</tr>
+</table>
+</td></tr></table><br clear="all">
+
+<li><p>set up the onload call in the BODY tag of the top-menu frame page:</p></li>
+<table cellspacing="1" cellpadding="0" bgcolor="#666666"><tr bgcolor="#ffffff"><td>
+<table cellspacing="1" cellpadding="12" bgcolor="#ffffff" width="800">
+<tr valign="top" bgcolor="#f0f0f0"><td>
+<p>&lt;html&gt;</p>
+<p>&lt;head&gt;</p>
+<p>&lt;script language="javascript" src="your-web-path/script/menuG5FX.js"&gt;&lt;/script&gt;</p>
+<p>&lt;/head&gt;</p>
+<p>&lt;body onload=<b>"initMenu('instance-name', 'top'); setSubFrame('instance-name', parent.content);"</b>&gt;</p>
+<p>...</p>
+<p>&lt;/body&gt;</p>
+<p>&lt;/html&gt;</p>
+</td>
+</tr>
+</table>
+</td></tr></table><br clear="all">
+<li><p>The pages to be loaded into the target frame could be just regular HTML pages, no Menu G5 setting is needed.</p></li>
+</ol>
+</p>
+</ul>
+
+<a name="default">&nbsp;</a>
+<ul><li>Default settings ... [ <a href="#top">top</a> ]</li>
+<p class="para">Default settings can be found in the source code of a loader script (either regular or compact version):</p>
+<pre>
+// ------
+var _scriptPath="http://www.yxScripts.com/menuG5/script/";
+var _menuTimer=500;
+var _floatTimer=100;
+var _floatOffset=1;
+var _zBase=2;
+var _menuMargin=1;
+var _showMessage=1;
+var _showToolTip=0;
+var _onePixelGIF="onePixel.gif";
+var _baseFrameset=self;
+var _inheritStyle=1;
+var _minimumWidth=0;
+// ------
+</pre>
+<p class="para">These default settings can be overwritten by the settings in a path script.</p>
+</ul>
+
+<a name="userfunction">&nbsp;</a>
+<ul><li>User functions ... [ <a href="#top">top</a> ]</li>
+<p class="para">Menu G5 provides the following user functions for more controls on a menu instance:</p>
+<table cellspacing="1" cellpadding="0" bgcolor="#666666"><tr bgcolor="#ffffff"><td>
+<table cellspacing="1" cellpadding="6" bgcolor="#ffffff">
+<tr valign="top" bgcolor="#cccccc"><td nowrap>User Function</td><td>Description & Usage</td></tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>getMenuDim("ins-name")</td>
+<td>
+<p>Find out the dimension of the specified menu instance.</p>
+<p>If the menu instance is ready (shown once), it returns a JS object with the following attributes:</p>
+<ul>
+<li>x ... the x-coordinate of the top-menu pad</li>
+<li>y ... the y-coordinate of the top-menu pad</li>
+<li>width ... the width of the top-menu pad</li>
+<li>height ... the height of the top-menu pad</li>
+<li>scrollx ... the x-scroll-offset of the page</li>
+<li>scrolly ... the y-scroll-offset of the page</li>
+</ul>
+<p>Sample:</p>
+<pre>
+var insDim=getMenuDim("ins-name");
+
+if (insDim!=null) {
+  alert("The size is " + insDim.width + " x " + insDim.height);
+}
+</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>getLeft("id")</td>
+<td>
+<p>returns the x-coordinate of a HTML element with the given id.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>getTop("id")</td>
+<td>
+<p>returns the y-coordinate of a HTML element with the given id.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>showMenu("ins-name")</td>
+<td>
+<p>Display the top-menu of the specified menu instance if found.</p>
+<p>Sample:</p>
+<pre>&lt;body onload="showMenu('my-menu')"&gt;</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>showMenuX("ins-name")</td>
+<td>
+<p>Display the top-menu of the specified menu instance if found and set its top-menu visibility to visible.</p>
+<p>Sample:</p>
+<pre>&lt;a href="#" onmouseover="showMenuX('my-menu')"&gt;Menu&lt;/a&gt;</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>hideMenu("ins-name")</td>
+<td>
+<p>Collapse the specified menu instance if found.</p>
+<p>Sample:</p>
+<pre>&lt;a href="#" ... onmouseout="hideMenu('my-menu')"&gt;Menu&lt;/a&gt;</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>hideMenuX("ins-name")</td>
+<td>
+<p>Collapse the specified menu instance if found and set its top-menu visibility to hidden.</p>
+<p>Sample:</p>
+<pre>&lt;a href="#" ... onmouseout="hideMenuX('my-menu')"&gt;Menu&lt;/a&gt;</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>moveMenuTo("ins-name", x, y)</td>
+<td>
+<p>Collapse and move the specified menu instance, if found, to the given coordinates.</p>
+<p>Sample:</p>
+<pre>&lt;a href="javascript:moveMenuTo('my-menu', 10, 10)"&gt;Go [10,10]&lt;/a&gt;</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>moveMenuBy("ins-name", dx, dy)</td>
+<td>
+<p>Collapse and move the specified menu instance, if found, by the given offset.</p>
+<p>Sample:</p>
+<pre>&lt;a href="javascript:moveMenuBy('my-menu', 0, 10)"&gt;Move down a bit&lt;/a&gt;</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>moveMenuBack("ins-name")</td>
+<td>
+<p>Collapse and move the specified menu instance, if found, back to its original position.</p>
+<p>Sample:</p>
+<pre>&lt;a href="javascript:moveMenuBack('my-menu')"&gt;Go home&lt;/a&gt;</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>openMenu("ins-name")</td>
+<td>
+<p>Display the top-menu of the specified menu instance if found after the delay set by the "menuTimer".</p>
+<p>Sample:</p>
+<pre>&lt;a href="#" onmouseover="openMenu('my-menu')"&gt;Menu&lt;/a&gt;</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>openMenuX("ins-name")</td>
+<td>
+<p>Display the top-menu of the specified menu instance if found after the delay set by the "menuTimer" and set its top-menu visibility to visible.</p>
+<p>Sample:</p>
+<pre>&lt;a href="#" onmouseover="openMenuX('my-menu')"&gt;Menu&lt;/a&gt;</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>closeMenu("ins-name")</td>
+<td>
+<p>Collapse the specified menu instance if found after the delay set by the "menuTimer".</p>
+<p>Sample:</p>
+<pre>&lt;a href="#" ... onmouseout="closeMenu('my-menu')"&gt;Menu&lt;/a&gt;</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>closeMenuX("ins-name")</td>
+<td>
+<p>Collapse the specified menu instance if found after the delay set by the "menuTimer" and set its top-menu visibility to hidden.</p>
+<p>Sample:</p>
+<pre>&lt;a href="#" ... onmouseout="closeMenuX('my-menu')"&gt;Menu&lt;/a&gt;</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>closeMenuNow()</td>
+<td>
+<p>Collapse all the menu instances.</p>
+<p>Sample:</p>
+<pre>&lt;a href="javascript:closeMenuNow()"&gt;Collapse All&lt;/a&gt;</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>clickMenu("ins-name")</td>
+<td>
+<p>Same effect as showMenu() but usually used on clicks.</p>
+<p>Sample:</p>
+<pre>&lt;a href="javascript:clickMenu('my-menu')"&gt;Click to open&lt;/a&gt;</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>clickMenuX("ins-name")</td>
+<td>
+<p>Like clickMenu() but also set menu instance visibility to visible.</p>
+<p>Sample:</p>
+<pre>&lt;a href="javascript:clickMenuX('my-menu')"&gt;Click to open&lt;/a&gt;</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>switchMenu("ins-name")</td>
+<td>
+<p>Like calling showMenuX() and hideMenuX() in sequence.</p>
+<p>Sample:</p>
+<pre>&lt;a href="javascript:switchMenu('my-menu')"&gt;Click to switch&lt;/a&gt;</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>setHolder("ins-name", "holder-id")</td>
+<td>
+<p>Force the specified menu instance if found to refer to the given holder when it positions itself next time. This call replaces the instance's original position.</p>
+<p>Sample:</p>
+<pre>&lt;a id="here" href="javascript:setHolder('my-ins', 'here'); clickMenuX('my-ins');&gt;Here&lt;/a&gt;</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>setCoordinates("ins-name", x, y)</td>
+<td>
+<p>Force the specified menu instance if found to refer to the given coordinates when it positions itself next time. This call replaces the instance's original position.</p>
+<p>Sample:</p>
+<pre>&lt;a href="javascript:setHolder('my-ins', 10, 10); clickMenuX('my-ins');&gt;Go [10,10]&lt;/a&gt;</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>slideMenuBack("ins-name")</td>
+<td>
+<p>Move the specified menu instance if found back to the original position when it collapses. Usually used on some out-of-view menu instance for slide-in/slide-out effects. This user function actually calls moveMenuBack() when the menu instance collapses.</p>
+<p>Sample: usually used in the instance script.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>showPagePath("ins-name", ...)</td>
+<td>
+<p>This user function expects the first parameter to be the name of a menu instance, followed by a list of group-ids.</p>
+<p>What it does is to look for the menu item with the first group id (the second parameter) from the top-menu of the specified menu instance, if the menu item is found, apply the on-path style to it, and if the menu item is a sub-menu item, then look for the menu item with the second group id (the third parameter) from its sub-menu, if found, apply the on-path style, and so on so forth until it reaches the last group id, or the menu item is not a sub-menu item or no menu item found matching the group id.</p>
+<p>Sample:</p>
+<pre>
+&lt;body onload="showPagePath('vehicles', 'honda', 'cars', 'accord')"&gt;
+</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>resetPagePath("ins-name")</td>
+<td>
+<p>Restore the menu items to normal style which are set by a showPagePath() call.</p>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0ff">
+<td nowrap>addMenuEvent("name", "e1", "e2")</td>
+<td>
+<p>addMenuEvent() lets you execute some JS codes when a menu shows and hides.</p>
+<p>The "name" is the name of a top-menu or sub-menu defined in the menu content, "e1" would be some JS codes to be executed when the specified menu shows up, and "e2" would be JS codes to be executed when the menu hides.</p>
+<p>addMenuEvent() should be called before the specified menu shows for the first time.</p>
+<p>Sample:</p>
+<pre>
+addMenuEvent("top-menu", "alert('Menu is ready')", "");
+</pre>
+</td>
+</tr>
+
+<tr valign="top" bgcolor="#f0f0f0">
+<td nowrap>addItemEvent("id", "e1", "e2")</td>
+<td>
+<p>addItemEvent() lets you execute some JS codes when mouseover and mouseout items.</p>
+<p>The "id" is the group id of items defined in the menu content, "e1" would be some JS codes to be executed when any of these items gets mouse focus, and "e2" would be JS codes to be executed when any of the items loses mouse focus.</p>
+</td>
+</tr>
+
+</table>
+</td></tr></table>
+</ul>
+
+<p>&nbsp;</p>
+<p class="para"><a href="../index.html">Back to index page</a></p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>
+
+</html>

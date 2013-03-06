@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<title>Menu G5 Examples: Menu swapping</title>
+<script language="javascript" src="menu/swap-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderFSX.js"></script>
+<script language="javascript">
+var topDone=false, menuCalled="";
+function callMenu(menu) {
+  if (topDone && frames.header.swapMenu) {
+    setTimeout("frames.header.swapMenu('"+menu+"')",200);
+  }
+  menuCalled=menu;
+}
+</script>
+</head>
+<frameset rows="60, *" border="0" frameborder="0">
+	<frame src="swap-top.html" name="header" border="0" frameborder="0" scrolling="no"></frame>
+	<frame src="swap-toyota.html" name="main"></frame>
+</frameset>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><html>
+<html>
+<head>
+<title>Menu G5 Examples: Highlight it</title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+<style type="text/css">
+.pad { padding:0px 30px; border-width:1px; border-style:solid; border-color:#ffffff #ffffff #666666 #ffffff; }
+.padSub { padding:1px; border-width:1px; border-style:solid; border-color:#666666; background-color:#cccccc; }
+.padSub2 { padding:1px; border-width:1px; border-style:solid; border-color:#666666; background-color:#cccccc; }
+
+.itemTopOff { width:90px; padding:1px 12px; background-color:#999999; border-width:1px 1px 0px 1px; border-style:solid; border-color:#666666; text-align:center; }
+.itemTopOn { cursor:default; width:110px; padding:4px 12px; background-color:#f0f0f0; border-width:1px 1px 0px 1px; border-style:solid; border-color:#666666; text-align:center; }
+
+.itemOff { width:115px; padding:1px 6px 1px 11px; text-align:left; background-color:#cccccc; }
+.itemOn { cursor:default; width:115px; padding:1px 6px 1px 11px; text-align:left; background-color:#333333; }
+
+.fontTopOff { font-family:verdana; font-size:10pt; color:#000000; }
+.fontTopOn { font-family:verdana; font-size:10pt; color:#000000; font-weight:bold; }
+
+.fontOff { font-family:verdana; font-size:10pt; color:#000000; }
+.fontOn { font-family:verdana; font-size:10pt; color:#ffffff; }
+
+.tagOff { width:8px; height:13px; float:right; background:url("images/tagRN.gif") no-repeat bottom; }
+.tagOn { width:8px; height:13px; float:right; background:url("images/tagRH.gif") no-repeat bottom; }
+</style>
+
+<script language="javascript" src="menu/highlight-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderX.js"></script>
+</head>
+
+<body onload="showMenu('Demo')">
+
+<p align="center" class="title">Menu G5 Examples: Highlight it</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+<table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td id="holder">&nbsp;</td></tr></table><br clear="all">
+<p class="para">Menu G5 now checks the size of menu items when they switch between different stages. The size of a menu pad is determined when all its menu items are at normal stage, then if a menu item changes size when switching to other stages, you can specify, in addStyleItem(), how it should be aligned to its position at normal stage.</p>
+<p class="para">The options are:</p>
+<ul>
+<li>left/center/right ... for horizontal alignment, default center.</li>
+<li>top/middle/bottom ... for vertical alignment, default middle.</li>
+</ul>
+<p class="para">In this example, we set up the CSS to have a larger padding and bold font for top-menu items at highlighted stage, and use "center" and "bottom" alignments to give it a tab-like highlighting effect.</p>
+<p class="para">[<a href="../index.html#examples">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>
+</html>

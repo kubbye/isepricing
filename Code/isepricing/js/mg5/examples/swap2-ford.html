@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<link rel=stylesheet href="TB.css" type="text/css">
+<script language="javascript" src="../script/menuG5FX.js"></script>
+<script language="javascript">
+addMenu("Vehicles", "maker-top");
+
+addSubMenu("maker-top", "Ford", "", "", "Ford-other", "maker");
+addSubMenu("maker-top", "Cars", "", "", "Ford-Cars", "");
+addSubMenu("maker-top", "SUVs/Van", "", "", "Ford-SUVs/Van", "");
+addSubMenu("maker-top", "Trucks", "", "", "Ford-Trucks", "");
+
+addLink("Ford-other", "Toyota", "", "swap2-toyota.html", "");
+addLink("Ford-other", "Honda", "", "swap2-honda.html", "");
+addLink("Ford-other", "Chrysler", "", "swap2-chrysler.html", "");
+addLink("Ford-other", "Dodge", "", "swap2-dodge.html", "");
+
+addLink("Ford-Cars", "ZX2", "", "", "");
+addLink("Ford-Cars", "Focus", "", "", "");
+addLink("Ford-Cars", "Taurus", "", "", "");
+addLink("Ford-Cars", "Crown Victoria", "", "", "");
+addLink("Ford-Cars", "Mustang", "", "", "");
+addLink("Ford-Cars", "Thunderbird", "", "", "");
+
+addLink("Ford-SUVs/Van", "Escape", "", "", "");
+addLink("Ford-SUVs/Van", "Explorer", "", "", "");
+addLink("Ford-SUVs/Van", "Expedition", "", "", "");
+addLink("Ford-SUVs/Van", "Excursion", "", "", "");
+addLink("Ford-SUVs/Van", "Windstar", "", "", "");
+addLink("Ford-SUVs/Van", "Econoline", "", "", "");
+
+addLink("Ford-Trucks", "Ranger", "", "", "");
+addLink("Ford-Trucks", "F-150", "", "", "");
+addLink("Ford-Trucks", "F-250", "", "", "");
+addLink("Ford-Trucks", "F-350", "", "", "");
+
+addInstance("Vehicles", "Vehicles", "position:slot 5; menu-form:bar; align:center; valign:bottom; style:group; target:main;");
+</script>
+</head>
+
+<body onload="top.swapMenu()" bgcolor="#FFFFFF">
+<p align="center" style="font-family:verdana">Ford Vehicles</p>
+</body>
+</html>

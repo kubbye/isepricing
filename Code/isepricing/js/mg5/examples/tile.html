@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><html>
+<html>
+<head>
+<title>Menu G5 Examples: Using images in menu [3] </title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+<style type="text/css">
+.pad { padding:20px 7px; }
+
+.itemOff { height:19px; text-align:center; background-color:#a5b4c4; }
+.itemOn { cursor:default; height:19px; text-align:center; background-color:#ffffff; }
+
+.tagOff { width:22px; height:19px; float:right; background:url("images/spotOff.gif") no-repeat; }
+.tagOn { width:22px; height:19px; float:right; background:url("images/spotOn.gif") no-repeat; }
+
+.iconlOff { width:22px; height:19px; float:left; background:url("images/iconlOff.gif") no-repeat; }
+.iconlOn { width:22px; height:19px; float:left; background:url("images/iconlOn.gif") no-repeat; }
+.iconrOff { width:22px; height:19px; float:right; background:url("images/iconrOff.gif") no-repeat; }
+.iconrOn { width:22px; height:19px; float:right; background:url("images/iconrOn.gif") no-repeat; }
+
+.icontOff { width:22px; height:19px; float:left; background:url("images/iconlOff.gif") no-repeat; }
+.icontOn { width:22px; height:19px; float:left; background:url("images/iconlOn.gif") no-repeat; }
+
+.fontOff { font-family:verdana; font-size:10pt; line-height:19px; padding:0px 6px; color:#ffffff; }
+.fontOn { font-family:verdana; font-size:10pt; line-height:19px; padding:0px 6px; color:#7e93aa; }
+
+.t1top { background:url("images/tile1top.gif") no-repeat; }
+.t1sub { background:url("images/tile1sub.gif") no-repeat; }
+.t2 { background:url("images/tile2.gif") repeat-x; }
+.t3 { background:url("images/tile3.gif") no-repeat; }
+.t4 { background:url("images/tile4.gif") repeat-y; }
+.t5 { background:url("images/tile5.gif") repeat; }
+.t6 { background:url("images/tile6.gif") repeat-y; }
+.t7 { background:url("images/tile7.gif") no-repeat; }
+.t8 { background:url("images/tile8.gif") repeat-x; }
+.t9 { background:url("images/tile9.gif") no-repeat; }
+
+</style>
+
+<script language="javascript" src="menu/tile-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderX.js"></script>
+<script language="javascript">
+function yx_loadIMG(path) {
+  if (yx_menuSafe) {
+    document.write("<div style='position:absolute; top:0px; left:0px;'><table cellpadding='0' cellpadding='0' border='0'><tr>");
+    for (var i=1; i<yx_loadIMG.arguments.length; i++) {
+      document.write("<td background='"+path+yx_loadIMG.arguments[i]+"'></td>");
+    }
+    document.write("</tr></table></div>");
+  }
+}
+yx_loadIMG("images/","../../script/onePixel.gif","spotOff.gif","spotOn.gif","iconlOff.gif","iconlOn.gif","iconrOff.gif","iconrOn.gif","tile1top.gif","tile1sub.gif","tile2.gif","tile3.gif","tile4.gif","tile5.gif","tile6.gif","tile7.gif","tile8.gif","tile9.gif");
+</script>
+</head>
+
+<body onload="showMenu('Demo')">
+
+<p align="center" class="title">Menu G5 Examples: Using images in menu [3]</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+<table align="left"><tr><td width="180" height="150" valign="top" align="left" id="holder">&nbsp;</td></tr></table>
+<p class="para">Menu G5 introduces image tiles to make a better background for the menu pads.</p>
+<p class="para">
+<p class="para">The nice part of using image tiles is that, you don't need to worry about the different sizes of the menu pads when setting up the tiles, which before usually would be a headache as images have fixed sizes.</p>
+<p class="para">The even better thing of using image tiles is that, they are separated from your menu content. If you look back at the first two examples of "<a href="images.html">Using images in menu</a>" and "<a href="images2.html">Using images in menu [2]</a>" made prior to version 5.4.2, which need some special separator items in menu content to hold border images, the image tiles solution lets you keep a clearer and more maintenance-friendly menu content.</p>
+<p class="para">[<a href="../index.html#examples">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>
+</html>

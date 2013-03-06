@@ -1,0 +1,261 @@
+<html>
+
+<head>
+<title>Menu G5</title>
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+</head>
+
+<body>
+
+<p align="center" class="title">Differences between Menu G4 and Menu G5</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+
+<ul>
+<p>If you are migrating from Menu G4 to Menu G5, you will be interested in the following differences:</p>
+
+<li>Menu Content</li>
+<p>
+<ol>
+<p>
+<li>addSeparator()</li>
+<p>In Menu G4, you have addSeparator("menu-name").</p>
+<p>In Menu G5, you can also have addSeparator("menu-name", "group-id").</p>
+</ol>
+</p>
+
+<br><li>Menu Styling ... when a menu does not link to a menu style, Menu G4 will look for the default style set by setDefaultStyles(), Menu G5 will look at the inheritStyle variable to decide whether to acquire the style from the parent menu or use the default style set by setDefaultStyles().</li>
+<p>
+<ol>
+<p>
+<li>addStylePad</li>
+<p>In Menu G4, the addStylePad() call can have the following phrases for styles:</p>
+<ul>
+<li>border-size: number;</li>
+<li>border-style: outset/inset/solid;</li>
+<li>border-color: color string;</li>
+<li>border-sides: numbers;</li>
+<li>padding: numbers;</li>
+<li>background-color: color string;</li>
+<li>opacity: number;</li>
+</ul>
+<p>In Menu G5, it only has two phrases for that:</p>
+<ul>
+<li>pad-css: css-class-names;</li>
+<li>holder-css: css-class-names;</li>
+</ul>
+<p><br>In Menu G4, the "scroll:" phrase is like this:</p>
+<ul>
+<li>scroll: yes/no;</li>
+</ul>
+<p>In Menu G5, it becomes:</p>
+<ul>
+<li>scroll: both/x-only/y-only/none; ... defaults to none.</li>
+</ul>
+<p>Menu G5 also adds two new phrases: "flip:" and "step:":</p>
+<ul>
+<li>flip: yes/no; ... whether sub-menu should flip into view, defaults to yes.</li>
+<li>step: number; ... whether to scroll a long menu one item each time (number = 0) or by some offset (specified by number in pixel).</li>
+</ul>
+<p>and adds a new option "abs-center" for the "direction:" phrase:</p>
+<ul>
+<li>direction: .../abs-center-up/abs-center-down/...;</li>
+</ul>
+</p>
+
+<br><p>
+<li>addStyleItem</li>
+<p>In Menu G4, the addStyleItem() call can have the following phrases for styles:</p>
+<ul>
+<li>width: number;</li>
+<li>height: number;</li>
+<li>border-size: number;</li>
+<li>border-style: outset/inset/solid;</li>
+<li>border-color: color string;</li>
+<li>border-sides: numbers;</li>
+<li>padding: numbers;</li>
+<li>background-color: color string;</li>
+<li>opacity: number;</li>
+</ul>
+<p>In Menu G5, it only has two phrases for that:</p>
+<ul>
+<li>width: fixed/actual; ... defaults to fixed.</li>
+<li>css: css-class-names;</li>
+</ul>
+<p>and adds two new phrases for item alignment:</p>
+<ul>
+<li>align: left/center/right; ... defaults to center.</li>
+<li>valign: top/middle/bottom; ... defaults to middle.</li>
+</ul>
+</p>
+<p>and one new phrase for item cursor:</p>
+<ul>
+<li>cursor: css-class-name; ... for cursor settings only.</li>
+</ul>
+</p>
+
+<br><p>
+<li>addStyleFont</li>
+<p>In Menu G4, the addStyleFont() call can have the following phrases for styles:</p>
+<ul>
+<li>font-family: font-names;</li>
+<li>font-size: number;</li>
+<li>font-weight: normal/bold;</li>
+<li>font-style: normal/italic;</li>
+<li>text-decoration: none/underline;</li>
+<li>color: color string;</li>
+<li>text-align: left/center/right;</li>
+<li>vertical-align: top/middle;</li>
+</ul>
+<p>In Menu G5, it only has one phrase for that:</p>
+<ul>
+<li>css: css-class-names;</li>
+</ul>
+</p>
+
+<br><p>
+<li>addStyleTag</li>
+<p>In Menu G4, the addStyleTag() call can have the following phrases for styles:</p>
+<ul>
+<li>visibility: visible/hidden;</li>
+<li>path: path string;</li>
+<li>tag-normal: image string;</li>
+<li>tag-highlight: image string;</li>
+<li>width: number;</li>
+<li>height: number;</li>
+<li>align: left/right;</li>
+<li>valign: top/middle;</li>
+</ul>
+<p>In Menu G5, it only has one phrase for that:</p>
+<ul>
+<li>css: css-class-names;</li>
+</ul>
+</p>
+
+<br><p>
+<li>addStyleSeparator</li>
+<p>In Menu G4, the addStyleSeparator() call can have the following phrases for styles:</p>
+<ul>
+<li>style: outset/inset/solid;</li>
+<li>color: color string;</li>
+<li>size: number;</li>
+</ul>
+<p>In Menu G5, it only has one phrase for that:</p>
+<ul>
+<li>css: css-class-names;</li>
+</ul>
+</p>
+
+<br><p>
+<li>addStyleIcon</li>
+<p>In Menu G4, the following JS calls will be used to setup the images:</p>
+<ul>
+<li>setImage() ... to use image as menu item</li>
+<li>setIcon() ... to use image icon in menu item</li>
+<li>setBGImage() ... to set up background image for menu pad and menu item</li>
+</ul>
+<p>In Menu G5, it changes to:</p>
+<ul>
+<li>use addStyleIcon(icon-style-name, "css:css-class-names") ... to use image icon in menu item</li>
+<li>set "background" property in CSS classes to use background image for menu pad and menu item, and</li>
+<li>set item text to blank ("") to use image as menu item</li>
+</ul>
+</p>
+
+<br><p>
+<li>addStyleMenu</li>
+<p>In Menu G4, it would be:</p>
+<ul>
+<li>addStyleMenu("menu-style", "pad-style", "item-style", "font-style", "tag-style", "separator-style");</li>
+</ul>
+<p>In Menu G5, it changes to:</p>
+<ul>
+<li>addStyleMenu("menu-style", "pad-style", "item-style", "font-style", "tag-style", "icon-style", "separator-style");</li>
+</ul>
+</p>
+
+<br><p>
+<li>default style</li>
+<p>In Menu G4, it would have some default styles.</p>
+<p>In Menu G5, it changes to use the default style of the current page if you don't define some.</p>
+</p>
+
+</ol>
+</p>
+
+<br><li>Menu Positioning</li>
+<p>
+<ol>
+<p>
+<li>relative positioning</li>
+<p>In Menu G4, it would have the following phrase in the addInstance() call:</p>
+<ul>
+<li>position:relative holder holder2;</li>
+</ul>
+<p>and you would have the following double-holder codes in the page:</p>
+<pre>
+&lt;div id="holder" style="position:absolute"&gt;&#38;nbsp;&lt;/div&gt;
+&lt;div id="holder2" style="position:relative"&gt;&#38;nbsp;&lt;/div&gt;
+</pre>
+
+<br><p>In Menu G5, it would be:</p>
+<ul>
+<li>position:relative holder;</li>
+</ul>
+<p>and the place holder in page would look like this:</p>
+<pre>
+&lt;div id="holder"&gt;&lt;/div&gt;
+</pre>
+<p>or you can just put <font color="red">id="holder"</font> in any block elements.</p>
+</p>
+
+</ol>
+</p>
+
+<br><li>Path script</li>
+<p>
+<ol>
+<p>
+<li>menuTimer & menuTimerBar</li>
+<p>In Menu G4, menuTimer controls the timing for sub-menus of drop-down menus and menuTimerBar controls the timing for immediate sub-menus of menu bars.</p>
+<p>In Menu G5, only the menuTimer is used.</p>
+<br><p>
+<li>imagePath</li>
+<p>In Menu G4, imagePath sets the path for sub-menu tags and the onePixel.gif.</p>
+<p>In Menu G5, imagePath is no longer used, sub-menu tags would be defined in css, and the onePixel.gif in now under scriptPath.</p>
+</p>
+<br><p>
+<li>menuMargin</li>
+<p>New in Menu G5, defines how close a sub-menu can get to the browser border, defaults to 1 (pixel).</p>
+</p>
+<br><p>
+<li>showMessage</li>
+<p>New in Menu G5, defines whether to show item message in status bar or not, defaults to 1 (show).</p>
+</p>
+<br><p>
+<li>showToolTip</li>
+<p>New in Menu G5, defines whether to show item tooltip or not, defaults to 0 (not show).</p>
+</p>
+<br><p>
+<li>onePixelGIF</li>
+<p>New in Menu G5, defines the path for the one pixel image if the default onePixel.gif is not used.</p>
+</p>
+<br><p>
+<li>inheritStyle</li>
+<p>New in Menu G5, defines whether to acquire menu style from the parent menu or to use the default style set by setDefaultStyle(), defaults to 1 (to acquire style from parent menu).</p>
+</p>
+<br><p>
+<li>minimumWidth</li>
+<p>New in Menu G5, defines the minimum item width for menus using actual item width.</p>
+</p>
+</ol>
+</p>
+
+</ul>
+
+<p>&nbsp;</p>
+<p class="para"><a href="../index.html">Back to index page</a></p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>
+
+</html>

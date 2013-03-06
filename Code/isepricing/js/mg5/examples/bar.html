@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><html>
+<html>
+<head>
+<title>Menu G5 Examples: Menu bar</title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+<style type="text/css">
+.padTop { background-color:#ffffff; }
+.itemTopOff { padding:0px 10px; background-color:#cccccc; }
+.itemTopOn { cursor:default; padding:0px 10px; background-color:#666666; }
+
+.padSub { background-color:#ffffff; }
+.itemSubOff { padding:0px 10px; border:1px solid #6699cc; background-color:#6699cc; }
+.itemSubOn { cursor:default; padding:0px 10px; border:1px solid #6699cc; background-color:#336699; border-color:#003366 #6699cc #6699cc #003366; }
+
+.itemSub2Off { width:90px; border:1px solid #000000; padding:0px 10px; background-color:#6699cc; }
+.itemSub2On { cursor:default; width:90px; border:1px solid #000000; padding:0px 10px; background-color:#336699; }
+
+.fontOff { font-family:verdana; font-size:10pt; color:#000000; }
+.fontOn { font-family:verdana; font-size:10pt; color:#ffffff; }
+</style>
+
+<script language="javascript" src="menu/bar-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderX.js"></script>
+</head>
+
+<body onload="showMenu('Demo')" topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" marginwidth="0" marginheight="0">
+<table width="100%" bgcolor="#cccccc" cellpadding="0" cellspacing="0" border="0">
+<tr><td bgcolor="#cccccc"><div class="itemTopOff fontOff">&nbsp;</div></td></tr>
+<tr><td bgcolor="#6699cc"><div class="itemSubOff fontOff">&nbsp;</div></td></tr>
+</table>
+
+<p align="center" class="title">Menu G5 Examples: Menu bar</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+
+<table width="100%" cellpadding="16" cellspacing="0" border="0"><tr><td align="left" valign="top">
+<p class="para">In this example, we set up a table as the menu background:</p>
+<table width="100%" bgcolor="#cccccc" cellpadding="0" cellspacing="0" border="0">
+<tr><td bgcolor="#cccccc"><div class="itemTopOff fontOff">&nbsp;</div></td></tr>
+<tr><td bgcolor="#6699cc"><div class="itemSubOff fontOff">&nbsp;</div></td></tr>
+</table>
+<p class="para">We put a "&#38;nbsp;" inside the table cells with CSS classes for the menu items so that the table row and the menu bar will have the same height.</p>
+<p class="para">The direction of first-level sub-menus is set to "abs-center-down", which centralizes the sub-menus under the top-menu.</p>
+<p class="para">[<a href="../index.html#examples">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</table>
+</body>
+</html>

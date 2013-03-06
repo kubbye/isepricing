@@ -1,0 +1,12 @@
+addMenu("Demo", "demo-top");
+addSubMenu("demo-top", "Data", "", "", "2-sub", "");
+addSubMenu("demo-top", "Price Guideline", "", "", "3-sub", "");
+addSubMenu("demo-top", "Quotation", "", "", "4-sub", "");
+addSubMenu("demo-top", "Setting", "", "", "5-sub", "");
+ addLink("demo-top", "Exit", "", "close.asp", "");
+addLink("2-sub", "3rd Party Product", "", "configuration/party_search.asp", "");
+addLink("3-sub", "Price Guideline", "", "product/product_search.asp", "");
+addLink("4-sub", "Quotation Maker", "", "quotation/quotationList.asp", "");
+addLink("4-sub", "Applied OIT Quotation", "", "quotation/appliedList.asp", "");
+addLink("5-sub", "Change Password", "", "system/password.asp", "");
+endMenu();

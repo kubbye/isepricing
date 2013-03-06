@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<title>Menu G5 Examples: Menu-level and item-level styling</title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+<style type="text/css">
+.itemHomeOff { width:130px; padding:1px; border:1px solid; text-align:center; background-color:#336699; border-color:#6699cc #003366 #003366 #6699cc; }
+.itemHomeOn  { cursor:default; width:130px; padding:1px; border:1px solid; text-align:center; background-color:#6699cc; border-color:#99ccff #336699 #336699 #99ccff; }
+
+.itemToolOff { width:130px; padding:1px; border:1px solid; text-align:center; background-color:#666699; border-color:#9999cc #333366 #333366 #9999cc; }
+.itemToolOn  { cursor:default; width:130px; padding:1px; border:1px solid; text-align:center; background-color:#9999cc; border-color:#ccccff #666699 #666699 #ccccff; }
+
+.itemGameOff { width:130px; padding:1px; border:1px solid; text-align:center; background-color:#996633; border-color:#cc9966 #663300 #663300 #cc9966; }
+.itemGameOn  { cursor:default; width:130px; padding:1px; border:1px solid; text-align:center; background-color:#cc9966; border-color:#ffcc99 #996633 #996633 #ffcc99; }
+
+.itemForumOff { width:130px; padding:1px; border:1px solid; text-align:center; background-color:#996666; border-color:#cc9999 #663333 #663333 #cc9999; }
+.itemForumOn  { cursor:default; width:130px; padding:1px; border:1px solid; text-align:center; background-color:#cc9999; border-color:#ffcccc #996666 #996666 #ffcccc; }
+
+.itemContactOff { width:130px; padding:1px; border:1px solid; text-align:center; background-color:#336666; border-color:#669999 #003333 #003333 #669999; }
+.itemContactOn  { cursor:default; width:130px; padding:1px; border:1px solid; text-align:center; background-color:#669999; border-color:#99cccc #336666 #336666 #99cccc; }
+
+.padTool { border:1px solid; padding:1px; background-color:#ffffff; border-color:#666699; }
+.padGame { border:1px solid; padding:1px; background-color:#ffffff; border-color:#996633; }
+.padForum { border:1px solid; padding:1px; background-color:#ffffff; border-color:#996666; }
+
+.fontOff { font-size:10pt; font-family:verdana; color:#000000; }
+.fontOn { font-size:10pt; font-family:verdana; color:#ffffff; }
+
+.tagOff { width:8px; height:13px; float:right; background:url("images/tagRN.gif") no-repeat bottom; }
+.tagOn { width:8px; height:13px; float:right; background:url("images/tagRH.gif") no-repeat bottom; }
+</style>
+
+<script language="javascript" src="menu/color-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderX.js"></script>
+</head>
+
+<body onload="showMenu('Demo')">
+
+<p align="center" class="title">Menu G5 Examples: Menu-level and item-level styling</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+<table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td id="holder">&nbsp;</td></tr></table><br clear="all">
+<p class="para">With Menu G5, you can define styles at the menu level and item level, like the menu bar above, each of the top-level items has its own style and each of the sub-menus also follows the style of their top-level items.</p>
+<p class="para">Menu-level style and item-level style both use the same "addStyleMenu()" call to define styles for different parts of the menu. The only differences are, for item-level styling, you will need to assign group id in the menu content to items you want to apply the style, and you don't need the pad-style parameter (just use "") in the "addStyleMenu()" call.</p>
+<p class="para">[<a href="../index.html#examples">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>
+</html>

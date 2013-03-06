@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><html>
+<html>
+<head>
+<title>Menu G5 Examples: Using images in menu</title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+<style type="text/css">
+.itemOff1 { width:116px; padding:0px 8px; background:url("images/bar_item.gif") repeat-y; text-align:center; background-color:#333333; }
+.itemOn1 { cursor:default; width:116px; padding:0px 8px; background:url("images/bar_item.gif") repeat-y; text-align:center; background-color:#ffffff; }
+
+.fontOff1 { font-family:verdana; font-size:10pt; line-height:24px; color:#ffffff; }
+.fontOn1 { font-family:verdana; font-size:10pt; line-height:24px; color:#333333; }
+
+.tagOff1 { width:8px; height:24px; float:right; background:url("images/tagRH.gif") no-repeat center; }
+.tagOn1 { width:8px; height:24px; float:right; background:url("images/tagRN.gif") no-repeat center; }
+
+.separator1 { background:url("images/bar_top.gif"); height:19px; }
+.separator2 { background:url("images/bar_bottom.gif"); height:5px; }
+.separator3 { background:url("images/bar_top2.gif"); height:5px; }
+
+
+.pad2 { background:url("images/pad.gif") repeat-y; padding:0px 10px; }
+
+.itemOff2 { width:120px; text-align:center; padding:0px 4px; border:1px solid; border-color:#c8e386 #a0b48a #a0b48a #c8e386; background-color:#b4c86e; }
+.itemOn2 { cursor:default; width:120px; text-align:center; padding:0px 4px; border:1px solid; border-color:#336666; background-color:#99cccc; }
+
+.fontOff2 { font-family:verdana; font-size:10pt; line-height:22px; color:#336666; }
+.fontOn2 { font-family:verdana; font-size:10pt; line-height:22px; color:#ffffff; }
+
+.tagOff2 { width:9px; height:22px; float:right; width:9px; height:22px; float:right; background:url("images/tagRN5.gif") no-repeat center; }
+.tagOn2 { width:9px; height:22px; float:right; width:9px; height:22px; float:right; background:url("images/tagRH5.gif") no-repeat center; }
+
+.separator { height:6px; }
+
+.subpad3 { padding:0px 2px; background:url("images/subpad.gif") no-repeat top left; }
+
+.itemOff3 { width:120px; height:22px; text-align:center; background:url("images/item.gif") no-repeat; }
+.itemOn3 { cursor:default; width:120px; height:22px; text-align:center; background:url("images/itemOn.gif") no-repeat; }
+
+.fontOff3 { font-family:verdana; font-size:8pt; line-height:21px; color:#ffffff; }
+.fontOn3 { font-family:verdana; font-size:8pt; line-height:21px; color:#000000; }
+
+.separatorT { background:url("images/item_top.gif") no-repeat; height:5px; }
+.separatorB { background:url("images/item_bottom.gif") no-repeat; height:5px; }
+
+
+.pad4 { border:1px solid #000000; padding:0px 2px; background-color:#ffffff; }
+
+.itemOff4 { width:130px; border:1px solid #000000; text-align:left; background-color:#ffffff; }
+.itemOn4 { width:130px; border:1px solid #000000; text-align:left; background-color:#6699cc; }
+
+.fontOff4 { font-family:verdana; font-size:10pt; line-height:20px; padding:0px 2px; color:#000000; }
+.fontOn4 { cursor:default; font-family:verdana; font-size:10pt; line-height:20px; padding:0px 2px; color:#ffffff; }
+
+.iconOff4 { background:url("images/dot.gif"); width:6px; height:20px; float:left; background-color:#6699cc; }
+.iconOn4 { background:url("images/dot.gif"); width:6px; height:20px; float:left; background-color:#ffffff; }
+
+.separator4 { background-color:#ffffff; }
+</style>
+
+<script language="javascript" src="menu/images-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderX.js"></script>
+</head>
+
+<body onload="showMenu('Demo1')">
+
+<p align="center" class="title">Menu G5 Examples: Using images in menu</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+
+<p class="para">To use images in menu is just about setting up the background images in the CSS classes for the menu pads, the menu items, the separators, the menu icons and the sub-menu tags.</p>
+<p class="para">Following are four examples, click to switch them on or off:</p>
+<table cellpadding="0" cellspacing="0" border="0" width="80%">
+<tr align="center">
+<td colspan="2">[<a href="#" onclick="switchMenu('Demo1'); return false;">switch</a>]</td>
+<td colspan="2">[<a href="#" onclick="switchMenu('Demo2'); return false;">switch</a>]</td>
+<td colspan="2">[<a href="#" onclick="switchMenu('Demo3'); return false;">switch</a>]</td>
+<td colspan="2">[<a href="#" onclick="switchMenu('Demo4'); return false;">switch</a>]</td>
+</tr>
+<tr align="center" valign="top">
+<td>&nbsp;</td>
+<td id="holder1">&nbsp;</td>
+<td>&nbsp;</td>
+<td id="holder2">&nbsp;</td>
+<td>&nbsp;</td>
+<td id="holder3">&nbsp;</td>
+<td>&nbsp;</td>
+<td id="holder4">&nbsp;</td>
+</tr>
+<tr><td colspan="8" height="120">&nbsp;</td></tr>
+</table><br clear="all">
+
+<p class="para">These menus are using the same menu content, which defines separators as the first item and the last item of each menu level.</p>
+
+<br><p class="para">For the first menu on the left side, we have the following images:</p>
+<p class="para"><img src="images/bar_top.gif"> ... background image for the first separator of the top-menu</p>
+<p class="para"><img src="images/bar_item.gif" width="132" height="5"> ... background image for the menu items</p>
+<p class="para"><img src="images/bar_top2.gif"> ... background image for the first separator of the sub-menus</p>
+<p class="para"><img src="images/bar_bottom.gif"> ... background image for the last separator of the top-menu and sub-menus</p>
+
+<br><p class="para">For the second menu, we have the following image:</p>
+<p class="para"><img src="images/pad.gif"> ... repeating background image for the pad</p>
+
+<br><p class="para">For the third menu, we have the following images:</p>
+<p class="para"><img src="images/item_top.gif"> ... background image for the first separator of a menu</p>
+<p class="para"><img src="images/item.gif"> ... background image for the menu items at normal stage</p>
+<p class="para"><img src="images/itemOn.gif"> ... background image for the menu items at highlighted stage</p>
+<p class="para"><img src="images/item_bottom.gif"> ... background image for the last separator of a menu</p>
+<p class="para"><img src="images/subpad.gif" border="1"> ... background image for the sub-menu pad</p>
+
+<br><p class="para">And for the last menu on the right side, we just use a transparent GIF as the background image for the menu icons, then use different background colors for normal stage and highlighted stage.</p>
+<p class="para">[<a href="../index.html#examples">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>
+</html>

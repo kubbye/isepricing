@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<link rel=stylesheet href="TB.css" type="text/css">
+<script language="javascript" src="../script/menuG5FX.js"></script>
+<script language="javascript">
+var lastMenu="";
+function swapMenu(menu) {
+  if (lastMenu!="" && lastMenu!=menu) { hideMenuX(lastMenu); }
+  showMenuX(menu);
+
+  lastMenu=menu; parent.menuCalled=menu;
+}
+
+function initAllMenus() {
+  initMenu('Toyota','top'); setSubFrame('Toyota',parent.main);
+  initMenu('Honda','top'); setSubFrame('Honda',parent.main);
+  initMenu('Chrysler','top'); setSubFrame('Chrysler',parent.main);
+  initMenu('Dodge','top'); setSubFrame('Dodge',parent.main);
+  initMenu('Ford','top'); setSubFrame('Ford',parent.main);
+
+  parent.topDone=true;
+  if (parent.menuCalled!="") {
+    swapMenu(parent.menuCalled);
+    lastMenu=parent.menuCalled;
+  }
+}
+</script>
+</head>
+
+<body onload="initAllMenus()" bgcolor="#6699cc">
+<p>&nbsp;</p>
+</body>
+</html>

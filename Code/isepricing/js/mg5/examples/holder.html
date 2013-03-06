@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><html>
+<html>
+<head>
+<title>Menu G5 Examples: Alternative to form select list</title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+<style type="text/css">
+.itemOff { width:115px; padding:1px 6px 1px 11px; border:1px solid #000000; text-align:left; background-color:#cccccc; }
+.itemOn { cursor:default; width:115px; padding:1px 6px 1px 11px; border:1px solid #000000; text-align:left; background-color:#333333; }
+
+.fontOff { font-family:verdana; font-size:10pt; color:#000000; }
+.fontOn { font-family:verdana; font-size:10pt; color:#ffffff; }
+
+.tagOff { width:8px; height:13px; float:right; background:url("images/tagRN.gif") no-repeat bottom; }
+.tagOn { width:8px; height:13px; float:right; background:url("images/tagRH.gif") no-repeat bottom; }
+</style>
+
+<script language="javascript" src="menu/holder-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderX.js"></script>
+</head>
+
+<body>
+
+<p align="center" class="title">Menu G5 Examples: Alternative to form select list</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+<p class="para">Form select list is not very good at categorizing its options, especially when you have lots of options. Using a drop-down menu sometimes could be a nice alternative.</p>
+<p class="para">In this example, we use one menu only but pop it up at different place holders that are associated with the links.</p>
+<form name="testform">
+<table align="center">
+<tr>
+<td align="right">&nbsp;Vehicle 1:</td><td><input type="text" name="vehicle1" size="16"></td>
+<td align="right">&nbsp;Vehicle 2:</td><td><input type="text" name="vehicle2" size="16"></td>
+<td align="right">&nbsp;Vehicle 3:</td><td><input type="text" name="vehicle3" size="16"></td>
+</tr>
+<tr>
+<td>&nbsp;</td><td id="holder1">[<a href="#" onclick="popupMenu(0); return false;">Pick from list</a>]</td>
+<td>&nbsp;</td><td id="holder2">[<a href="#" onclick="popupMenu(1); return false;">Pick from list</a>]</td>
+<td>&nbsp;</td><td id="holder3">[<a href="#" onclick="popupMenu(2); return false;">Pick from list</a>]</td>
+</tr>
+</table>
+</form>
+<p class="para">[<a href="../index.html#examples">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>
+</html>

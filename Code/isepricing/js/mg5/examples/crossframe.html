@@ -1,0 +1,134 @@
+<html>
+
+<head>
+<title>Menu G5 Step-by-step: Cross-Frame menus</title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+</head>
+
+<body>
+<p align="center" class="title">Menu G5 Step-by-step: Cross-Frame menus</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+
+<p class="para">Usually we can notice two types of cross-frame menus:</p>
+<ul>
+<li>html links in one frame to control menus in another frame.</li>
+<li>top-menu in one frame and sub-menus in another frame.</li>
+</ul>
+<p class="para">The first setup gives you maximum freedom to render the links while you will have to add control codes to each link, and you are actually using individual menus as "sub-menus" to the links and thus logically you don't have one united piece of menu content. The second setup lets you use one menu content (the same menu content can be used for non-frame pages) and takes care of the menu splitting for you, but you might need to work on the style of the top-menu to embed it into the navigation frame page "naturally".</p>
+<p class="para">Menu G5 supports both of them. We will go through the second setup first since it's a built-in of Menu G5.</p>
+
+<br><p class="para">The simplest case for cross-frame menu would be two sibling frames under the same frameset, top-bottom or left-right, you just need to take the following steps to implement the menu:</p>
+<ol>
+<li>define the menu content and CSS classes for menu style as usual (you can reuse those from a non-frame menu).</li>
+<li>include the CSS definitions in the top-menu page and sub-menus pages.</li>
+<li>set up the path script as usual.</li>
+<li>in the frameset page, name the frame for sub-menus.</li>
+<li>in the addInstance() call, position the menu close to the frame border (usually the pre-defined slots with proper alignment would make it an easy job) and set the link target to the sub-menu frame .</li>
+<li>include the path script and loader script (menuG5LoaderFS.js or menuG5LoaderFSX.js) in the frameset page.</li>
+<li>include the frame control script (menuG5F.js or menuG5FX.js) in the top-menu page.</li>
+<li>set up the BODY onload call (initMenu & setSubFrame) for the top-menu page.</li>
+</ol>
+<p class="para">For example, the top-bottom frameset page:</p>
+<pre>
+&lt;html&gt;
+
+&lt;head&gt;
+&lt;script language="javascript" src="...content-path.../path.js"&gt;&lt;/script&gt;
+&lt;script language="javascript" src="...script-path.../menuG5LoaderFSX.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;frameset rows="60, *" border="0" frameborder="0"&gt;
+	&lt;frame src="top.html" border="0" frameborder="0" scrolling="no"&gt;&lt;/frame&gt;
+	&lt;frame src="main.html" name="<font color='#cc0000'>main</font>"&gt;&lt;/frame&gt;
+&lt;/frameset&gt;
+
+&lt;/html&gt;
+</pre>
+<p class="para">the top-menu frame page (top.html in this case):</p>
+<pre>
+&lt;html&gt;
+
+&lt;head&gt;
+&lt;link rel=stylesheet href="...css-path.../menustyle.css" type="text/css"&gt;
+&lt;script language="javascript" src="...script-path.../menuG5FX.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body onload="initMenu('instance-name', '<font color='#cc0000'>top</font>'); setSubFrame('instance-name', parent.<font color='#cc0000'>main</font>)"&gt;
+...
+&lt;/body&gt;
+
+&lt;/html&gt;
+</pre>
+<p class="note"><font color="red">Note:</font> The initMenu("ins-name", "top") call tells that the page will show the top-menu of the menu instance. The setSubFrame("ins-name", frame-reference) call tells where to show the sub-menus of the menu instance.</p>
+<p class="para">and for pages in the sub-menu frame:</p>
+<pre>
+&lt;html&gt;
+
+&lt;head&gt;
+&lt;link rel=stylesheet href="...css-path.../menustyle.css" type="text/css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+...
+&lt;/body&gt;
+
+&lt;/html&gt;
+</pre>
+
+<p class="para">That's it.</p>
+
+<br><p class="para">The settings you need to pay attention to would be the menu layout and menu direction. Usually, if it's a top-bottom frameset, set the top-menu as menu bar, then use "right-down" for top-menu in top frame or "right-up" for top-menu in bottom frame. If it's a left-right frameset, set the top-menu as menu pad (or just ignore it to take the default), then use "right-down" for top-menu in left frame or "left-down" for top-menu in right frame.</p>
+<p class="para">The pre-defined slots are nine (9) spots along the window/frame border:</p>
+<p class="para"><img src="images/slot.gif" border="1"></p>
+
+<p class="para">They can be used to position the menu close to the frame border. See the following table for menu instance alignment reference with slot positioning:</p>
+<table cellpadding="3" cellspacing="1" border="0" bgcolor="#000000" style="margin:24pt">
+<tr bgcolor="#ffffff" align="center">
+<td>frameset layout</td><td>top-menu frame</td><td>menu placement</td><td>slot to use</td><td>alignment</td><td>sample</td>
+</tr>
+<tr bgcolor="#ffffff" align="center">
+<td rowspan="6">top-bottom</td><td rowspan="3">top</td><td>left</td><td>6</td><td align="left">align:left; valign:bottom</td><td>[<a href="frameset-t6.html" target="sample">show</a>]</td>
+</tr>
+<tr bgcolor="#ffffff" align="center">
+<td>center</td><td>5</td><td align="left">align:center; valign:bottom</td><td>[<a href="frameset-t5.html" target="sample">show</a>]</td>
+</tr>
+<tr bgcolor="#ffffff" align="center">
+<td>right</td><td>4</td><td align="left">align:right; valign:bottom</td><td>[<a href="frameset-t4.html" target="sample">show</a>]</td>
+</tr>
+<tr bgcolor="#ffffff" align="center">
+<td rowspan="3">bottom</td><td>left</td><td>0</td><td align="left">align:left; valign:top</td><td>[<a href="frameset-b0.html" target="sample">show</a>]</td>
+</tr>
+<tr bgcolor="#ffffff" align="center">
+<td>center</td><td>1</td><td align="left">align:center; valign:top</td><td>[<a href="frameset-b1.html" target="sample">show</a>]</td>
+</tr>
+<tr bgcolor="#ffffff" align="center">
+<td>right</td><td>2</td><td align="left">align:right; valign:top</td><td>[<a href="frameset-b2.html" target="sample">show</a>]</td>
+</tr>
+<tr bgcolor="#ffffff" align="center">
+<td rowspan="6">left-right</td><td rowspan="3">left</td><td>top</td><td>2</td><td align="left">align:right; valign:top</td><td>[<a href="frameset-l2.html" target="sample">show</a>]</td>
+</tr>
+<tr bgcolor="#ffffff" align="center">
+<td>middle</td><td>3</td><td align="left">align:right; valign:middle</td><td>[<a href="frameset-l3.html" target="sample">show</a>]</td>
+</tr>
+<tr bgcolor="#ffffff" align="center">
+<td>bottom</td><td>4</td><td align="left">align:right; valign:bottom</td><td>[<a href="frameset-l4.html" target="sample">show</a>]</td>
+</tr>
+<tr bgcolor="#ffffff" align="center">
+<td rowspan="3">right</td><td>top</td><td>0</td><td align="left">align:left; valign:top</td><td>[<a href="frameset-r0.html" target="sample">show</a>]</td>
+</tr>
+<tr bgcolor="#ffffff" align="center">
+<td>middle</td><td>7</td><td align="left">align:left; valign:middle</td><td>[<a href="frameset-r7.html" target="sample">show</a>]</td>
+</tr>
+<tr bgcolor="#ffffff" align="center">
+<td>bottom</td><td>6</td><td align="left">align:left; valign:bottom</td><td>[<a href="frameset-r6.html" target="sample">show</a>]</td>
+</tr>
+</table><br clear="all">
+
+<p class="para">[<a href="crossframe2.html">Cross-Frame menus (cont.)</a>]&nbsp;[<a href="../index.html#steps">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p class="para">&nbsp;</p>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<title>Menu G5 Examples: Menu swapping [2]</title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+</head>
+
+<body>
+
+<p align="center" class="title">Menu G5 Examples: Menu swapping [2]</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+<p class="para">We have seen the menu swapping example, it's just to build all the menu instances but only show one of them at a time.</p>
+<p class="para">What if the menu contents are dynamic and we don't know about it in advance? If we load a page in the content frame and it brings in some new menu contents, how do we swap the menu in the top frame??</p>
+<p class="para">In Menu G5, if you call addMenu() with a menu name that is already defined, the existing menu content will be deleted and it re-defines a new menu content under that menu name from scratch, but menu instances built on the previous menu content won't be affected.</p>
+<p class="para">Also, if you call addInstance() with a menu instance name that is already defined, the existing menu instance will be deleted and it re-builds a new menu instance under that menu instance name with the current menu content.</p>
+<p class="para">So, to swap menus with dynamic menu contents, we can re-use the same menu name and menu instance name to delete the previous menu content and menu instance, then re-build a new menu content and menu instance.</p>
+<p class="para">As to the menu styles, we could leave it to the content page since we don't know what menu content it would bring in. To save some efforts, we could also have all the dynamic menu contents use the same name for the top-menu, then we define the menu style for the top-menu and set up some default styles for the sub-menus.</p>
+<p class="para">See this [<a href="swap2-sample.html" target="swap">link</a>] for an example, you can click on a vehicle maker to swap the menu, and the menu contents and menu instances are actually defined in the content frame pages.</p>
+<p class="note"><font color="#cc0000">Update for Safari:</font> The codes to implement a deep copy() method for objects and arrays work fine in all supported browsers but Safari. Thus this example won't support Safari unless I can find a workaround later.</p>
+<p class="para">[<a href="../index.html#examples">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>
+</html>

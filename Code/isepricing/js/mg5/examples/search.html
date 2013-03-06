@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<title>Menu G5 Examples: Embedding HTML form into the menu</title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+<style type="text/css">
+.itemX { padding:0px; border:1px solid #000000; text-align:left; background-color:#cccccc; }
+
+.itemTopOff { width:130px; padding:1px; border:1px solid #000000; text-align:center; background-color:#cccccc; }
+.itemTopOn { cursor:default; width:130px; padding:1px; border:1px solid #000000; text-align:center; background-color:#333333; }
+
+.itemSubOff { width:115px; padding:1px 6px 1px 11px; border:1px solid #000000; text-align:left; background-color:#cccccc; }
+.itemSubOn { cursor:default; width:115px; padding:1px 6px 1px 11px; border:1px solid #000000; text-align:left; background-color:#333333; }
+
+.fontOff { font-family:verdana; font-size:10pt; color:#000000; }
+.fontOn { font-family:verdana; font-size:10pt; color:#ffffff; }
+
+.tagOff { width:8px; height:13px; float:right; background:url("images/tagRN.gif") no-repeat bottom; }
+.tagOn { width:8px; height:13px; float:right; background:url("images/tagRH.gif") no-repeat bottom; }
+
+.nomargin { margin:0px}
+.button { font-family:verdana; font-size:10pt; }
+</style>
+
+<script language="javascript" src="menu/search-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderX.js"></script>
+</head>
+
+<body onload="showMenu('Demo')">
+<p align="center" class="title">Menu G5 Examples: Embedding HTML form into the menu</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+<table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td id="holder">&nbsp;</td></tr></table><br clear="all">
+<p class="para">Menu G5 supports Info Item. Info Item is just for display only and it doesn't have mouseover/mousedown effects. In this example, we use Info Items to hold a vote box and some search boxes. Just move your mouse over the <span style="border:1px solid #000000; background-color:#cccccc; padding:1px 30px;font-family:verdana;  font-size:10pt;">Rate Me</span> and <span style="border:1px solid #000000; background-color:#cccccc; padding:1px 30px; font-family:verdana; font-size:10pt;">Search</span> to give them a try, and as long as your mouse is over the Info Item, it will stay visible to take your input.</p>
+<p class="para">Of course, as we are putting HTML codes in the addInfo() call, we will need to use the backslash (\) to escape the double quotes.</p>
+<p class="note"><font color="#cc0000">Update for IE/Mac:</font> The search form in this example is not working in IE/Mac. Further testing needed.</p>
+<p class="para">[<a href="../index.html#examples">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>
+</html>

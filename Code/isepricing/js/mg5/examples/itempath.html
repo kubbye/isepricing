@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<title>Menu G5 Examples: Showing the page path</title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+<link rel=stylesheet href="IP.css" type="text/css">
+
+<script language="javascript" src="menu/itempath-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderX.js"></script>
+</head>
+
+<body onload="showMenu('Demo'); showPagePath('Demo', 'home')">
+
+<p align="center" class="title">Menu G5 Examples: Showing the page path</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+<table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td id="holder">&nbsp;</td></tr></table><br clear="all">
+<p class="para">When a visitor is going through the top-menu and sub-menus and finally click on a menu item to load a page, it would be nice that your menu highlights that path for the current page.</p>
+<p class="para">To do so, Menu G5 adds support of the additional CSS style for the highlighting effect, and introduces two new user functions: showPagePath() and resetPagePath().</p>
+<p class="para">As you might still remember, a menu item (except for info item and separator item) has four parts:</p>
+<ul>
+<li>item ... item size, background color or image, and text alignment.</li>
+<li>text ... font color, style and size.</li>
+<li>icon ... icon images.</li>
+<li>tag ... sub-menu tag images for sub-menu items.</li>
+</ul>
+<p class="para">each of these parts supports four CSS styles:</p>
+<ul>
+<li>normal ... when menu item first shows up or is moused-out.</li>
+<li>highlighted ... when menu item is moused-over.</li>
+<li>mouse-down ... when menu item is moused-down.</li>
+<li>sub-menu ... when a sub-menu item is moused-out and its sub-menu gets mouse focus.</li>
+</ul>
+<p class="para">Now we are adding in the fifth CSS style for all four item parts:</p>
+<ul>
+<li>on-path ... when the page path is called to show and the menu item is on the path.</li>
+</ul>
+<p class="para">and when you define the style, say addStyleItem(), you can have:</p>
+<pre>
+addStyleItem("item-style-name", "css:normal-css, highlighted-css, mousedown-css, submenu-css, onpath-css; ...");
+</pre>
+<p class="para">Usually you won't need all five styles and you can leave those unwanted empty. For example, if you only need the normal-css, highlighted-css and onpath-css like we do in this example, you can have:</p>
+<pre>
+addStyleItem("item-style-name", "css:normal-css, highlighted-css, , , onpath-css; ...");
+</pre>
+<br>
+<p class="para">Okay, we have the style set, and what we will do next is to put the showPagePath() call as part of the onload event handler:</p>
+<pre>
+&lt;body onload="showMenu('instance-name'); showPagePath('instance-name', 'group-id', 'group-id', ...)"&gt;
+</pre>
+<p class="para">When the showPagePath() is called, it will first look for the menu instance by the given 'instance-name', then look for menu item with the first 'group-id' from the top-menu of the menu instance, if found and the menu item with that 'group-id' is a sub-menu item, it will then look for the second 'group-id' from that sub-menu, and so on so forth until it gets to the last 'group-id' given, or it arrives on a link item or command item (so that it can not go deeper), or it can't match a 'group-id'.</p>
+<p class="note"><font color="#cc0000">Note:</font> Obviously in the menu content you will need to assign unique group ids to the menu items.</p>
+<p class="para">The showPagePath() function can be called any time from anywhere, but usually the onload event handler is a good candidate. If the showPagePath() is called when some of the sub-menus down the path are not built yet (remember that Menu G5 only builds a sub-menu when it first shows up?), Menu G5 will remember the path, and when a sub-menu with item on path shows up, it renders that item with the on-path style.</p>
+<p class="para">To remove the on-path effect is easy, if you ever need to do so, just call resetPagePath('instance-name') and all the items on the current path will be reset to the their normal styles.</p>
+<p class="para">The setup in cross-frame menus is similar, and you can put the showPagePath() call in the sub-menu frame page (assuming that the control frameset is the immediate parent frameset):</p>
+<pre>
+&lt;body onload="parent.showPagePath('instance-name', 'group-id', 'group-id', ...)"&gt;
+</pre>
+<br>
+<p class="para">To see how it works, just click through the menu (yes, you can click on a sub-menu item) on the upper part of the page to load some other pages. The "Home" item will bring you back to this page.</p>
+<p class="para">[<a href="../index.html#examples">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</body>
+</html>

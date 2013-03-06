@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<title>Menu G5 Examples: When a menu is long</title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+<style type="text/css">
+.pad { padding:1px; border:1px solid #336699; background-color:#ffffff; }
+
+.itemOff { width:115px; padding:1px 7px 1px 1px; border:1px solid #6699cc; text-align:left; background-color:#cccccc; }
+.itemOn { cursor:default; width:115px; padding:1px 7px 1px 1px; border:1px solid #6699cc; text-align:left; background-color:#333333; }
+
+.fontOff { font-family:verdana; font-size:10pt; line-height:20px; color:#336699; }
+.fontOn { font-family:verdana; font-size:10pt; line-height:20px; color:#ffffff; }
+
+.tagOff { width:9px; height:20px; float:right; background:url("images/tagRN4.gif") no-repeat center; }
+.tagOn { width:9px; height:20px; float:right; background:url("images/tagRH4.gif") no-repeat center; }
+</style>
+
+<script language="javascript" src="menu/multiple-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderX.js"></script>
+</head>
+
+<body style="margin:0px" onload="showMenu('Demo')">
+
+<table width="100%" cellspacing="0" border="0" cellpadding="5">
+<tr valign="top">
+<td>&nbsp;</td>
+<td bgcolor="#6699cc" valign="top" id="holder" height="1000"><hr style="width:125px;"></td>
+<td>
+<table cellpadding="12"><tr><td>
+<p align="center" class="title">Menu G5 Examples: When a menu is long</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+
+<p class="para">If you have a long menu that would exceed the browser border, you have two options to make it more accessible:</p>
+<ol>
+<li>to make it scroll</li>
+<li>to split the menu items into multiple columns or rows</li>
+</ol>
+<p class="para">The menu demo on the left side shows these two options.</p>
+<p class="para">To make a menu scroll, you can add the "scroll:" phrase to its menu pad style (addStylePad), in our sample, we use "scroll:y-only;".</p>
+<p class="para">When a sub-menu is display, Menu G5 aligns it to its parent menu item, then if the sub-menu exceeds the browser border, Menu G5 would move or flip it into view. If the sub-menu is just too long to fit into the browser window, Menu G5 would scroll it when the menu item under the browser border (or the menu item next to this menu item) is mouseovered.</p>
+<p class="para">You can stop the scrolling by moving the mouse cursor.</p>
+<p class="para">An alternative to scrolling a long menu is to split it into multiple columns or rows. To do so, you can add the "col:" or "row:" phrase into the menu pad style, in our sample, we use "col:4;".</p>
+<p class="para">For a drop-down menu (menu-form:pad or default), the "row" will be checked first, which defines how many items to be filled in a column. If "row" is not set, the "col" will be checked to calculate the rows needed for a column. The width of items will be aligned within columns, and separators would only stretch to the width of their own columns.</p>
+<p class="para">For a menu bar (menu-form:bar), the "col" will be checked first, which defines how many items to be filled in a row. If "col" is not set, the "row" will then be checked to calculate columns needed for a row. The height of items will be aligned within rows, and separators will only stretch to the height of their own rows.</p>
+<p class="para">[<a href="../index.html#examples">Back to index page</a>]</p>
+<p align="center"># # #</p>
+</td></tr></table>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

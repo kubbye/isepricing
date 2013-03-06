@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!--#include file="../include/commons.asp"-->
+<!--#include file="../include/chkUser.asp"-->
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>IS E-pricing system</title>
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+   function importData(){
+ 	var f=document.fileform;
+	if (f.vyear.value == null || f.vyear.value == ""){
+		alert("Please select Year!");
+		return false;
+	}
+	if (f.vquarter.value == null || f.vquarter.value == ""){
+		alert("Please select Quarter!");
+		return false;
+	}
+	if(f.importfile.value==null || f.importfile.value==""){
+		alert("Please select document!");
+		return false;
+	}
+	f.action="dashboard_upload_submit.asp";
+	f.submit();
+ }
+</script>
+
+</head>
+
+<body bgcolor="#ffffff" leftmargin="0" topmargin="0">
+<div align="center">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+    <tr> 
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td><table width="96%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01">
+          <tr> 
+            <td class="titleorange"><div align="center">Upload Dashboard</div></td>
+          </tr>
+          <tr> 
+            <td>&nbsp;</td>
+          </tr>
+          <tr> 
+            <td>
+			  <form name="fileform" action="" method="post" enctype="multipart/form-data">
+			  <table width="100%" border="1" bordercolordark="#FFFFFF" bordercolorlight="#CCCCCC" cellspacing="0" cellpadding="0" >
+                <tr class="line01"> 
+				  <td> <div align="left">Year:</div></td>
+				  <td>
+				    <div align="left">
+					  <select name="vyear">
+					    <option value=""></option>
+					    <option value="2010">2010</option>
+					    <option value="2011">2011</option>
+					    <option value="2012">2012</option>
+					    <option value="2013">2013</option>
+					    <option value="2014">2014</option>
+					    <option value="2015">2015</option>
+					  </select>
+				    </div>
+				  </td>
+				  <td> <div align="left">Quarter:</div></td>
+				  <td>
+				    <div align="left">
+					  <select name="vquarter">
+					    <option value=""></option>
+					    <option value="Q1">Q1</option>
+					    <option value="Q2">Q2</option>
+					    <option value="Q3">Q3</option>
+					    <option value="Q4">Q4</option>
+					  </select>
+				    </div>
+				  </td>
+                  <td> <div align="left">Upload Document:</div></td>
+                  <td align="left">
+                    <input class="lankuang" type="file" name="importfile"  value="Browse" size="50" />
+				  </td>
+				  <td>
+				    <input type="submit" name="Submit2" value=" OK " onclick="importData()" />&nbsp;&nbsp;
+					<input type="button" name="mould" value="Template" onclick="location.href='../mould/dashboard_template.xlsx'"/>
+				  </td>
+                </tr>
+              </table>
+              </form>
+            </td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+  <!--#include file="../footer.asp"-->
+</div>
+</body>
+</html>

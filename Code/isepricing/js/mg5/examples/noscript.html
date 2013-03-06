@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><html>
+<html>
+<head>
+<title>Menu G5 Examples: When Javascript is disabled</title>
+
+<link rel=stylesheet href="../css/menuG5.css" type="text/css">
+
+<style type="text/css">
+.itemOff { width:115px; padding:1px 7px 1px 1px; border:1px solid #6699cc; text-align:left; background-color:#cccccc; }
+.itemOn { cursor:default; width:115px; padding:1px 7px 1px 1px; border:1px solid #6699cc; text-align:left; background-color:#333333; }
+
+.fontOff { font-family:verdana; font-size:10pt; line-height:20px; color:#336699; }
+.fontOn { font-family:verdana; font-size:10pt; line-height:20px; color:#ffffff; }
+
+.tagOff { width:9px; height:20px; float:right; background:url("images/tagRN4.gif") no-repeat center; }
+.tagOn { width:9px; height:20px; float:right; background:url("images/tagRH4.gif") no-repeat center; }
+</style>
+
+<script language="javascript" src="menu/noscript-path.js"></script>
+<script language="javascript" src="../script/menuG5LoaderX.js"></script>
+</head>
+
+<body onload="showMenu('Demo')">
+
+<p align="center" class="title">Menu G5 Examples: When Javascript is disabled</p>
+<p align="center" class="copyright"><a href="http://www.yxscripts.com">yxScripts.com</a></p>
+
+<table width="100%" cellspacing="1" border="0" cellpadding="2">
+<tr>
+<td colspan="2" bgcolor="#cccccc" align="center">
+<table cellpadding="0" cellspacing="0" border="0"><tr>
+<td>|&nbsp;</td>
+<td><a class="fontOff" href="#" onmouseover="closeMenu()">Home</a>&nbsp;</td>
+<td id="toolBar">|&nbsp;</td>
+<td><a class="fontOff" href="#" onmouseover="openMenu('Tool')" onmouseout="closeMenu()">Tool Scripts</a>&nbsp;</td>
+<td id="gameBar">|&nbsp;</td>
+<td><a class="fontOff" href="#" onmouseover="openMenu('Game')" onmouseout="closeMenu()">Game Scripts</a>&nbsp;</td>
+<td id="forumBar">|&nbsp;</td>
+<td><a class="fontOff" href="#" onmouseover="openMenu('Forum')" onmouseout="closeMenu()">User Forum</a>&nbsp;</td>
+<td>|&nbsp;</td>
+<td><a class="fontOff" href="#" onmouseover="closeMenu()">Contact</a>&nbsp;|</td>
+</tr></table>
+</td>
+</tr>
+<tr>
+<td bgcolor="#6699cc" valign="top">
+<table id="holder" width="125" cellspacing="1" border="0" cellpadding="1" bgcolor="#6699cc">
+<tr><td bgcolor="cccccc" class="fontOff">&nbsp;<a href="#">Home</a></td></tr>
+<tr><td bgcolor="cccccc" class="fontOff">&nbsp;<a href="#">Tool Scripts</a></td></tr>
+<tr><td bgcolor="cccccc" class="fontOff">&nbsp;<a href="#">Game Scripts</a></td></tr>
+<tr><td bgcolor="cccccc" class="fontOff">&nbsp;<a href="#">User Forum</a></td></tr>
+<tr><td bgcolor="cccccc" class="fontOff">&nbsp;<a href="#">Contact</a></td></tr>
+</table>
+</td>
+<td>
+<table cellpadding="12"><tr><td>
+<p class="para">For a menu page, there will be cases that a visitor has turned off Javascript in his browser, or is using a browser not supported by the menu script, and then all your fancy menus are gone and the visitor is left with minimum direction on how to surf your web site.</p>
+<p class="para">If that's the case, you can layout the pages as if you won't use a menu system, and you set up link sections in pages, then you can either apply the menus to overlap those normal link sections, or just put some triggers in those links to pop up the menus.</p>
+<p class="para">To demonstrate these two workarounds, we've set up two menus here, the menu bar on page top and the drop-down menu on the left side.</p>
+<p class="para">At the first glance, they seem to have the same menu content: 5 options in top-menu and 3 of them have sub-menus. In fact, we have 4 menu instances: one on the left and three under the menu bar, and the menu bar is just some normal links.</p>
+<p class="para">Let's look at the menu on the left first. This menu is exactly overlapping the underneath link section. You can [<a href="#" onclick="moveMenuBy('Demo',10,0); return false;">click here</a>] repeatly to move the menu aside to see what I mean, and [<a href="#" onclick="moveMenuBack('Demo'); return false;">click here</a>] to move it back.</p>
+<p class="para">To set up the menu overlapping, I used a table to hold the link section, specified the width, cellspacing and cellpadding for the table, and accordingly specified the same width (item width plus border size and padding), border size (to counter the table cellspacing) and padding (to counter the table cellpadding) for the menu. I also use the same contents for both the text in the link section and item text in the menu (say, both have a leading "&#38;nbsp;"), then applied the same CSS style to the text in the link section and the item text in the menu. Finally I assigned an ID to the table and used it as the place holder for the menu (relative positioning).</p>
+<p class="para">Of course, if you use images for link section, it would be easier to control the size of the link section and the menu.</p>
+<br><p class="para">As to the menu bar. I first set up a horizontal bar for the top options and the separators within a table, and assigned IDs to the three separator cells that are preceeding the options which would have sub-menus. Then I defined three menu contents, which would have the same contents as the sub-menus in the left side menu, built three menu instances and positioned them with the IDs I set for the separator cells. Finally, I set up some triggers in the options to control the menus:</p>
+<pre>
+&lt;td&gt;&lt;a href="url"
+onmouseover="closeMenu()"&gt;Home&lt;/a&gt;&#38;nbsp;&lt;/td&gt;
+</pre>
+<pre>
+&lt;td id="toolBar"&gt;|&#38;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;a href="url"
+onmouseover="openMenu('Tool')"
+onmouseout="closeMenu()"&gt;Tool Scripts&lt;/a&gt;&#38;nbsp;&lt;/td&gt;
+</pre>
+<pre>
+&lt;td id="gameBar"&gt;|&#38;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;a href="url"
+onmouseover="openMenu('Game')"
+onmouseout="closeMenu()"&gt;Game Scripts&lt;/a&gt;&#38;nbsp;&lt;/td&gt;
+</pre>
+<pre>
+&lt;td id="forumBar"&gt;|&#38;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;a href="url"
+onmouseover="openMenu('Forum')"
+onmouseout="closeMenu()"&gt;User Forum&lt;/a&gt;&#38;nbsp;&lt;/td&gt;
+</pre>
+<pre>
+&lt;td&gt;&lt;a href="url"
+onmouseover="closeMenu()"&gt;Contact&lt;/a&gt;&#38;nbsp;&lt;/td&gt;
+</pre>
+<p class="para">The "closeMenu()" gives the same effect as if you have mouseout a menu item, and the "openMenu()" gives the same effect as if you are hovering a menu item. Thus, the link section and the three menus would be working together like top-menu and sub-menus of one menu.</p>
+<br><p class="para">So, if a visitor hates Javascript, he will still be welcome by pages with normal link sections, and if a visitor doesn't mind taking some Javascript, he will be entertained by some fancy menus.</p>
+<p class="para">[<a href="../index.html#examples">Back to index page</a>]</p>
+<p align="center"># # #</p>
+<p>&nbsp;</p>
+</td></tr></table>
+</td>
+</tr>
+</table>
+
+</body>
+</html>
