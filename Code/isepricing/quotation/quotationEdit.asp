@@ -50,7 +50,8 @@
 		if isnull(application(userzone&"quotationdate")) or isempty(application(userzone&"quotationdate")) or application(userzone&"quotationdate")<>getdate2() then
 			application(userzone&"quotationdate")=getdate2()
 			'取出当前数据库中最大的seq
-			Set rsSeq=conn.execute("select substring(MAX(QUOTATIONNO),11,5) as QUOTATIONNO from quotation where quotationno like '"&quotationno&"%'")
+			Set rsSeq=conn.execute("select substring(QUOTATIONNO,len(QUOTATIONNO)-4,5) AS QUOTATIONNO  from (select MAX(QUOTATIONNO) as QUOTATIONNO from quotation where quotationno like '"&quotationno&"%')tmp")
+			'Set rsSeq=conn.execute("select substring(MAX(QUOTATIONNO),11,5) as QUOTATIONNO from quotation where quotationno like '"&quotationno&"%'")
 			If rsSeq.bof And rsSeq.eof Then
 				application(userzone&"quotationSeq")=1
 			Else
