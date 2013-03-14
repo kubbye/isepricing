@@ -24,7 +24,7 @@
 
 	'验证价格，系统核对两个价格是否一致，若不一致，添加提醒框：如确认申请特价，请先在Quotation中点击“Edit Finished”
 	messages="如确认申请特价，请先在Quotation中点击“Edit Finished”"
-	sql="select * from special_price a,quotation b where a.quotationno=b.quotationno and a.id="&sid&" and a.targetoitprice=b.targetprice"
+	sql="select * from special_price a,quotation b where a.quotationno=b.quotationno and a.id="&sid&" and a.targetoitprice=b.targetprice and isnull(iseditfinished,0)=1"
 	Set rs_checkprice=conn.execute(sql)
 	If  rs_checkprice.eof or rs_checkprice.bof Then
 		response.write("<script>alert('"&messages&"');</script>")
